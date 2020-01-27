@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RegistroDatos">
+
+
+    <EditText
+        android:id="@+id/et_pais_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:ems="10"
+        android:hint="País"
+        android:inputType="textPersonName"
+        android:textSize="@dimen/activity_normal" />
+
+    <EditText
+        android:id="@+id/et_direccion_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:textSize="@dimen/activity_normal"
+        android:hint="Dirección" />
+
+    <EditText
+        android:id="@+id/et_instituto_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:textSize="@dimen/activity_normal"
+        android:hint="Instituto Educativo" />
+
+    <EditText
+        android:id="@+id/et_carrera_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:textSize="@dimen/activity_normal"
+        android:hint="Carerra" />
+
+    <Button
+        android:id="@+id/btn_guardar_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:textSize="@dimen/activity_normal"
+        android:backgroundTint="@color/colorSecundario"
+        android:textColor="@color/colorBlanco"
+        android:text="INGRESAR" />
+
+</LinearLayout>
