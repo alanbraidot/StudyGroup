@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_group_name_search_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/group_name_search_fragment"
+            android:textAllCaps="true"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/recycler_view_title" />
+
+        <TextView
+            android:id="@+id/tv_subject_search_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/recycler_view_normal"
+            android:text="@string/subject_recycler_view" />
+
+        <TextView
+            android:id="@+id/tv_school_search_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/recycler_view_normal"
+            android:text="@string/school_recycler_view" />
+
+        <TextView
+            android:id="@+id/tv_assigned_teacher_search_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/recycler_view_normal"
+            android:text="@string/assigned_teacher_recycler_view" />
+
+        <TextView
+            android:id="@+id/tv_more_info_search_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/more_info_recycler_view"
+            android:textColor="@color/colorSecondaryText"
+            android:textAlignment="textEnd"
+            android:textSize="@dimen/recycler_view_normal" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

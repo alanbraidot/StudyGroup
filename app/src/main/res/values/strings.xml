@@ -5,6 +5,15 @@
     <string name="title_home">Inicio</string>
     <string name="title_search">Buscar</string>
     <string name="title_create">Crear</string>
-    <string name="title_chat">Chat</string>
+    <string name="title_chat">Chats</string>
     <string name="title_account">Perfil</string>
+    <string name="textView_filter_search_fragment">Filtrar por</string>
+    <string name="hint_searchView_search_fragment">Buscar grupo, persona o institución</string>
+    <string name="group_name_search_fragment">NOMBRE DEL GRUPO</string>
+    <string name="subject_recycler_view">Materia</string>
+    <string name="school_recycler_view">Facultad</string>
+    <string name="assigned_teacher_recycler_view">Profesor asignado</string>
+    <string name="assigned_teacher_true">Con profesor asignado</string>
+    <string name="assigned_teacher_false">Sin profesor asignado</string>
+    <string name="more_info_recycler_view">+Información</string>
 </resources>
