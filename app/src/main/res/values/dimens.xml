@@ -6,5 +6,7 @@
     <dimen name="activity_normal">20dp</dimen>
     <dimen name="recycler_view_title">20</dimen>
     <dimen name="recycler_view_normal">16dp</dimen>
+    <dimen name="activity_verticalchico_margin">6dp</dimen>
+    <dimen name="activity_verticalgrande_margin">26dp</dimen>
 </resources>
 

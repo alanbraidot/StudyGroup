@@ -7,4 +7,5 @@
     <color name="colorBlanco">#FAFAFA</color>
     <color name="colorSecondaryText">#0d47a1</color>
     <color name="colorPrimaryText">#212121</color>
+    <color name="colorNegro">#212121</color>
 </resources>

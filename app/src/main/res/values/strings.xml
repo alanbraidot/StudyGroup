@@ -16,4 +16,8 @@
     <string name="assigned_teacher_true">Con profesor asignado</string>
     <string name="assigned_teacher_false">Sin profesor asignado</string>
     <string name="more_info_recycler_view">+Información</string>
+    <string name="title_activity_crear_grupo">CrearGrupo</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="crear_grupo">Crear Grupo</string>
 </resources>
