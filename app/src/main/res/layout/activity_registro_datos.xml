@@ -7,50 +7,107 @@
     android:layout_height="match_parent"
     tools:context=".activities.RegistroDatos">
 
-
-    <EditText
-        android:id="@+id/et_pais_registro"
+    <TextView
+        android:id="@+id/tv_completar_datos_registro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:ems="10"
-        android:hint="País"
-        android:inputType="textPersonName"
-        android:textSize="@dimen/activity_normal" />
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryText"
+        android:text="@string/tv_completar_datos_registro"
+        android:textSize="@dimen/activity_titulo" />
 
-    <EditText
-        android:id="@+id/et_direccion_registro"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView_foto_perfil_registro"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/img"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_agregar_foto_registro"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginBottom="3dp"
+            android:background="@drawable/ic_add_circle_blue_32dp"
+            android:backgroundTint="@color/colorSecundario"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageView_foto_perfil_registro" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Switch
+        android:id="@+id/switch_tutor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:layout_marginVertical="@dimen/activity_vertical_margin"
         android:textSize="@dimen/activity_normal"
-        android:hint="Dirección" />
+        android:text="Es tutor" />
 
-    <EditText
-        android:id="@+id/et_instituto_registro"
+    <Spinner
+        android:id="@+id/spinner_pais_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:spinnerMode="dialog" />
+
+    <Spinner
+        android:id="@+id/spinner_provincia_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin" />
+
+    <Spinner
+        android:id="@+id/spinner_ciudad_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:spinnerMode="dialog" />
+
+    <Spinner
+        android:id="@+id/spinner_universidad_registro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:textSize="@dimen/activity_normal"
-        android:hint="Instituto Educativo" />
+        android:spinnerMode="dialog" />
 
-    <EditText
-        android:id="@+id/et_carrera_registro"
+    <Spinner
+        android:id="@+id/spinner_facultad_registro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:textSize="@dimen/activity_normal"
-        android:hint="Carerra" />
+        android:spinnerMode="dialog" />
+
+    <Spinner
+        android:id="@+id/spinner_carrera_registro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:spinnerMode="dialog" />
 
     <Button
         android:id="@+id/btn_guardar_registro"
@@ -61,6 +118,6 @@
         android:textSize="16dp"
         android:background="@drawable/botonazul"
         android:textColor="@color/colorBlanco"
-        android:text="INGRESAR" />
+        android:text="GUARDAR" />
 
 </LinearLayout>
