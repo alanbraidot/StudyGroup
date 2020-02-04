@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.MyGroupsActivity"></activity>
+        <activity android:name=".activities.Login"></activity>
         <activity android:name=".activities.RegistroDatos" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>

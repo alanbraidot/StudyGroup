@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.Login"
+    android:background="#384dcf">
+
+    <ImageView
+        android:id="@+id/iv_logo_login"
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:background="#d2e0fa"
+        android:src="@mipmap/log2"
+        android:scaleType="fitEnd"
+        />
+
+    <Button
+        android:id="@+id/btn_login_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+        android:layout_marginVertical="@dimen/activity_vertical_margin"
+        android:background="@drawable/botonblanco"
+        android:paddingLeft="100dp"
+        android:paddingRight="80dp"
+        android:drawableLeft="@mipmap/ic_google"
+        android:text="LOGIN WITH GOOGLE"
+        android:textColor="@color/colorNegro"
+        android:textSize="16dp" />
+</LinearLayout>
