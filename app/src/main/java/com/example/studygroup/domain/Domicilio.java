@@ -2,30 +2,96 @@ package com.example.studygroup.domain;
 
 public class Domicilio {
 
-    private Integer id;
-    private String ciudad;
-    private String provincia;
-    private String pais;
+    public enum CiudadEnum {
+        CSF("Ciudad de Santa Fe");
 
-    public Domicilio(String ciudad, String provincia, String pais) {
-        this.ciudad = ciudad;
-        this.provincia = provincia;
-        this.pais = pais;
+        private final String name;
+
+        private CiudadEnum(String s) {
+            name = s;
+        }
+
+        public boolean equalsName(String otherName) {
+            return name.equals(otherName);
+        }
+
+        @Override public String toString() {
+            return this.name;
+        }
+
+        public String getName(){
+            return name;
+        }
+    }
+
+    public enum ProvinciaEnum {
+        SF("Santa Fe");
+
+        private final String name;
+
+        private ProvinciaEnum(String s) {
+            name = s;
+        }
+
+        public boolean equalsName(String otherName) {
+            return name.equals(otherName);
+        }
+
+        @Override public String toString() {
+            return this.name;
+        }
+
+        public String getName(){
+            return name;
+        }
+    }
+
+    public enum PaisEnum {
+        ARG("Argentina");
+
+        private final String name;
+
+        private PaisEnum(String s) {
+            name = s;
+        }
+
+        public boolean equalsName(String otherName) {
+            return name.equals(otherName);
+        }
+
+        @Override public String toString() {
+            return this.name;
+        }
+
+        public String getName(){
+            return name;
+        }
+    }
+
+    private Integer id;
+    private CiudadEnum ciudadEnum;
+    private ProvinciaEnum provinciaEnum;
+    private PaisEnum paisEnum;
+
+    public Domicilio(CiudadEnum ciudadEnum, ProvinciaEnum provinciaEnum, PaisEnum paisEnum) {
+        this.ciudadEnum = ciudadEnum;
+        this.provinciaEnum = provinciaEnum;
+        this.paisEnum = paisEnum;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getCiudad() {
-        return ciudad;
+    public CiudadEnum getCiudadEnum() {
+        return ciudadEnum;
     }
 
-    public String getProvincia() {
-        return provincia;
+    public ProvinciaEnum getProvinciaEnum() {
+        return provinciaEnum;
     }
 
-    public String getPais() {
-        return pais;
+    public PaisEnum getPaisEnum() {
+        return paisEnum;
     }
 }

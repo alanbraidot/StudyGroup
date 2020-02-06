@@ -1,15 +1,48 @@
 package com.example.studygroup.domain;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Facultad {
-    private Integer id;
-    private List<Carrera> carreras;
-    private String nombre;
 
-    public Facultad(List<Carrera> carreras, String nombre) {
+    public enum FacultadEnum {
+        FRSF("Facultad Regional Santa Fe"),
+        FICH("Facultad de Ingeniería y Ciencias Hídricas"),
+        FADU("Facultad de Arquitectura, Diseño y Urbanismo"),
+        FIQ("Facultad de Ingeniería Química"),
+        FCM("Facultad de Ciencias Médicas"),
+        FBCB("Facultad de Bioquímica y Ciencias Biológicas"),
+        FCE("Facultad de Ciencias Económicas"),
+        FCJS("Facultad de Ciencias Jurídicas y Sociales"),
+        FHUC("Facultad de Humanidades y Ciencias");
+
+        private String name;
+
+        FacultadEnum(String s) {
+            name = s;
+        }
+
+        public boolean equalsName(String otherName) {
+            return name.equals(otherName);
+        }
+
+        @Override public String toString() {
+            return this.name;
+        }
+
+        public String getName(){
+            return name;
+        }
+    }
+
+    private Integer id;
+    private FacultadEnum facultadEnum;
+    private List<Carrera> carreras;
+
+    public Facultad(List<Carrera> carreras, FacultadEnum facultadEnum) {
         this.carreras = carreras;
-        this.nombre = nombre;
+        this.facultadEnum = facultadEnum;
     }
 
     public Integer getId() {
@@ -20,7 +53,7 @@ public class Facultad {
         return carreras;
     }
 
-    public String getNombre() {
-        return nombre;
+    public FacultadEnum getFacultadEnum() {
+        return facultadEnum;
     }
 }

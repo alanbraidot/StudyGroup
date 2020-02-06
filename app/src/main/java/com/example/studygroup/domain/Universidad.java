@@ -3,13 +3,37 @@ package com.example.studygroup.domain;
 import java.util.List;
 
 public class Universidad {
+
+    public enum UniversidadEnum {
+        UTN ("Universidad Tecnológica Nacional"),
+        UNL ("Universidad Nacional del Litoral");
+
+        private final String name;
+
+        private UniversidadEnum(String s) {
+            name = s;
+        }
+
+        public boolean equalsName(String otherName) {
+            return name.equals(otherName);
+        }
+
+        @Override public String toString() {
+            return this.name;
+        }
+
+        public String getName(){
+            return name;
+        }
+    }
+
     private Integer id;
     private List<Facultad> facultades;
-    private String nombre;
+    private UniversidadEnum universidadEnum;
 
-    public Universidad(List<Facultad> facultades, String nombre) {
+    public Universidad(List<Facultad> facultades, UniversidadEnum universidadEnum) {
         this.facultades = facultades;
-        this.nombre = nombre;
+        this.universidadEnum = universidadEnum;
     }
 
     public Integer getId() {
@@ -20,7 +44,7 @@ public class Universidad {
         return facultades;
     }
 
-    public String getNombre() {
-        return nombre;
+    public UniversidadEnum getUniversidadEnum() {
+        return universidadEnum;
     }
 }

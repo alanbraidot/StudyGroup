@@ -73,6 +73,11 @@
                 <element signature="e#2782#2817#0" expanded="true" />
                 <element signature="e#2856#2889#0" expanded="true" />
                 <element signature="e#2915#2939#0" expanded="true" />
+				</folding>
+			</state>
+		  </provider>
+		</entry>
+	  </file>
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/studygroup/activities/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="288">

@@ -22,4 +22,11 @@
     <string name="tv_completar_datos_registro">Completar registro</string>
     <string name="tv_titulo_mis_grupos">Mis grupos</string>
     <string name="es_tutor_registro">Es tutor</string>
+    <string name="tv_pais_registro">País:</string>
+    <string name="tv_provincia_registro">Provincia:</string>
+    <string name="tv_ciudad_registro">Ciudad:</string>
+    <string name="tv_universidad_registro">Universidad:</string>
+    <string name="tv_facultad_registro">Facultad:</string>
+    <string name="tv_carrera_registro">Carrera:</string>
+    <string name="tv_materias_registro">Materias:</string>
 </resources>
