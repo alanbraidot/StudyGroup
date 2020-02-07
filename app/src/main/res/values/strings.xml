@@ -29,4 +29,6 @@
     <string name="tv_facultad_registro">Facultad:</string>
     <string name="tv_carrera_registro">Carrera:</string>
     <string name="tv_materias_registro">Materias:</string>
+    <string name="btn_login_google">LOGIN WITH GOOGLE</string>
+    <string name="content_description_logo_login">Logo</string>
 </resources>

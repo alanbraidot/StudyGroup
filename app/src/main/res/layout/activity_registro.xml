@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".activities.RegistroActivity">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView_foto_perfil_registro"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/img"
+                app:civ_border_width="2dp"
+                app:civ_border_color="@color/colorBlanco"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <Button
+                android:id="@+id/btn_agregar_foto_registro"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="3dp"
+                android:background="@drawable/ic_add_circle_blue_32dp"
+                android:backgroundTint="@color/colorSecundario"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imageView_foto_perfil_registro" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Switch
+            android:id="@+id/switch_tutor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:textColor="@color/colorPrimaryText"
+            android:text="Es tutor"
+            android:textSize="@dimen/activity_normal" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_pais_registro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                android:text="@string/tv_pais_registro"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/activity_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Spinner
+                android:id="@+id/spinner_pais_registro"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                android:spinnerMode="dialog"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_pais_registro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_pais_registro"
+                app:layout_constraintTop_toTopOf="@+id/tv_pais_registro" />
+
+            <TextView
+                android:id="@+id/tv_provincia_registro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                android:text="@string/tv_provincia_registro"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/activity_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_pais_registro" />
+
+            <Spinner
+                android:id="@+id/spinner_provincia_registro"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                android:spinnerMode="dialog"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_provincia_registro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_provincia_registro"
+                app:layout_constraintTop_toTopOf="@+id/tv_provincia_registro" />
+
+            <TextView
+                android:id="@+id/tv_ciudad_registro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                android:text="@string/tv_ciudad_registro"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/activity_normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_provincia_registro" />
+
+            <Spinner
+                android:id="@+id/spinner_ciudad_registro"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                android:layout_marginVertical="@dimen/activity_vertical_margin"
+                android:spinnerMode="dialog"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_ciudad_registro"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/tv_ciudad_registro"
+                app:layout_constraintTop_toTopOf="@+id/tv_ciudad_registro" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutEstudiante"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ciudad_registro">
+
+                <TextView
+                    android:id="@+id/tv_universidad_registro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_universidad_registro"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/spinner_universidad_registro"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_universidad_registro"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/tv_universidad_registro"
+                    app:layout_constraintTop_toTopOf="@+id/tv_universidad_registro" />
+
+                <TextView
+                    android:id="@+id/tv_facultad_registro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_facultad_registro"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_universidad_registro" />
+
+                <Spinner
+                    android:id="@+id/spinner_facultad_registro"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_facultad_registro"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/tv_facultad_registro"
+                    app:layout_constraintTop_toTopOf="@+id/tv_facultad_registro" />
+
+                <TextView
+                    android:id="@+id/tv_carrera_registro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_carrera_registro"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_facultad_registro" />
+
+                <Spinner
+                    android:id="@+id/spinner_carrera_registro"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_carrera_registro"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/tv_carrera_registro"
+                    app:layout_constraintTop_toTopOf="@+id/tv_carrera_registro" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutTutor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_ciudad_registro">
+
+                <TextView
+                    android:id="@+id/tv_materias_registro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_materias_registro"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Spinner
+                    android:id="@+id/spinner_materias"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:spinnerMode="dialog"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_materias_registro"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toEndOf="@+id/tv_materias_registro"
+                    app:layout_constraintTop_toTopOf="@+id/tv_materias_registro" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/btn_guardar_registro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:background="@drawable/botonazul"
+            android:text="GUARDAR"
+            android:textColor="@color/colorBlanco"
+            android:textSize="16dp"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="208dp" />
+    </LinearLayout>
+</ScrollView>
