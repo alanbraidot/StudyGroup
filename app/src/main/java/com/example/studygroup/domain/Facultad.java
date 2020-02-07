@@ -1,5 +1,6 @@
 package com.example.studygroup.domain;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,10 +40,12 @@ public class Facultad {
     private Integer id;
     private FacultadEnum facultadEnum;
     private List<Carrera> carreras;
+    private Universidad universidad;
 
-    public Facultad(List<Carrera> carreras, FacultadEnum facultadEnum) {
-        this.carreras = carreras;
+    public Facultad(FacultadEnum facultadEnum, List<Carrera> carreras, Universidad universidad) {
         this.facultadEnum = facultadEnum;
+        this.carreras = new ArrayList<>();
+        this.universidad = universidad;
     }
 
     public Integer getId() {
@@ -55,5 +58,9 @@ public class Facultad {
 
     public FacultadEnum getFacultadEnum() {
         return facultadEnum;
+    }
+
+    public Universidad getUniversidad() {
+        return universidad;
     }
 }

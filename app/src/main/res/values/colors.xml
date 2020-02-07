@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#1565c0</color>
+    <color name="colorPrimary">#fafafa</color>
     <color name="colorPrimaryDark">#0d47a1</color>
+    <color name="colorInactiveNavBottomBar">#42a5f5</color>
+    <color name="colorBgNavBottomBar">#1565c0</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorSecundario">#0d47a1</color>
     <color name="colorBlanco">#FAFAFA</color>

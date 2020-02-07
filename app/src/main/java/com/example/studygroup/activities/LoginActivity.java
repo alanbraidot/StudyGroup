@@ -59,11 +59,12 @@ public class LoginActivity extends AppCompatActivity {
     private void actualizarUI(GoogleSignInAccount account){
         if(account !=null){
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            //TODO Cargar MainActivity.usuarioActivo con el usuario que se logueo.
             startActivity(i);
             finish();
         }
         else {
-            //TODO Configurar boton de login
+            //TODO Configurar boton de login.
         }
     }
 

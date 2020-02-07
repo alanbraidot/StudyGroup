@@ -8,11 +8,13 @@ public class Persona {
     private String apellido;
     private String email;
     private Bitmap foto;
+    private Domicilio domicilio;
 
-    public Persona(String nombre, String apellido, String email, Bitmap foto){
+    public Persona(String nombre, String apellido, String email, Domicilio domicilio, Bitmap foto){
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
+        this.domicilio = domicilio;
         this.foto = foto;
     }
 
@@ -30,6 +32,10 @@ public class Persona {
 
     public String getEmail() {
         return email;
+    }
+
+    public Domicilio getDomicilio() {
+        return domicilio;
     }
 
     public Bitmap getFoto() {

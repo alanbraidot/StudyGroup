@@ -31,4 +31,8 @@
     <string name="tv_materias_registro">Materias:</string>
     <string name="btn_login_google">LOGIN WITH GOOGLE</string>
     <string name="content_description_logo_login">Logo</string>
+    <string name="btn_cerrar_sesion">Cerrar Sesión</string>
+    <string name="dialog_cerrar_sesion">¿Está seguro que desea cerrar sesión?</string>
+    <string name="positive_button">SI</string>
+    <string name="negative_button">NO</string>
 </resources>

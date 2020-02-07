@@ -55,10 +55,12 @@ public class Carrera {
     private Integer id;
     private List<Materia> materias;
     private CarreraEnum carreraEnum;
+    private Facultad facultad;
 
-    public Carrera(CarreraEnum carreraEnum) {
+    public Carrera(CarreraEnum carreraEnum, Facultad facultad) {
         this.materias = new ArrayList<>();
         this.carreraEnum = carreraEnum;
+        this.facultad = facultad;
     }
 
     public Integer getId() {
@@ -71,5 +73,9 @@ public class Carrera {
 
     public CarreraEnum getCarreraEnum() {
         return carreraEnum;
+    }
+
+    public Facultad getFacultad() {
+        return facultad;
     }
 }

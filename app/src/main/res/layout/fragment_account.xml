@@ -1,104 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:paddingBottom="50dp">
 
-    <ImageView
-        android:id="@+id/image_foto_perfil"
-        android:layout_marginTop="40dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:background="@drawable/img"
-        />
-
-    <TextView
-        android:id="@+id/tv_nombre_perfil"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorSecundario"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_verticalchico_margin"
-        android:textAlignment="center"
-        android:textSize="26dp"
-        android:text="Nombre Apellido" />
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/tv_pais_perfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorSecundario"
-        android:textAllCaps="true"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:textSize="15dp"
-        android:textAlignment="center"
-        android:text="País" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_foto_perfil"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/img"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/colorBlanco"
+            android:layout_gravity="center_horizontal" />
 
-    <TextView
-        android:id="@+id/tv_ciudad_perfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorSecundario"
-        android:textAllCaps="true"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_verticalchico_margin"
-        android:textSize="15dp"
-        android:textAlignment="center"
-        android:text="Ciudad, Provincia" />
+        <TextView
+            android:id="@+id/tv_nombre_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_verticalchico_margin"
+            android:text="Nombre Apellido"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:textColor="@color/colorSecundario"
+            android:textSize="26dp" />
 
-    <TextView
-        android:id="@+id/tv_universidad_perfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorSecundario"
-        android:textAllCaps="true"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_verticalchico_margin"
-        android:textSize="15dp"
-        android:text="Universidad" />
+        <TextView
+            android:id="@+id/tv_pais_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:text="País"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/colorSecundario"
+            android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/tv_facultad_perfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorSecundario"
-        android:textAllCaps="true"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:textSize="15dp"
-        android:text="Facultad" />
+        <TextView
+            android:id="@+id/tv_ciudad_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_verticalchico_margin"
+            android:text="Ciudad, Provincia"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/colorSecundario"
+            android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/tv_carrera_perfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorSecundario"
-        android:textAllCaps="true"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_verticalchico_margin"
-        android:textSize="15dp"
-        android:text="Carrera" />
+        <TextView
+            android:id="@+id/tv_universidad_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_verticalchico_margin"
+            android:text="Universidad"
+            android:textAllCaps="true"
+            android:textColor="@color/colorSecundario"
+            android:textSize="15dp" />
 
-    <TextView
-        android:id="@+id/tv_email_perfil"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorSecundario"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:textSize="15dp"
-        android:text="Email" />
+        <TextView
+            android:id="@+id/tv_facultad_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:text="Facultad"
+            android:textAllCaps="true"
+            android:textColor="@color/colorSecundario"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_carrera_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_verticalchico_margin"
+            android:text="Carrera"
+            android:textAllCaps="true"
+            android:textColor="@color/colorSecundario"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/tv_email_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:text="Email"
+            android:textColor="@color/colorSecundario"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btn_misgrupos_perfil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_verticalgrande_margin"
+            android:background="@drawable/botonblanco"
+            android:text="MIS GRUPOS"
+            android:textColor="@color/colorNegro"
+            android:textSize="16dp" />
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btn_misgrupos_perfil"
+        android:id="@+id/btn_cerrar_sesion_perfil"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorNegro"
-        android:background="@drawable/botonblanco"
-        android:textSize="16dp"
         android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
         android:layout_marginVertical="@dimen/activity_verticalgrande_margin"
-        android:text="MIS GRUPOS" />
+        android:background="@drawable/botonblanco"
+        android:text="@string/btn_cerrar_sesion"
+        android:textAllCaps="true"
+        android:textColor="@color/colorNegro"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
