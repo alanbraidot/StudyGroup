@@ -1,103 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:scrollbars="vertical"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/et_nombregrupo_crear"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:textSize="@dimen/activity_normal"
-        android:hint="Nombre del Grupo" />
+        android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/spinner_universidad_crear_grupo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:spinnerMode="dialog" />
+        <EditText
+            android:id="@+id/et_nombregrupo_crear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:hint="Nombre del Grupo"
+            android:inputType="textPersonName"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/spinner_facultad_crear_grupo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:spinnerMode="dialog" />
+        <TextView
+            android:id="@+id/tv_universidad_crear_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:text="@string/tv_universidad_crear_grupo"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_nombregrupo_crear" />
 
-    <Spinner
-        android:id="@+id/spinner_carrera_crear_grupo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:spinnerMode="dialog" />
+        <Spinner
+            android:id="@+id/spinner_universidad_crear_grupo"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:spinnerMode="dialog"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_universidad_crear_grupo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_universidad_crear_grupo"
+            app:layout_constraintTop_toTopOf="@+id/tv_universidad_crear_grupo" />
 
-    <Spinner
-        android:id="@+id/spinner_materia_crear_grupo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:spinnerMode="dialog" />
+        <TextView
+            android:id="@+id/tv_facultad_crear_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/tv_facultad_crear_grupo"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_universidad_crear_grupo" />
 
-    <TextView
-        android:id="@+id/tv_lugar_encuentro"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:textSize="@dimen/activity_normal"
-        android:text="Lugar de encuentro" />
+        <Spinner
+            android:id="@+id/spinner_facultad_crear_grupo"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:spinnerMode="dialog"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_facultad_crear_grupo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_facultad_crear_grupo"
+            app:layout_constraintTop_toTopOf="@+id/tv_facultad_crear_grupo" />
 
-    <Button
-        android:id="@+id/btn_agregar_crear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorNegro"
-        android:background="@drawable/botonblanco"
-        android:textSize="16dp"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:text="AGREGAR ESTUDIANTES" />
+        <TextView
+            android:id="@+id/tv_carrera_crear_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/tv_carrera_crear_grupo"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_facultad_crear_grupo" />
 
-    <Button
-        android:id="@+id/btn_asignar_crear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorNegro"
-        android:background="@drawable/botonblanco"
-        android:textSize="16dp"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:text="ASIGNAR TUTOR" />
+        <Spinner
+            android:id="@+id/spinner_carrera_crear_grupo"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:spinnerMode="dialog"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_carrera_crear_grupo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_carrera_crear_grupo"
+            app:layout_constraintTop_toTopOf="@+id/tv_carrera_crear_grupo" />
 
-    <Button
-        android:id="@+id/btn_crearGrupo_crear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-        android:layout_marginVertical="@dimen/activity_vertical_margin"
-        android:background="@drawable/botonazul"
-        android:text="CREAR"
-        android:textColor="@color/colorBlanco"
-        android:textSize="16dp" />
+        <TextView
+            android:id="@+id/tv_materia_crear_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/tv_materia_crear_grupo"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carrera_crear_grupo" />
 
-</LinearLayout>
+        <Spinner
+            android:id="@+id/spinner_materia_crear_grupo"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:spinnerMode="dialog"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_materia_crear_grupo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_materia_crear_grupo"
+            app:layout_constraintTop_toTopOf="@+id/tv_materia_crear_grupo" />
+
+        <TextView
+            android:id="@+id/tv_lugar_encuentro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/tv_lugar_encuentro_crear_grupo"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_materia_crear_grupo" />
+
+        <EditText
+            android:id="@+id/et_ubicacion_crear_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:editable="false"
+            android:hint="@string/et_ubicacion_crear_grupo"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_lugar_encuentro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_lugar_encuentro"
+            app:layout_constraintTop_toTopOf="@+id/tv_lugar_encuentro" />
+
+        <Button
+            android:id="@+id/btn_seleccionar_ubicacion_crear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:background="@drawable/botonblanco"
+            android:text="@string/btn_seleccionar_ubicacion"
+            android:textColor="@color/colorNegro"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.937"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_lugar_encuentro" />
+
+        <TextView
+            android:id="@+id/tv_integrantes_crear_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/tv_integrantes_crear_grupo"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_seleccionar_ubicacion_crear" />
+
+        <EditText
+            android:id="@+id/et_lista_integrantes_crear_grupo"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:editable="false"
+            android:hint="@string/et_lista_integrantes_crear_grupo"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_integrantes_crear_grupo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_integrantes_crear_grupo"
+            app:layout_constraintTop_toTopOf="@+id/tv_integrantes_crear_grupo" />
+
+        <Button
+            android:id="@+id/btn_agregar_integrantes_crear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:background="@drawable/botonblanco"
+            android:text="@string/btn_agregar_integrantes"
+            android:textColor="@color/colorNegro"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_integrantes_crear_grupo" />
+
+        <TextView
+            android:id="@+id/tv_tutor_crear_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:text="@string/tv_tutor_crear_grupo"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_agregar_integrantes_crear" />
+
+        <EditText
+            android:id="@+id/et_tutor_crear_grupo"
+            android:layout_width="260dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:editable="false"
+            android:hint="@string/et_tutor_crear_grupo"
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="@dimen/activity_normal"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_tutor_crear_grupo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tv_tutor_crear_grupo"
+            app:layout_constraintTop_toTopOf="@+id/tv_tutor_crear_grupo" />
+
+        <Button
+            android:id="@+id/btn_agregar_tutor_crear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:background="@drawable/botonblanco"
+            android:text="@string/btn_seleccionar_tutor"
+            android:textColor="@color/colorNegro"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tutor_crear_grupo" />
+
+        <Button
+            android:id="@+id/btn_crearGrupo_crear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:background="@drawable/botonazul"
+            android:text="@string/btn_crear_grupo"
+            android:textColor="@color/colorBlanco"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_agregar_tutor_crear"
+            app:layout_constraintVertical_bias="0.51" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

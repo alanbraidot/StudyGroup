@@ -35,4 +35,18 @@
     <string name="dialog_cerrar_sesion">¿Está seguro que desea cerrar sesión?</string>
     <string name="positive_button">SI</string>
     <string name="negative_button">NO</string>
+    <string name="tv_universidad_crear_grupo">Universidad:</string>
+    <string name="tv_facultad_crear_grupo">Facultad:</string>
+    <string name="tv_carrera_crear_grupo">Carrera:</string>
+    <string name="tv_materia_crear_grupo">Materia:</string>
+    <string name="et_ubicacion_crear_grupo">No seleccionado</string>
+    <string name="tv_lugar_encuentro_crear_grupo">Lugar de encuentro:</string>
+    <string name="btn_seleccionar_ubicacion">AGREGAR LUGAR DE ENCUENTRO</string>
+    <string name="tv_integrantes_crear_grupo">Integrantes:</string>
+    <string name="et_lista_integrantes_crear_grupo">Ninguno</string>
+    <string name="btn_agregar_integrantes">AGREGAR INTERGRANTES</string>
+    <string name="tv_tutor_crear_grupo">Tutor:</string>
+    <string name="et_tutor_crear_grupo">Ninguno</string>
+    <string name="btn_seleccionar_tutor">AGREGAR TUTOR</string>
+    <string name="btn_crear_grupo">CREAR</string>
 </resources>
