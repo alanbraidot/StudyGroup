@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_group_name_search_fragment"
+            android:id="@+id/tv_nombre_grupo_recycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/group_name_search_fragment"
@@ -22,7 +22,7 @@
             android:textSize="@dimen/recycler_view_title" />
 
         <TextView
-            android:id="@+id/tv_subject_search_fragment"
+            android:id="@+id/tv_materia_recycler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAllCaps="true"
@@ -31,7 +31,7 @@
             android:text="@string/subject_recycler_view" />
 
         <TextView
-            android:id="@+id/tv_school_search_fragment"
+            android:id="@+id/tv_facultad_recycler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryText"
@@ -39,21 +39,23 @@
             android:text="@string/school_recycler_view" />
 
         <TextView
-            android:id="@+id/tv_assigned_teacher_search_fragment"
+            android:id="@+id/tv_tutor_recyler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPrimaryText"
             android:textSize="@dimen/recycler_view_normal"
             android:text="@string/assigned_teacher_recycler_view" />
 
-        <TextView
-            android:id="@+id/tv_more_info_search_fragment"
+        <Button
+            android:id="@+id/btn_mas_informacion_recycler"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/more_info_recycler_view"
-            android:textColor="@color/colorSecondaryText"
             android:textAlignment="textEnd"
-            android:textSize="@dimen/recycler_view_normal" />
+            android:textAllCaps="false"
+            android:textSize="@dimen/recycler_view_normal"
+            android:textColor="@color/colorSecondaryText" />
 
     </LinearLayout>
 
