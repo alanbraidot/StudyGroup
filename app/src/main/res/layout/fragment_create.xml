@@ -144,12 +144,17 @@
 
         <EditText
             android:id="@+id/et_ubicacion_crear_grupo"
-            android:layout_width="wrap_content"
+            android:layout_width="185dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:layout_marginVertical="@dimen/activity_vertical_margin"
             android:editable="false"
+            android:ems="10"
             android:hint="@string/et_ubicacion_crear_grupo"
+            android:inputType="text"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
             android:textColor="@color/colorPrimaryText"
             android:textSize="@dimen/activity_normal"
             app:layout_constraintBottom_toBottomOf="@+id/tv_lugar_encuentro"
@@ -216,7 +221,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_integrantes_crear_grupo" />
 
         <TextView
-            android:id="@+id/tv_tutor_crear_grupo"
+            android:id="@+id/tv_tutor_grupo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
@@ -237,11 +242,11 @@
             android:hint="@string/et_tutor_crear_grupo"
             android:textColor="@color/colorPrimaryText"
             android:textSize="@dimen/activity_normal"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_tutor_crear_grupo"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_tutor_grupo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/tv_tutor_crear_grupo"
-            app:layout_constraintTop_toTopOf="@+id/tv_tutor_crear_grupo" />
+            app:layout_constraintStart_toEndOf="@+id/tv_tutor_grupo"
+            app:layout_constraintTop_toTopOf="@+id/tv_tutor_grupo" />
 
         <Button
             android:id="@+id/btn_agregar_tutor_crear"
@@ -255,7 +260,7 @@
             android:textSize="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_tutor_crear_grupo" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_tutor_grupo" />
 
         <Button
             android:id="@+id/btn_crearGrupo_crear"

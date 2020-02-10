@@ -49,4 +49,14 @@
     <string name="et_tutor_crear_grupo">Ninguno</string>
     <string name="btn_seleccionar_tutor">AGREGAR TUTOR</string>
     <string name="btn_crear_grupo">CREAR</string>
+    <string name="title_activity_group_maps">Map</string>
+    <string name="btn_seleccionar_ubicacion_maps">SELECCIONAR ESTA UBICACIÓN</string>
+    <string name="tv_titulo_grupo">Nombre grupo</string>
+    <string name="tv_universidad_grupo">Universidad</string>
+    <string name="tv_facultad_grupo">Facultad</string>
+    <string name="tv_carrera_grupo">Carrera</string>
+    <string name="tv_materia_grupo">Materia</string>
+    <string name="tv_lugar_encuentro_grupo">Lugar de encuentro</string>
+    <string name="tv_integrantes_grupo">Integrantes</string>
+    <string name="tv_tutor_grupo">Tutor</string>
 </resources>

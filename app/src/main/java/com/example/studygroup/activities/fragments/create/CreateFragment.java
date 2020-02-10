@@ -1,8 +1,10 @@
 package com.example.studygroup.activities.fragments.create;
 
+import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
+import android.content.Intent;
 import android.icu.text.StringPrepParseException;
 import android.os.Bundle;
 
@@ -18,7 +20,19 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.studygroup.R;
+import com.example.studygroup.activities.GroupMapsActivity;
+import com.example.studygroup.domain.Carrera;
+import com.example.studygroup.domain.Estudiante;
+import com.example.studygroup.domain.Facultad;
+import com.example.studygroup.domain.Materia;
+import com.example.studygroup.domain.Tutor;
 import com.example.studygroup.domain.Universidad;
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static android.app.Activity.RESULT_OK;
 
 public class CreateFragment extends Fragment {
 
@@ -35,8 +49,16 @@ public class CreateFragment extends Fragment {
     private Button btnTutor;
     private Button btnCrear;
 
+    private LatLng ubicacion=null;
+    private List<Estudiante> integrantes=new ArrayList<>();
+    private Tutor tutor=null;
+
     private CreateViewModel mViewModel;
     private Context context;
+
+    private final int REQUEST_SELECCIONAR_UBICACION=1;
+    private final int REQUEST_SELECCIONAR_INTEGRANTES=2;
+    private final int REQUEST_SELECCIONAR_TUTOR=3;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -50,6 +72,7 @@ public class CreateFragment extends Fragment {
         spinnerCarrera = root.findViewById(R.id.spinner_carrera_crear_grupo);
         spinnerMateria = root.findViewById(R.id.spinner_materia_crear_grupo);
         etLugarEncuentro = root.findViewById(R.id.et_ubicacion_crear_grupo);
+        etLugarEncuentro.setEnabled(false);
         etIntegrantes = root.findViewById(R.id.et_lista_integrantes_crear_grupo);
         etTutor = root.findViewById(R.id.et_tutor_crear_grupo);
         btnLugarEncuentro = root.findViewById(R.id.btn_seleccionar_ubicacion_crear);
@@ -63,7 +86,8 @@ public class CreateFragment extends Fragment {
         btnLugarEncuentro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Pasar a MapActivity para seleccionar.
+                Intent i = new Intent(context, GroupMapsActivity.class);
+                startActivityForResult(i,REQUEST_SELECCIONAR_UBICACION);
             }
         });
 
@@ -77,7 +101,7 @@ public class CreateFragment extends Fragment {
         btnTutor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Cargar MultiOption dialog con tutores apto para la materia seleccionada.
+                //TODO Cargar SingleOption dialog con tutores apto para la materia seleccionada.
             }
         });
 
@@ -91,4 +115,12 @@ public class CreateFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==REQUEST_SELECCIONAR_UBICACION && resultCode==RESULT_OK){
+            ubicacion=new LatLng(data.getExtras().getDouble("Lat"), data.getExtras().getDouble("Lng"));
+            etLugarEncuentro.setText("Lat: "+ubicacion.latitude+", Lng: "+ubicacion.longitude);
+        }
+    }
 }
