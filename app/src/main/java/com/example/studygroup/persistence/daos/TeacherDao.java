@@ -16,9 +16,9 @@ public interface TeacherDao {
     @Update void update(Tutor t);
     @Delete void delete(Tutor t);
 
-    @Query("SELECT * FROM teachers WHERE id_teacher=:id")
+    @Query("SELECT * FROM people WHERE id_person=:id")
     Tutor findById(Integer id);
 
-    @Query("SELECT * FROM teachers")
+    @Query("SELECT * FROM people")
     List<Tutor> findAll();
 }

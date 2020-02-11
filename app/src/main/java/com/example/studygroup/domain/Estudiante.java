@@ -13,24 +13,20 @@ import java.util.List;
 public class Estudiante extends Persona{
     @Ignore
     private Carrera carrera;
-    @Ignore
-    private List<Grupo> grupos;
 
-    @ColumnInfo(name = "carrera_enum")
+    //TODO Convertir para almacenar
+    @Ignore
     private Carrera.CarreraEnum carreraEnum;
+
+    public Estudiante(){}
 
     public Estudiante(String nombre, String apellido, String email, Domicilio domicilio, Bitmap foto, Carrera carrera) {
         super(nombre, apellido, email, domicilio, foto);
         this.carrera = carrera;
-        this.carreraEnum = carrera.getCarreraEnum();
-        this.grupos = new ArrayList<>();
     }
 
     public Carrera getCarrera() {
         return carrera;
     }
 
-    public List<Grupo> getGrupos() {
-        return grupos;
-    }
 }

@@ -3,6 +3,7 @@ package com.example.studygroup.domain;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "addresses")
@@ -66,12 +67,17 @@ public class Domicilio {
     @NonNull
     @ColumnInfo(name="id_address")
     private Integer id;
-    @ColumnInfo(name="city_enum")
+    //TODO Convertir para almacenar
+    @Ignore
     private CiudadEnum ciudadEnum;
-    @ColumnInfo(name="province_enum")
+    //TODO Convertir para almacenar
+    @Ignore
     private ProvinciaEnum provinciaEnum;
-    @ColumnInfo(name="country_enum")
+    //TODO Convertir para almacenar
+    @Ignore
     private PaisEnum paisEnum;
+
+    public Domicilio(){}
 
     public Domicilio(CiudadEnum ciudadEnum, ProvinciaEnum provinciaEnum, PaisEnum paisEnum) {
         this.ciudadEnum = ciudadEnum;
@@ -93,5 +99,9 @@ public class Domicilio {
 
     public PaisEnum getPaisEnum() {
         return paisEnum;
+    }
+
+    public void setId(@NonNull Integer id) {
+        this.id = id;
     }
 }

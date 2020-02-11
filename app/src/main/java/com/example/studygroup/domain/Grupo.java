@@ -19,12 +19,22 @@ public class Grupo {
     private Integer id;
     @Ignore
     private List<Estudiante> integrantes;
+    //TODO Convertir para almacenar
+    @Ignore
     private Tutor tutor;
     @ColumnInfo(name = "name")
     private String nombre;
+    //TODO Convertir para almacenar
+    @Ignore
     private Carrera carrera;
+    //TODO Convertir para almacenar
+    @Ignore
     private Materia materia;
+    //TODO Convertir para almacenar
+    @Ignore
     private Facultad facultad;
+    //TODO Convertir para almacenar
+    @Ignore
     private LatLng lugarEncuentro;
 
     public Grupo(List<Estudiante> integrantes, Tutor tutor, String nombre, Carrera carrera, Materia materia, Facultad facultad, LatLng lugarEncuentro) {
@@ -36,6 +46,8 @@ public class Grupo {
         this.facultad = facultad;
         this.lugarEncuentro = lugarEncuentro;
     }
+
+    public Grupo(){}
 
     public Integer getId() {
         return id;
@@ -67,5 +79,13 @@ public class Grupo {
 
     public LatLng getLugarEncuentro() {
         return lugarEncuentro;
+    }
+
+    public void setId(@NonNull Integer id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

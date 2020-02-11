@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.example.studygroup.R;
 import com.example.studygroup.activities.LoginActivity;
 import com.example.studygroup.activities.MainActivity;
+import com.example.studygroup.activities.MyGroupsActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -61,15 +62,17 @@ public class AccountFragment extends Fragment {
         nombre.setText(MainActivity.usuarioActivo.getNombre());
         pais.setText(MainActivity.usuarioActivo.getDomicilio().getPaisEnum().toString());
         ciudadProvincia.setText(MainActivity.usuarioActivo.getDomicilio().getCiudadEnum().toString()+", "+MainActivity.usuarioActivo.getDomicilio().getProvinciaEnum().toString());
-        universidad.setText(MainActivity.usuarioActivo.getCarrera().getFacultad().getUniversidad().getUniversidadEnum().toString());
+        //TODO Volver a cargar los campos inferiores segun es tutor o estudiante.
+        /*universidad.setText(MainActivity.usuarioActivo.getCarrera().getFacultad().getUniversidad().getUniversidadEnum().toString());
         facultad.setText(MainActivity.usuarioActivo.getCarrera().getFacultad().getFacultadEnum().toString());
-        carrera.setText(MainActivity.usuarioActivo.getCarrera().getCarreraEnum().toString());
+        carrera.setText(MainActivity.usuarioActivo.getCarrera().getCarreraEnum().toString());*/
         email.setText(MainActivity.usuarioActivo.getEmail());
 
         btnMisGrupos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Cargar activity MyGroups.
+                Intent i= new Intent(context, MyGroupsActivity.class);
+                startActivity(i);
             }
         });
 

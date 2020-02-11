@@ -59,13 +59,18 @@ public class Carrera {
     @NonNull
     @ColumnInfo(name = "id_career")
     private Integer id;
+    @Ignore
     private List<Materia> materias;
-    @ColumnInfo(name = "career_enum")
+    //TODO Convertir para almacenar
+    @Ignore
     private CarreraEnum carreraEnum;
     @Ignore
     private Facultad facultad;
+
     @ColumnInfo(name = "id_faculty")
     private Integer id_faculty;
+
+    public Carrera(){}
 
     public Carrera(CarreraEnum carreraEnum, Facultad facultad) {
         this.materias = new ArrayList<>();
@@ -88,5 +93,17 @@ public class Carrera {
 
     public Facultad getFacultad() {
         return facultad;
+    }
+
+    public Integer getId_faculty() {
+        return id_faculty;
+    }
+
+    public void setId(@NonNull Integer id) {
+        this.id = id;
+    }
+
+    public void setId_faculty(Integer id_faculty) {
+        this.id_faculty = id_faculty;
     }
 }

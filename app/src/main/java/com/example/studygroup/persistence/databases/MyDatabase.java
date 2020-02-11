@@ -21,7 +21,8 @@ import com.example.studygroup.persistence.daos.TeacherDao;
 import com.example.studygroup.domain.Tutor;
 import com.example.studygroup.persistence.daos.UniversityDao;
 
-@Database(entities = {Carrera.class, Domicilio.class, Estudiante.class, Facultad.class, Grupo.class, Materia.class, Persona.class, Tutor.class, Universidad.class}, version = 3)
+@Database(entities = {Carrera.class, Domicilio.class, Estudiante.class, Facultad.class, Grupo.class, Materia.class, Persona.class, Tutor.class, Universidad.class},
+        version = 3, exportSchema = false)
 
 public abstract class MyDatabase extends RoomDatabase {
 

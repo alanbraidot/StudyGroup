@@ -3,6 +3,7 @@ package com.example.studygroup.domain;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "subjects")
@@ -34,12 +35,15 @@ public class Materia {
     @NonNull
     @ColumnInfo(name = "id_subject")
     private Integer id;
-    @ColumnInfo(name = "subject_enum")
+    //TODO Convertir para almacenar
+    @Ignore
     private MateriaEnum materiaEnum;
 
     public Materia(MateriaEnum materiaEnum) {
         this.materiaEnum = materiaEnum;
     }
+
+    public Materia(){}
 
     public Integer getId() {
         return id;
@@ -47,5 +51,9 @@ public class Materia {
 
     public MateriaEnum getMateriaEnum() {
         return materiaEnum;
+    }
+
+    public void setId(@NonNull Integer id) {
+        this.id = id;
     }
 }

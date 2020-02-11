@@ -6,6 +6,8 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.example.studygroup.persistence.daos.FacultyDao;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -44,7 +46,8 @@ public class Facultad {
     @NonNull
     @ColumnInfo(name="id_faculty")
     private Integer id;
-    @ColumnInfo(name="faculty_enum")
+    //TODO Convertir para almacenar
+    @Ignore
     private FacultadEnum facultadEnum;
     @Ignore
     private List<Carrera> carreras;
@@ -56,6 +59,8 @@ public class Facultad {
         this.carreras = new ArrayList<>();
         this.universidad = universidad;
     }
+
+    public Facultad(){}
 
     public Integer getId() {
         return id;
@@ -71,5 +76,9 @@ public class Facultad {
 
     public Universidad getUniversidad() {
         return universidad;
+    }
+
+    public void setId(@NonNull Integer id) {
+        this.id = id;
     }
 }

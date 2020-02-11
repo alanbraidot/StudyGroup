@@ -3,7 +3,7 @@ package com.example.studygroup.activities;
 import android.os.Bundle;
 
 import com.example.studygroup.R;
-import com.example.studygroup.domain.Estudiante;
+import com.example.studygroup.domain.Persona;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +14,7 @@ import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Estudiante usuarioActivo=null;
+    public static Persona usuarioActivo=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

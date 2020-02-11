@@ -18,8 +18,8 @@ public interface StudentDao {
     void update(Estudiante e);
     @Delete
     void delete(Estudiante e);
-    @Query("SELECT * FROM students WHERE id_student=:id")
+    @Query("SELECT * FROM people WHERE id_person=:id")
     Estudiante findById(Integer id);
-    @Query("SELECT * FROM students")
+    @Query("SELECT * FROM people")
     List<Estudiante> findAll();
 }

@@ -10,6 +10,8 @@ public class GroupController {
     private List<Grupo> grupoList = new ArrayList<>();
 
     public GroupController() {
+        _INSTANCE = new GroupController();
+        grupoList = new ArrayList<>();
     }
 
     public static GroupController getInstance() {

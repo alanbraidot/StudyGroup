@@ -33,12 +33,12 @@ public class MyGroupsActivity extends AppCompatActivity {
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_my_groups);
 
         fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getFoto());
-        tvNombre.setText(MainActivity.usuarioActivo.getNombre());
+        tvNombre.setText(MainActivity.usuarioActivo.getNombre().concat(MainActivity.usuarioActivo.getApellido()));
 
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new SearchFragmentAdapter(GroupController.getInstance().getGrupoList());
+        mAdapter = new SearchFragmentAdapter(MainActivity.usuarioActivo.getGrupos());
         mRecyclerView.setAdapter(mAdapter);
     }
 }
