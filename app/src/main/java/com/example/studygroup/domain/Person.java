@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(tableName = "people")
-public class Persona {
+public class Person {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "id_person")
@@ -27,21 +27,21 @@ public class Persona {
     private Bitmap foto;
     //TODO Convertir para almacenar
     @Ignore
-    private Domicilio domicilio;
+    private Address address;
     //TODO Convertir para almacenar
     @Ignore
-    private List<Grupo> grupos;
+    private List<Group> groups;
 
-    public Persona(String nombre, String apellido, String email, Domicilio domicilio, Bitmap foto){
+    public Person(String nombre, String apellido, String email, Address address, Bitmap foto){
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
-        this.domicilio = domicilio;
+        this.address = address;
         this.foto = foto;
-        this.grupos = new ArrayList<>();
+        this.groups = new ArrayList<>();
     }
 
-    public Persona (){}
+    public Person(){}
 
     public Integer getId() { return id; }
 
@@ -57,15 +57,15 @@ public class Persona {
         return email;
     }
 
-    public Domicilio getDomicilio() {
-        return domicilio;
+    public Address getAddress() {
+        return address;
     }
 
     public Bitmap getFoto() {
         return foto;
     }
 
-    public List<Grupo> getGrupos() {return grupos;}
+    public List<Group> getGroups() {return groups;}
 
     public void setId(@NonNull Integer id) {
         this.id = id;
@@ -87,11 +87,11 @@ public class Persona {
         this.foto = foto;
     }
 
-    public void setDomicilio(Domicilio domicilio) {
-        this.domicilio = domicilio;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
-    public void setGrupos(List<Grupo> grupos) {
-        this.grupos = grupos;
+    public void setGroups(List<Group> groups) {
+        this.groups = groups;
     }
 }

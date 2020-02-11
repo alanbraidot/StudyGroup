@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 
-import com.example.studygroup.domain.Carrera;
+import com.example.studygroup.domain.Career;
 import com.example.studygroup.persistence.daos.CareerDao;
 import com.example.studygroup.persistence.databases.MyDatabase;
 
@@ -25,19 +25,19 @@ public class CareerRepository {
         return _INSTANCE;
     }
 
-    public void CreateCareer(Carrera c){
+    public void CreateCareer(Career c){
         careerDao.create(c);
     }
 
-    public void UpdateCareer(Carrera c){
+    public void UpdateCareer(Career c){
         careerDao.update(c);
     }
 
-    public Carrera FindById(Integer id){
+    public Career FindById(Integer id){
         return careerDao.findById(id);
     }
 
-    public List<Carrera> FindAll(){
+    public List<Career> FindAll(){
         return careerDao.findAll();
     }
 }

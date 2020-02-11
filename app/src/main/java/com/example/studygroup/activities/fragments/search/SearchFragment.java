@@ -13,14 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.SearchView;
 import android.widget.Spinner;
 
 import com.example.studygroup.R;
 import com.example.studygroup.adapters.SearchFragmentAdapter;
 import com.example.studygroup.controllers.GroupController;
-import com.example.studygroup.domain.Grupo;
 
 public class SearchFragment extends Fragment {
 
@@ -44,7 +42,7 @@ public class SearchFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(context);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new SearchFragmentAdapter(GroupController.getInstance().getGrupoList());
+        mAdapter = new SearchFragmentAdapter(GroupController.getInstance().getGroupList());
         mRecyclerView.setAdapter(mAdapter);
 
         return root;

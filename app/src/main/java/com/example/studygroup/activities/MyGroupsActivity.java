@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.studygroup.R;
 import com.example.studygroup.adapters.SearchFragmentAdapter;
-import com.example.studygroup.controllers.GroupController;
 
 public class MyGroupsActivity extends AppCompatActivity {
 
@@ -38,7 +37,7 @@ public class MyGroupsActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new SearchFragmentAdapter(MainActivity.usuarioActivo.getGrupos());
+        mAdapter = new SearchFragmentAdapter(MainActivity.usuarioActivo.getGroups());
         mRecyclerView.setAdapter(mAdapter);
     }
 }

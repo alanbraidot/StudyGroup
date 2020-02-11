@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 
-import com.example.studygroup.domain.Tutor;
+import com.example.studygroup.domain.Teacher;
 import com.example.studygroup.persistence.daos.TeacherDao;
 import com.example.studygroup.persistence.databases.MyDatabase;
 
@@ -25,19 +25,19 @@ public class TeacherRepository {
         return _INSTANCE;
     }
 
-    public void CreateTeacher(Tutor t){
+    public void CreateTeacher(Teacher t){
         teacherDao.create(t);
     }
 
-    public void UpdateTeacher(Tutor t){
+    public void UpdateTeacher(Teacher t){
         teacherDao.update(t);
     }
 
-    public List<Tutor> FindAll(){
+    public List<Teacher> FindAll(){
         return teacherDao.findAll();
     }
 
-    public Tutor FindById(Integer id){
+    public Teacher FindById(Integer id){
         return teacherDao.findById(id);
     }
 }

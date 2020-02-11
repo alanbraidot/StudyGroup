@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studygroup.R;
-import com.example.studygroup.domain.Grupo;
+import com.example.studygroup.domain.Group;
 import com.example.studygroup.holders.SearchFragmentHolder;
 
 import java.util.List;
@@ -16,9 +16,9 @@ import java.util.List;
 
 public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentHolder> {
 
-    private List<Grupo> mDataset;
+    private List<Group> mDataset;
 
-    public SearchFragmentAdapter(List<Grupo> myDataset) {
+    public SearchFragmentAdapter(List<Group> myDataset) {
         mDataset = myDataset;
     }
 
@@ -32,15 +32,15 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentHo
 
     @Override
     public void onBindViewHolder(@NonNull SearchFragmentHolder holder, int position) {
-        Grupo grupo = mDataset.get(position);
-        holder.tvNombre.setText(grupo.getNombre());
-        holder.tvMateria.setText(grupo.getMateria().getMateriaEnum().toString());
-        holder.tvFacultad.setText(grupo.getFacultad().getFacultadEnum().toString());
-        holder.tvTutor.setText(new StringBuffer(grupo.getTutor().getApellido()+", "+grupo.getTutor().getNombre()));
+        Group group = mDataset.get(position);
+        holder.tvNombre.setText(group.getNombre());
+        holder.tvMateria.setText(group.getSubject().getMateriaEnum().toString());
+        holder.tvFacultad.setText(group.getFaculty().getFacultadEnum().toString());
+        holder.tvTutor.setText(new StringBuffer(group.getTeacher().getApellido()+", "+ group.getTeacher().getNombre()));
         holder.btnMasInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Mostrar pantalla informativa de grupo.
+                //TODO Mostrar pantalla informativa de group.
             }
         });
     }

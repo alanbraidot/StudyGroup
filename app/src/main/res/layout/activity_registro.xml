@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:textColor="@color/colorPrimaryText"
-            android:text="Es tutor"
+            android:text="Es teacher"
             android:textSize="@dimen/activity_normal" />
 
         <androidx.constraintlayout.widget.ConstraintLayout

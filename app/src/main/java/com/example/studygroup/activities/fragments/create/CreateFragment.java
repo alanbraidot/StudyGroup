@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
 import android.content.Intent;
-import android.icu.text.StringPrepParseException;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -21,12 +20,9 @@ import android.widget.Spinner;
 
 import com.example.studygroup.R;
 import com.example.studygroup.activities.GroupMapsActivity;
-import com.example.studygroup.domain.Carrera;
-import com.example.studygroup.domain.Estudiante;
-import com.example.studygroup.domain.Facultad;
-import com.example.studygroup.domain.Materia;
-import com.example.studygroup.domain.Tutor;
-import com.example.studygroup.domain.Universidad;
+import com.example.studygroup.domain.Student;
+import com.example.studygroup.domain.Teacher;
+import com.example.studygroup.domain.University;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -50,8 +46,8 @@ public class CreateFragment extends Fragment {
     private Button btnCrear;
 
     private LatLng ubicacion=null;
-    private List<Estudiante> integrantes=new ArrayList<>();
-    private Tutor tutor=null;
+    private List<Student> integrantes=new ArrayList<>();
+    private Teacher teacher =null;
 
     private CreateViewModel mViewModel;
     private Context context;
@@ -80,7 +76,7 @@ public class CreateFragment extends Fragment {
         btnTutor = root.findViewById(R.id.btn_agregar_tutor_crear);
         btnCrear = root.findViewById(R.id.btn_crearGrupo_crear);
 
-        spinnerUniversidad.setAdapter(new ArrayAdapter<Universidad.UniversidadEnum>(context, R.layout.support_simple_spinner_dropdown_item, Universidad.UniversidadEnum.values()));
+        spinnerUniversidad.setAdapter(new ArrayAdapter<University.UniversidadEnum>(context, R.layout.support_simple_spinner_dropdown_item, University.UniversidadEnum.values()));
         //TODO Cargar Spinners restantes con las opciones filtradas.
 
         btnLugarEncuentro.setOnClickListener(new View.OnClickListener() {

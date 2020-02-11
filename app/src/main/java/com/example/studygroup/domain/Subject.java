@@ -7,7 +7,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "subjects")
-public class Materia {
+public class Subject {
 
     public enum MateriaEnum {
         AMI("Análisis Matemático I"),
@@ -39,11 +39,11 @@ public class Materia {
     @Ignore
     private MateriaEnum materiaEnum;
 
-    public Materia(MateriaEnum materiaEnum) {
+    public Subject(MateriaEnum materiaEnum) {
         this.materiaEnum = materiaEnum;
     }
 
-    public Materia(){}
+    public Subject(){}
 
     public Integer getId() {
         return id;

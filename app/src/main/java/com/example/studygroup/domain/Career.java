@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(tableName = "careers")
-public class Carrera {
+public class Career {
 
     public enum CarreraEnum {
         ISIUTN("Ingeniería en Sistemas de Información"),
@@ -60,39 +60,39 @@ public class Carrera {
     @ColumnInfo(name = "id_career")
     private Integer id;
     @Ignore
-    private List<Materia> materias;
+    private List<Subject> subjects;
     //TODO Convertir para almacenar
     @Ignore
     private CarreraEnum carreraEnum;
     @Ignore
-    private Facultad facultad;
+    private Faculty faculty;
 
     @ColumnInfo(name = "id_faculty")
     private Integer id_faculty;
 
-    public Carrera(){}
+    public Career(){}
 
-    public Carrera(CarreraEnum carreraEnum, Facultad facultad) {
-        this.materias = new ArrayList<>();
+    public Career(CarreraEnum carreraEnum, Faculty faculty) {
+        this.subjects = new ArrayList<>();
         this.carreraEnum = carreraEnum;
-        this.facultad = facultad;
-        this.id_faculty = facultad.getId();
+        this.faculty = faculty;
+        this.id_faculty = faculty.getId();
     }
 
     public Integer getId() {
         return id;
     }
 
-    public List<Materia> getMaterias() {
-        return materias;
+    public List<Subject> getSubjects() {
+        return subjects;
     }
 
     public CarreraEnum getCarreraEnum() {
         return carreraEnum;
     }
 
-    public Facultad getFacultad() {
-        return facultad;
+    public Faculty getFaculty() {
+        return faculty;
     }
 
     public Integer getId_faculty() {

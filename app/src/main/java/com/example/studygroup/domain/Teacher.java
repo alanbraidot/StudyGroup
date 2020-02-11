@@ -9,19 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity(tableName = "teachers")
-public class Tutor extends Persona {
+public class Teacher extends Person {
     //TODO Convertir para almacenar
     @Ignore
-    private List<Materia> materiasHabilitadas;
+    private List<Subject> materiasHabilitadas;
 
-    public Tutor(String nombre, String apellido, String email, Domicilio domicilio, Bitmap foto) {
-        super(nombre, apellido, email, domicilio, foto);
+    public Teacher(String nombre, String apellido, String email, Address address, Bitmap foto) {
+        super(nombre, apellido, email, address, foto);
         this.materiasHabilitadas = new ArrayList<>();
     }
 
-    public Tutor(){}
+    public Teacher(){}
 
-    public List<Materia> getMateriasHabilitadas() {
+    public List<Subject> getMateriasHabilitadas() {
         return materiasHabilitadas;
     }
 

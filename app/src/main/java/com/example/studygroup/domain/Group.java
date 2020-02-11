@@ -11,70 +11,70 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.List;
 
 @Entity(tableName = "groups")
-public class Grupo {
+public class Group {
 
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name = "id_group")
     private Integer id;
     @Ignore
-    private List<Estudiante> integrantes;
+    private List<Student> integrantes;
     //TODO Convertir para almacenar
     @Ignore
-    private Tutor tutor;
+    private Teacher teacher;
     @ColumnInfo(name = "name")
     private String nombre;
     //TODO Convertir para almacenar
     @Ignore
-    private Carrera carrera;
+    private Career career;
     //TODO Convertir para almacenar
     @Ignore
-    private Materia materia;
+    private Subject subject;
     //TODO Convertir para almacenar
     @Ignore
-    private Facultad facultad;
+    private Faculty faculty;
     //TODO Convertir para almacenar
     @Ignore
     private LatLng lugarEncuentro;
 
-    public Grupo(List<Estudiante> integrantes, Tutor tutor, String nombre, Carrera carrera, Materia materia, Facultad facultad, LatLng lugarEncuentro) {
+    public Group(List<Student> integrantes, Teacher teacher, String nombre, Career career, Subject subject, Faculty faculty, LatLng lugarEncuentro) {
         this.integrantes = integrantes;
-        this.tutor = tutor;
+        this.teacher = teacher;
         this.nombre = nombre;
-        this.carrera = carrera;
-        this.materia = materia;
-        this.facultad = facultad;
+        this.career = career;
+        this.subject = subject;
+        this.faculty = faculty;
         this.lugarEncuentro = lugarEncuentro;
     }
 
-    public Grupo(){}
+    public Group(){}
 
     public Integer getId() {
         return id;
     }
 
-    public List<Estudiante> getIntegrantes() {
+    public List<Student> getIntegrantes() {
         return integrantes;
     }
 
-    public Tutor getTutor() {
-        return tutor;
+    public Teacher getTeacher() {
+        return teacher;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public Carrera getCarrera() {
-        return carrera;
+    public Career getCareer() {
+        return career;
     }
 
-    public Materia getMateria() {
-        return materia;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public Facultad getFacultad() {
-        return facultad;
+    public Faculty getFaculty() {
+        return faculty;
     }
 
     public LatLng getLugarEncuentro() {

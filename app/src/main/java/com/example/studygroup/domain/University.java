@@ -6,16 +6,14 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import com.example.studygroup.persistence.daos.UniversityDao;
-
 import java.util.List;
 
 @Entity(tableName = "universities")
-public class Universidad {
+public class University {
 
     public enum UniversidadEnum {
-        UTN ("Universidad Tecnológica Nacional"),
-        UNL ("Universidad Nacional del Litoral");
+        UTN ("University Tecnológica Nacional"),
+        UNL ("University Nacional del Litoral");
 
         private final String name;
 
@@ -38,23 +36,23 @@ public class Universidad {
     private Integer id;
     //TODO Convertir para almacenar
     @Ignore
-    private List<Facultad> facultades;
+    private List<Faculty> facultades;
     //TODO Convertir para almacenar
     @Ignore
     private UniversidadEnum universidadEnum;
 
-    public Universidad(List<Facultad> facultades, UniversidadEnum universidadEnum) {
+    public University(List<Faculty> facultades, UniversidadEnum universidadEnum) {
         this.facultades = facultades;
         this.universidadEnum = universidadEnum;
     }
 
-    public Universidad(){}
+    public University(){}
 
     public Integer getId() {
         return id;
     }
 
-    public List<Facultad> getFacultades() {
+    public List<Faculty> getFacultades() {
         return facultades;
     }
 

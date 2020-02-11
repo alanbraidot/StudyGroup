@@ -7,7 +7,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "addresses")
-public class Domicilio {
+public class Address {
 
     public enum CiudadEnum {
         CSF("Ciudad de Santa Fe");
@@ -77,9 +77,9 @@ public class Domicilio {
     @Ignore
     private PaisEnum paisEnum;
 
-    public Domicilio(){}
+    public Address(){}
 
-    public Domicilio(CiudadEnum ciudadEnum, ProvinciaEnum provinciaEnum, PaisEnum paisEnum) {
+    public Address(CiudadEnum ciudadEnum, ProvinciaEnum provinciaEnum, PaisEnum paisEnum) {
         this.ciudadEnum = ciudadEnum;
         this.provinciaEnum = provinciaEnum;
         this.paisEnum = paisEnum;

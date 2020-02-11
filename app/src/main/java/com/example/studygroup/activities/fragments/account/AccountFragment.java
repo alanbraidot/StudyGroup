@@ -60,12 +60,12 @@ public class AccountFragment extends Fragment {
 
         fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getFoto());
         nombre.setText(MainActivity.usuarioActivo.getNombre());
-        pais.setText(MainActivity.usuarioActivo.getDomicilio().getPaisEnum().toString());
-        ciudadProvincia.setText(MainActivity.usuarioActivo.getDomicilio().getCiudadEnum().toString()+", "+MainActivity.usuarioActivo.getDomicilio().getProvinciaEnum().toString());
+        pais.setText(MainActivity.usuarioActivo.getAddress().getPaisEnum().toString());
+        ciudadProvincia.setText(MainActivity.usuarioActivo.getAddress().getCiudadEnum().toString()+", "+MainActivity.usuarioActivo.getAddress().getProvinciaEnum().toString());
         //TODO Volver a cargar los campos inferiores segun es tutor o estudiante.
-        /*universidad.setText(MainActivity.usuarioActivo.getCarrera().getFacultad().getUniversidad().getUniversidadEnum().toString());
-        facultad.setText(MainActivity.usuarioActivo.getCarrera().getFacultad().getFacultadEnum().toString());
-        carrera.setText(MainActivity.usuarioActivo.getCarrera().getCarreraEnum().toString());*/
+        /*universidad.setText(MainActivity.usuarioActivo.getCareer().getFaculty().getUniversity().getUniversidadEnum().toString());
+        facultad.setText(MainActivity.usuarioActivo.getCareer().getFaculty().getFacultadEnum().toString());
+        carrera.setText(MainActivity.usuarioActivo.getCareer().getCarreraEnum().toString());*/
         email.setText(MainActivity.usuarioActivo.getEmail());
 
         btnMisGrupos.setOnClickListener(new View.OnClickListener() {

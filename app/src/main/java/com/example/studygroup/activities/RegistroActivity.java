@@ -16,15 +16,14 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 
 import com.example.studygroup.R;
-import com.example.studygroup.domain.Carrera;
-import com.example.studygroup.domain.Domicilio;
-import com.example.studygroup.domain.Facultad;
-import com.example.studygroup.domain.Universidad;
+import com.example.studygroup.domain.Career;
+import com.example.studygroup.domain.Address;
+import com.example.studygroup.domain.Faculty;
+import com.example.studygroup.domain.University;
 
 import java.io.File;
 import java.io.IOException;
@@ -99,12 +98,12 @@ public class RegistroActivity extends AppCompatActivity {
             }
         });
 
-        spinnerPais.setAdapter(new ArrayAdapter<Domicilio.PaisEnum>(this, R.layout.support_simple_spinner_dropdown_item, Domicilio.PaisEnum.values()));
-        spinnerProvincia.setAdapter(new ArrayAdapter<Domicilio.ProvinciaEnum>(this, R.layout.support_simple_spinner_dropdown_item, Domicilio.ProvinciaEnum.values()));
-        spinnerCiudad.setAdapter(new ArrayAdapter<Domicilio.CiudadEnum>(this, R.layout.support_simple_spinner_dropdown_item, Domicilio.CiudadEnum.values()));
-        spinnerUniversidad.setAdapter(new ArrayAdapter<Universidad.UniversidadEnum>(this, R.layout.support_simple_spinner_dropdown_item, Universidad.UniversidadEnum.values()));
-        spinnerFacultad.setAdapter(new ArrayAdapter<Facultad.FacultadEnum>(this, R.layout.support_simple_spinner_dropdown_item, Facultad.FacultadEnum.values()));
-        spinnerCarrera.setAdapter(new ArrayAdapter<Carrera.CarreraEnum>(this, R.layout.support_simple_spinner_dropdown_item, Carrera.CarreraEnum.values()));
+        spinnerPais.setAdapter(new ArrayAdapter<Address.PaisEnum>(this, R.layout.support_simple_spinner_dropdown_item, Address.PaisEnum.values()));
+        spinnerProvincia.setAdapter(new ArrayAdapter<Address.ProvinciaEnum>(this, R.layout.support_simple_spinner_dropdown_item, Address.ProvinciaEnum.values()));
+        spinnerCiudad.setAdapter(new ArrayAdapter<Address.CiudadEnum>(this, R.layout.support_simple_spinner_dropdown_item, Address.CiudadEnum.values()));
+        spinnerUniversidad.setAdapter(new ArrayAdapter<University.UniversidadEnum>(this, R.layout.support_simple_spinner_dropdown_item, University.UniversidadEnum.values()));
+        spinnerFacultad.setAdapter(new ArrayAdapter<Faculty.FacultadEnum>(this, R.layout.support_simple_spinner_dropdown_item, Faculty.FacultadEnum.values()));
+        spinnerCarrera.setAdapter(new ArrayAdapter<Career.CarreraEnum>(this, R.layout.support_simple_spinner_dropdown_item, Career.CarreraEnum.values()));
         //TODO Crear spinner multi-select para materias;
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {

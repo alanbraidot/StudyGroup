@@ -6,20 +6,20 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.studygroup.domain.Carrera;
+import com.example.studygroup.domain.Career;
 
 import java.util.List;
 
 @Dao
 public interface CareerDao {
     @Insert
-    void create(Carrera c);
+    void create(Career c);
     @Update
-    void update(Carrera c);
+    void update(Career c);
     @Delete
-    void delete(Carrera c);
-    @Query("SELECT * FROM careers WHERE id_career=:id")
-    Carrera findById(Integer id);
-    @Query("SELECT * FROM careers")
-    List<Carrera> findAll();
+    void delete(Career c);
+    @Query("SELECT * FROM Career WHERE id_career=:id")
+    Career findById(Integer id);
+    @Query("SELECT * FROM Career")
+    List<Career> findAll();
 }

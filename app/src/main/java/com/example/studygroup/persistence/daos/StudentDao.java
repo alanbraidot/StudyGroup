@@ -6,20 +6,20 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.studygroup.domain.Estudiante;
+import com.example.studygroup.domain.Student;
 
 import java.util.List;
 
 @Dao
 public interface StudentDao {
     @Insert
-    void create(Estudiante e);
+    void create(Student e);
     @Update
-    void update(Estudiante e);
+    void update(Student e);
     @Delete
-    void delete(Estudiante e);
-    @Query("SELECT * FROM people WHERE id_person=:id")
-    Estudiante findById(Integer id);
-    @Query("SELECT * FROM people")
-    List<Estudiante> findAll();
+    void delete(Student e);
+    @Query("SELECT * FROM Person WHERE id_person=:id")
+    Student findById(Integer id);
+    @Query("SELECT * FROM Person")
+    List<Student> findAll();
 }

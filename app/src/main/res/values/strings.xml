@@ -3,11 +3,11 @@
     <string name="title_activity_search">Search</string>
     <string name="title_home">Inicio</string>
     <string name="title_search">Buscar</string>
-    <string name="title_create">Crear grupo</string>
+    <string name="title_create">Crear group</string>
     <string name="title_chat">Chats</string>
     <string name="title_account">Perfil</string>
     <string name="textView_filter_search_fragment">Filtrar por</string>
-    <string name="hint_searchView_search_fragment">Buscar grupo, persona o institución</string>
+    <string name="hint_searchView_search_fragment">Buscar group, persona o institución</string>
     <string name="group_name_search_fragment">NOMBRE DEL GRUPO</string>
     <string name="subject_recycler_view">Materia</string>
     <string name="school_recycler_view">Facultad</string>
@@ -20,8 +20,8 @@
     <string name="title_notifications">Notifications</string>
     <string name="crear_grupo">Crear Grupo</string>
     <string name="tv_completar_datos_registro">Completar registro</string>
-    <string name="tv_titulo_mis_grupos">Mis grupos</string>
-    <string name="es_tutor_registro">Es tutor</string>
+    <string name="tv_titulo_mis_grupos">Mis groups</string>
+    <string name="es_tutor_registro">Es teacher</string>
     <string name="tv_pais_registro">País:</string>
     <string name="tv_provincia_registro">Provincia:</string>
     <string name="tv_ciudad_registro">Ciudad:</string>
@@ -51,7 +51,7 @@
     <string name="btn_crear_grupo">CREAR</string>
     <string name="title_activity_group_maps">Map</string>
     <string name="btn_seleccionar_ubicacion_maps">SELECCIONAR ESTA UBICACIÓN</string>
-    <string name="tv_titulo_grupo">Nombre grupo</string>
+    <string name="tv_titulo_grupo">Nombre group</string>
     <string name="tv_universidad_grupo">Universidad</string>
     <string name="tv_facultad_grupo">Facultad</string>
     <string name="tv_carrera_grupo">Carrera</string>

@@ -6,26 +6,22 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
-import com.example.studygroup.persistence.daos.FacultyDao;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Entity(tableName = "faculties")
-public class Facultad {
+public class Faculty {
 
     public enum FacultadEnum {
-        FRSF("Facultad Regional Santa Fe"),
-        FICH("Facultad de Ingeniería y Ciencias Hídricas"),
-        FADU("Facultad de Arquitectura, Diseño y Urbanismo"),
-        FIQ("Facultad de Ingeniería Química"),
-        FCM("Facultad de Ciencias Médicas"),
-        FBCB("Facultad de Bioquímica y Ciencias Biológicas"),
-        FCE("Facultad de Ciencias Económicas"),
-        FCJS("Facultad de Ciencias Jurídicas y Sociales"),
-        FHUC("Facultad de Humanidades y Ciencias");
+        FRSF("Faculty Regional Santa Fe"),
+        FICH("Faculty de Ingeniería y Ciencias Hídricas"),
+        FADU("Faculty de Arquitectura, Diseño y Urbanismo"),
+        FIQ("Faculty de Ingeniería Química"),
+        FCM("Faculty de Ciencias Médicas"),
+        FBCB("Faculty de Bioquímica y Ciencias Biológicas"),
+        FCE("Faculty de Ciencias Económicas"),
+        FCJS("Faculty de Ciencias Jurídicas y Sociales"),
+        FHUC("Faculty de Humanidades y Ciencias");
 
         private String name;
 
@@ -50,32 +46,32 @@ public class Facultad {
     @Ignore
     private FacultadEnum facultadEnum;
     @Ignore
-    private List<Carrera> carreras;
+    private List<Career> careers;
     @Ignore
-    private Universidad universidad;
+    private University university;
 
-    public Facultad(FacultadEnum facultadEnum, List<Carrera> carreras, Universidad universidad) {
+    public Faculty(FacultadEnum facultadEnum, List<Career> careers, University university) {
         this.facultadEnum = facultadEnum;
-        this.carreras = new ArrayList<>();
-        this.universidad = universidad;
+        this.careers = new ArrayList<>();
+        this.university = university;
     }
 
-    public Facultad(){}
+    public Faculty(){}
 
     public Integer getId() {
         return id;
     }
 
-    public List<Carrera> getCarreras() {
-        return carreras;
+    public List<Career> getCareers() {
+        return careers;
     }
 
     public FacultadEnum getFacultadEnum() {
         return facultadEnum;
     }
 
-    public Universidad getUniversidad() {
-        return universidad;
+    public University getUniversity() {
+        return university;
     }
 
     public void setId(@NonNull Integer id) {

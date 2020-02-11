@@ -6,17 +6,17 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.studygroup.domain.Universidad;
+import com.example.studygroup.domain.University;
 
 import java.util.List;
 
 @Dao
 public interface UniversityDao {
-    @Insert void create(Universidad u);
-    @Update void update(Universidad u);
-    @Delete void delete(Universidad u);
-    @Query("SELECT * FROM universities WHERE id_university=:id")
-    Universidad findById(Integer id);
-    @Query("SELECT * FROM universities")
-    List<Universidad> findAll();
+    @Insert void create(University u);
+    @Update void update(University u);
+    @Delete void delete(University u);
+    @Query("SELECT * FROM University WHERE id_university=:id")
+    University findById(Integer id);
+    @Query("SELECT * FROM University")
+    List<University> findAll();
 }

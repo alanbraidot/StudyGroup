@@ -88,7 +88,7 @@
                     android:layout_width="130dp"
                     android:layout_height="130dp"
                     android:layout_gravity="center_horizontal"
-                    android:src="@mipmap/grupos"/>
+                    android:src="@mipmap/groups"/>
 
                 <TextView
                     android:layout_width="wrap_content"

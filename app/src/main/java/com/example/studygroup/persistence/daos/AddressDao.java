@@ -6,20 +6,20 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.studygroup.domain.Domicilio;
+import com.example.studygroup.domain.Address;
 
 import java.util.List;
 
 @Dao
 public interface AddressDao {
     @Insert
-    void create(Domicilio d);
+    void create(Address d);
     @Update
-    void update(Domicilio d);
+    void update(Address d);
     @Delete
-    void delete(Domicilio d);
-    @Query("SELECT * FROM addresses WHERE id_address=:id")
-    Domicilio findById(Integer id);
-    @Query("SELECT * FROM addresses")
-    List<Domicilio> findAll();
+    void delete(Address d);
+    @Query("SELECT * FROM Address WHERE id_address=:id")
+    Address findById(Integer id);
+    @Query("SELECT * FROM Address")
+    List<Address> findAll();
 }

@@ -4,7 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.studygroup.R;
-import com.example.studygroup.controllers.PeopleController;
+import com.example.studygroup.controllers.PersonController;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private void actualizarUI(GoogleSignInAccount account){
         if(account !=null){
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            MainActivity.usuarioActivo= PeopleController.findPeople(account.getEmail());
+            MainActivity.usuarioActivo= PersonController.findPeople(account.getEmail());
             startActivity(i);
             finish();
         }
