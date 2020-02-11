@@ -1,14 +1,26 @@
 package com.example.studygroup.domain;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.List;
 
+@Entity(tableName = "groups")
 public class Grupo {
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "id_group")
     private Integer id;
+    @Ignore
     private List<Estudiante> integrantes;
     private Tutor tutor;
+    @ColumnInfo(name = "name")
     private String nombre;
     private Carrera carrera;
     private Materia materia;

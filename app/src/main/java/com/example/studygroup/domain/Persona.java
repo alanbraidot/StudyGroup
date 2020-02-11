@@ -2,6 +2,7 @@ package com.example.studygroup.domain;
 
 import android.graphics.Bitmap;
 
+
 public class Persona {
     private Integer id;
     private String nombre;

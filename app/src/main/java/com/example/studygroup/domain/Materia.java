@@ -1,5 +1,11 @@
 package com.example.studygroup.domain;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "subjects")
 public class Materia {
 
     public enum MateriaEnum {
@@ -22,13 +28,13 @@ public class Materia {
         @Override public String toString() {
             return this.name;
         }
-
-        public String getName(){
-            return name;
-        }
     }
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "id_subject")
     private Integer id;
+    @ColumnInfo(name = "subject_enum")
     private MateriaEnum materiaEnum;
 
     public Materia(MateriaEnum materiaEnum) {

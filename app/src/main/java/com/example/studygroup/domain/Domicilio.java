@@ -1,5 +1,11 @@
 package com.example.studygroup.domain;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "addresses")
 public class Domicilio {
 
     public enum CiudadEnum {
@@ -17,10 +23,6 @@ public class Domicilio {
 
         @Override public String toString() {
             return this.name;
-        }
-
-        public String getName(){
-            return name;
         }
     }
 
@@ -40,10 +42,6 @@ public class Domicilio {
         @Override public String toString() {
             return this.name;
         }
-
-        public String getName(){
-            return name;
-        }
     }
 
     public enum PaisEnum {
@@ -62,15 +60,17 @@ public class Domicilio {
         @Override public String toString() {
             return this.name;
         }
-
-        public String getName(){
-            return name;
-        }
     }
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name="id_address")
     private Integer id;
+    @ColumnInfo(name="city_enum")
     private CiudadEnum ciudadEnum;
+    @ColumnInfo(name="province_enum")
     private ProvinciaEnum provinciaEnum;
+    @ColumnInfo(name="country_enum")
     private PaisEnum paisEnum;
 
     public Domicilio(CiudadEnum ciudadEnum, ProvinciaEnum provinciaEnum, PaisEnum paisEnum) {

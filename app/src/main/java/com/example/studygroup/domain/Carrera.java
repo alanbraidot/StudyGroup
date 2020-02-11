@@ -1,8 +1,15 @@
 package com.example.studygroup.domain;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity(tableName = "careers")
 public class Carrera {
 
     public enum CarreraEnum {
@@ -46,21 +53,25 @@ public class Carrera {
         @Override public String toString() {
             return this.name;
         }
-
-        public String getName(){
-            return name;
-        }
     }
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name = "id_career")
     private Integer id;
     private List<Materia> materias;
+    @ColumnInfo(name = "career_enum")
     private CarreraEnum carreraEnum;
+    @Ignore
     private Facultad facultad;
+    @ColumnInfo(name = "id_faculty")
+    private Integer id_faculty;
 
     public Carrera(CarreraEnum carreraEnum, Facultad facultad) {
         this.materias = new ArrayList<>();
         this.carreraEnum = carreraEnum;
         this.facultad = facultad;
+        this.id_faculty = facultad.getId();
     }
 
     public Integer getId() {

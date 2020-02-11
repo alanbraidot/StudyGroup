@@ -1,10 +1,17 @@
 package com.example.studygroup.domain;
 
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Entity(tableName = "faculties")
 public class Facultad {
 
     public enum FacultadEnum {
@@ -31,15 +38,17 @@ public class Facultad {
         @Override public String toString() {
             return this.name;
         }
-
-        public String getName(){
-            return name;
-        }
     }
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    @ColumnInfo(name="id_faculty")
     private Integer id;
+    @ColumnInfo(name="faculty_enum")
     private FacultadEnum facultadEnum;
+    @Ignore
     private List<Carrera> carreras;
+    @Ignore
     private Universidad universidad;
 
     public Facultad(FacultadEnum facultadEnum, List<Carrera> carreras, Universidad universidad) {
