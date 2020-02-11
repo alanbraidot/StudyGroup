@@ -2,6 +2,9 @@ package com.example.studygroup.domain;
 
 import android.graphics.Bitmap;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Persona {
     private Integer id;
     private String nombre;
@@ -9,6 +12,7 @@ public class Persona {
     private String email;
     private Bitmap foto;
     private Domicilio domicilio;
+    private List<Grupo> grupos;
 
     public Persona(String nombre, String apellido, String email, Domicilio domicilio, Bitmap foto){
         this.nombre = nombre;
@@ -18,9 +22,9 @@ public class Persona {
         this.foto = foto;
     }
 
-    public Integer getId() {
-        return id;
-    }
+    public Persona (){}
+
+    public Integer getId() { return id; }
 
     public String getNombre() {
         return nombre;
@@ -41,4 +45,6 @@ public class Persona {
     public Bitmap getFoto() {
         return foto;
     }
+
+    public List<Grupo> getGrupos() {return grupos;}
 }

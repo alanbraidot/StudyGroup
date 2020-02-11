@@ -7,19 +7,15 @@ import java.util.List;
 
 public class Tutor extends Persona {
     private List<Materia> materiasHabilitadas;
-    private List<Grupo> grupos;
+
 
     public Tutor(String nombre, String apellido, String email, Domicilio domicilio, Bitmap foto) {
         super(nombre, apellido, email, domicilio, foto);
         this.materiasHabilitadas = new ArrayList<>();
-        this.grupos = new ArrayList<>();
     }
 
     public List<Materia> getMateriasHabilitadas() {
         return materiasHabilitadas;
     }
 
-    public List<Grupo> getGrupos() {
-        return grupos;
-    }
 }

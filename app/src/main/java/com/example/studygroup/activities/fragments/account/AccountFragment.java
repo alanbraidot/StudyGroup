@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.example.studygroup.R;
 import com.example.studygroup.activities.LoginActivity;
 import com.example.studygroup.activities.MainActivity;
+import com.example.studygroup.activities.MyGroupsActivity;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -69,7 +70,8 @@ public class AccountFragment extends Fragment {
         btnMisGrupos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Cargar activity MyGroups.
+                Intent i= new Intent(context, MyGroupsActivity.class);
+                startActivity(i);
             }
         });
 

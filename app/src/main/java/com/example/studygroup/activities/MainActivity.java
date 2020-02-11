@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import com.example.studygroup.R;
 import com.example.studygroup.domain.Estudiante;
+import com.example.studygroup.domain.Persona;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,7 +27,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static Estudiante usuarioActivo=null;
+    public static Persona usuarioActivo=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +44,4 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
     }
-
-
-
 }
