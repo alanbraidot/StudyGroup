@@ -18,10 +18,10 @@ public class Group {
     @ColumnInfo(name = "id_group")
     private Integer id;
     @Ignore
-    private List<Student> integrantes;
+    private List<Person> integrantes;
     //TODO Convertir para almacenar
     @Ignore
-    private Teacher teacher;
+    private Person teacher;
     @ColumnInfo(name = "name")
     private String nombre;
     //TODO Convertir para almacenar
@@ -37,7 +37,7 @@ public class Group {
     @Ignore
     private LatLng lugarEncuentro;
 
-    public Group(List<Student> integrantes, Teacher teacher, String nombre, Career career, Subject subject, Faculty faculty, LatLng lugarEncuentro) {
+    public Group(List<Person> integrantes, Person teacher, String nombre, Career career, Subject subject, Faculty faculty, LatLng lugarEncuentro) {
         this.integrantes = integrantes;
         this.teacher = teacher;
         this.nombre = nombre;
@@ -53,11 +53,11 @@ public class Group {
         return id;
     }
 
-    public List<Student> getIntegrantes() {
+    public List<Person> getIntegrantes() {
         return integrantes;
     }
 
-    public Teacher getTeacher() {
+    public Person getTeacher() {
         return teacher;
     }
 

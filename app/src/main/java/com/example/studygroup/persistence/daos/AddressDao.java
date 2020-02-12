@@ -13,13 +13,13 @@ import java.util.List;
 @Dao
 public interface AddressDao {
     @Insert
-    void create(Address d);
+    void create(Address a);
     @Update
-    void update(Address d);
+    void update(Address a);
     @Delete
-    void delete(Address d);
-    @Query("SELECT * FROM Address WHERE id_address=:id")
+    void delete(Address a);
+    @Query("SELECT * FROM addresses WHERE id_address=:id")
     Address findById(Integer id);
-    @Query("SELECT * FROM Address")
+    @Query("SELECT * FROM addresses")
     List<Address> findAll();
 }

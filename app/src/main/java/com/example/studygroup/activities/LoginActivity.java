@@ -108,7 +108,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void completarRegistro(){
-        Intent i = new Intent(getApplicationContext(), RegistroActivity.class);
+        Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivityForResult(i, REQUEST_COMPLETAR_REGISTRO);
     }
 

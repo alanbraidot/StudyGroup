@@ -7,6 +7,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
+
+import com.example.studygroup.utils.Converters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,21 +27,41 @@ public class Person {
     private String apellido;
     @ColumnInfo(name = "email")
     private String email;
+    @ColumnInfo(name = "isTeacher")
+    private Boolean isTeacher =false;
+    //TODO Convertir para almacenar
     @Ignore
-    private Bitmap foto;
+    private Bitmap photo;
+    @ColumnInfo(name = "id_address")
     //TODO Convertir para almacenar
     @Ignore
     private Address address;
     //TODO Convertir para almacenar
     @Ignore
     private List<Group> groups;
+    @ColumnInfo(name = "id_career")
+    //TODO Convertir para almacenar
+    @Ignore
+    private Career.CareerEnum careerEnum;
+    //TODO Convertir para almacenar
+    @Ignore
+    private List<Subject> materiasHabilitadas;
 
-    public Person(String nombre, String apellido, String email, Address address, Bitmap foto){
+    public Person(String nombre, String apellido, String email, Boolean isTeacher, Bitmap photo, Address address, Career.CareerEnum careerEnum, List<Subject> materiasHabilitadas) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
+        this.isTeacher = isTeacher;
+        this.photo = photo;
         this.address = address;
-        this.foto = foto;
+        if(isTeacher){
+            this.materiasHabilitadas = materiasHabilitadas;
+            this.careerEnum=null;
+        }
+        else {
+            this.materiasHabilitadas =null;
+            this.careerEnum = careerEnum;
+        }
         this.groups = new ArrayList<>();
     }
 
@@ -61,8 +85,8 @@ public class Person {
         return address;
     }
 
-    public Bitmap getFoto() {
-        return foto;
+    public Bitmap getPhoto() {
+        return photo;
     }
 
     public List<Group> getGroups() {return groups;}
@@ -83,8 +107,8 @@ public class Person {
         this.email = email;
     }
 
-    public void setFoto(Bitmap foto) {
-        this.foto = foto;
+    public void setPhoto(Bitmap photo) {
+        this.photo = photo;
     }
 
     public void setAddress(Address address) {
@@ -93,5 +117,21 @@ public class Person {
 
     public void setGroups(List<Group> groups) {
         this.groups = groups;
+    }
+
+    public Boolean isTeacher() {
+        return isTeacher;
+    }
+
+    public void setIsTeacher(Boolean isTeacher){
+        this.isTeacher =isTeacher;
+    }
+
+    public Career.CareerEnum getCareerEnum() {
+        return careerEnum;
+    }
+
+    public List<Subject> getMateriasHabilitadas() {
+        return materiasHabilitadas;
     }
 }

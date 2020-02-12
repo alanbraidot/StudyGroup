@@ -34,8 +34,9 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentHo
     public void onBindViewHolder(@NonNull SearchFragmentHolder holder, int position) {
         Group group = mDataset.get(position);
         holder.tvNombre.setText(group.getNombre());
-        holder.tvMateria.setText(group.getSubject().getMateriaEnum().toString());
-        holder.tvFacultad.setText(group.getFaculty().getFacultadEnum().toString());
+        //TODO Cargar informacion en TextViews
+        /*holder.tvMateria.setText(group.getSubject().getMateriaEnum().toString());
+        holder.tvFacultad.setText(group.getFaculty().getFacultadEnum().toString());*/
         holder.tvTutor.setText(new StringBuffer(group.getTeacher().getApellido()+", "+ group.getTeacher().getNombre()));
         holder.btnMasInfo.setOnClickListener(new View.OnClickListener() {
             @Override

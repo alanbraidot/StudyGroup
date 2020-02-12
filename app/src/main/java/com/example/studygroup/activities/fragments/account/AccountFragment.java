@@ -58,10 +58,10 @@ public class AccountFragment extends Fragment {
         btnMisGrupos = (Button) root.findViewById(R.id.btn_misgrupos_perfil);
         btnCerrarSesion = (Button) root.findViewById(R.id.btn_cerrar_sesion_perfil);
 
-        fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getFoto());
+        fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getPhoto());
         nombre.setText(MainActivity.usuarioActivo.getNombre());
-        pais.setText(MainActivity.usuarioActivo.getAddress().getPaisEnum().toString());
-        ciudadProvincia.setText(MainActivity.usuarioActivo.getAddress().getCiudadEnum().toString()+", "+MainActivity.usuarioActivo.getAddress().getProvinciaEnum().toString());
+        pais.setText(MainActivity.usuarioActivo.getAddress().getCountryEnum().toString());
+        ciudadProvincia.setText(MainActivity.usuarioActivo.getAddress().getCityEnum().toString()+", "+MainActivity.usuarioActivo.getAddress().getProvinceEnum().toString());
         //TODO Volver a cargar los campos inferiores segun es tutor o estudiante.
         /*universidad.setText(MainActivity.usuarioActivo.getCareer().getFaculty().getUniversity().getUniversidadEnum().toString());
         facultad.setText(MainActivity.usuarioActivo.getCareer().getFaculty().getFacultadEnum().toString());

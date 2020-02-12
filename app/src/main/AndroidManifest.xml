@@ -44,7 +44,7 @@
             android:label="@string/title_activity_group_maps"></activity>
         <activity android:name=".activities.MyGroupsActivity" />
         <activity android:name=".activities.LoginActivity" />
-        <activity android:name=".activities.RegistroActivity" />
+        <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

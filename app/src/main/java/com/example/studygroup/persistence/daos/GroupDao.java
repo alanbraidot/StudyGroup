@@ -18,8 +18,8 @@ public interface GroupDao {
     void update(Group g);
     @Delete
     void delete(Group g);
-    @Query("SELECT * FROM `Group` WHERE id_group=:id")
+    @Query("SELECT * FROM groups WHERE id_group=:id")
     Group findById(Integer id);
-    @Query("SELECT * FROM `Group`")
+    @Query("SELECT * FROM groups")
     List<Group> findAll();
 }

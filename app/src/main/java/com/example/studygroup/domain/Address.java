@@ -1,20 +1,24 @@
 package com.example.studygroup.domain;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.example.studygroup.persistence.repositories.AddressRepository;
+
 @Entity(tableName = "addresses")
 public class Address {
 
-    public enum CiudadEnum {
+    public enum CityEnum {
         CSF("Ciudad de Santa Fe");
 
         private final String name;
 
-        private CiudadEnum(String s) {
+        private CityEnum(String s) {
             name = s;
         }
 
@@ -27,12 +31,12 @@ public class Address {
         }
     }
 
-    public enum ProvinciaEnum {
+    public enum ProvinceEnum {
         SF("Santa Fe");
 
         private final String name;
 
-        private ProvinciaEnum(String s) {
+        private ProvinceEnum(String s) {
             name = s;
         }
 
@@ -45,12 +49,12 @@ public class Address {
         }
     }
 
-    public enum PaisEnum {
+    public enum CountryEnum {
         ARG("Argentina");
 
         private final String name;
 
-        private PaisEnum(String s) {
+        private CountryEnum(String s) {
             name = s;
         }
 
@@ -69,36 +73,40 @@ public class Address {
     private Integer id;
     //TODO Convertir para almacenar
     @Ignore
-    private CiudadEnum ciudadEnum;
+    private CityEnum cityEnum;
     //TODO Convertir para almacenar
     @Ignore
-    private ProvinciaEnum provinciaEnum;
+    private ProvinceEnum provinceEnum;
     //TODO Convertir para almacenar
     @Ignore
-    private PaisEnum paisEnum;
+    private CountryEnum countryEnum;
 
     public Address(){}
 
-    public Address(CiudadEnum ciudadEnum, ProvinciaEnum provinciaEnum, PaisEnum paisEnum) {
-        this.ciudadEnum = ciudadEnum;
-        this.provinciaEnum = provinciaEnum;
-        this.paisEnum = paisEnum;
+    public Address(CityEnum cityEnum, ProvinceEnum provinceEnum, CountryEnum countryEnum) {
+        this.cityEnum = cityEnum;
+        this.provinceEnum = provinceEnum;
+        this.countryEnum = countryEnum;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public CiudadEnum getCiudadEnum() {
-        return ciudadEnum;
+    public CityEnum getCityEnum() {
+        return cityEnum;
     }
 
-    public ProvinciaEnum getProvinciaEnum() {
-        return provinciaEnum;
+    public ProvinceEnum getProvinceEnum() {
+        return provinceEnum;
     }
 
-    public PaisEnum getPaisEnum() {
-        return paisEnum;
+    public CountryEnum getCountryEnum() {
+        return countryEnum;
+    }
+
+    public static Address getAddress(Context context, Integer id){
+        return AddressRepository.getInstance(context).findById(id);
     }
 
     public void setId(@NonNull Integer id) {

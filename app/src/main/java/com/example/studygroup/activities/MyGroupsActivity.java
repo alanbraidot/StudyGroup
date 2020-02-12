@@ -31,7 +31,7 @@ public class MyGroupsActivity extends AppCompatActivity {
         tvNombre = (TextView) findViewById(R.id.tv_nombre_perfil_grupos);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_my_groups);
 
-        fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getFoto());
+        fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getPhoto());
         tvNombre.setText(MainActivity.usuarioActivo.getNombre().concat(MainActivity.usuarioActivo.getApellido()));
 
         mRecyclerView.setHasFixedSize(true);

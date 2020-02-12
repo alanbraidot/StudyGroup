@@ -1,18 +1,10 @@
 package com.example.studygroup.domain;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
-
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity(tableName = "careers")
 public class Career {
 
-    public enum CarreraEnum {
+    public enum CareerEnum {
         ISIUTN("Ingeniería en Sistemas de Información"),
         ICUTN("Ingeniería Civíl"),
         IMUTN("Ingeniería Mecánica"),
@@ -42,7 +34,7 @@ public class Career {
 
         private String name;
 
-        private CarreraEnum(String s) {
+        private CareerEnum(String s) {
             name = s;
         }
 
@@ -55,55 +47,9 @@ public class Career {
         }
     }
 
-    @PrimaryKey(autoGenerate = true)
-    @NonNull
-    @ColumnInfo(name = "id_career")
-    private Integer id;
-    @Ignore
-    private List<Subject> subjects;
-    //TODO Convertir para almacenar
-    @Ignore
-    private CarreraEnum carreraEnum;
-    @Ignore
-    private Faculty faculty;
-
-    @ColumnInfo(name = "id_faculty")
-    private Integer id_faculty;
-
-    public Career(){}
-
-    public Career(CarreraEnum carreraEnum, Faculty faculty) {
-        this.subjects = new ArrayList<>();
-        this.carreraEnum = carreraEnum;
-        this.faculty = faculty;
-        this.id_faculty = faculty.getId();
+    public static List<Subject> getSubjects(Career career) {
+        //TODO Buscar materias para una carrera;
+        return null;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public List<Subject> getSubjects() {
-        return subjects;
-    }
-
-    public CarreraEnum getCarreraEnum() {
-        return carreraEnum;
-    }
-
-    public Faculty getFaculty() {
-        return faculty;
-    }
-
-    public Integer getId_faculty() {
-        return id_faculty;
-    }
-
-    public void setId(@NonNull Integer id) {
-        this.id = id;
-    }
-
-    public void setId_faculty(Integer id_faculty) {
-        this.id_faculty = id_faculty;
-    }
 }

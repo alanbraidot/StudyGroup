@@ -32,8 +32,9 @@ public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupHolder>  {
     public void onBindViewHolder(@NonNull MyGroupHolder holder, int position) {
         Group group = mDataset.get(position);
         holder.tvNombre.setText(group.getNombre());
-        holder.tvMateria.setText(group.getSubject().getMateriaEnum().toString());
-        holder.tvFacultad.setText(group.getFaculty().getFacultadEnum().toString());
+        //TODO Cargar informacion en TextViews
+        /*holder.tvMateria.setText(group.getSubject().getMateriaEnum().toString());
+        holder.tvFacultad.setText(group.getFaculty().getFacultadEnum().toString());*/
         holder.tvTutor.setText(new StringBuffer(group.getTeacher().getApellido()+", "+ group.getTeacher().getNombre()));
         holder.btnMasInfo.setOnClickListener(new View.OnClickListener() {
             @Override

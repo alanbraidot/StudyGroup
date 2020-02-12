@@ -1,15 +1,13 @@
 package com.example.studygroup.controllers;
-import com.example.studygroup.domain.Student;
 import com.example.studygroup.domain.Person;
-import com.example.studygroup.domain.Teacher;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class PersonController {
     private static PersonController _INSTANCE;
-    private List<Student> studentList;
-    private List<Teacher> teacherList;
+    private List<Person> studentList;
+    private List<Person> teacherList;
     private List<Person> peopleList;
 
     public PersonController(){
@@ -23,10 +21,10 @@ public class PersonController {
         return _INSTANCE;
     }
 
-    public List<Student> getStudentList() {
+    public List<Person> getStudentList() {
         return studentList;
     }
-    public List<Teacher> getTeacherList() {
+    public List<Person> getTeacherList() {
         return teacherList;
     }
     public List<Person> getPeopleList() { return peopleList; }
