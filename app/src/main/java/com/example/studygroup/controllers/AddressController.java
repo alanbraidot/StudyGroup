@@ -1,6 +1,7 @@
 package com.example.studygroup.controllers;
 
 import com.example.studygroup.domain.Address;
+import com.example.studygroup.persistence.repositories.AddressRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +19,12 @@ public class AddressController {
         return _INSTANCE;
     }
 
-    public List<Address> getGroupList() {
+    public List<Address> getAddressList() {
         return addressList;
+    }
+
+    public Address findById(Integer id){
+        return AddressRepository.getInstance(null).findById(id);
     }
 
 }

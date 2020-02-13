@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.studygroup.R;
 import com.example.studygroup.controllers.PersonController;
+import com.example.studygroup.receivers.MyReceiver;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -16,7 +17,10 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.Task;
 import com.shobhitpuri.custombuttons.GoogleSignInButton;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -58,6 +62,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
+        createNotificationChannel();
+
     }
 
     @Override
@@ -72,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             MainActivity.usuarioActivo= PersonController.findPeople(account.getEmail());
             startActivity(i);
+            welcomeNotification();
             finish();
         }
         else {
@@ -110,6 +117,22 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private void completarRegistro(){
         Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
         startActivityForResult(i, REQUEST_COMPLETAR_REGISTRO);
+    }
+
+    private void welcomeNotification(){
+        //TODO Lanzar notificacion de bienvenida.
+    }
+
+    private void createNotificationChannel(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = String.valueOf(R.string.channel_notification_login);
+            String description = String.valueOf(R.string.channel_notification_login_description);
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(MyReceiver.CHANNEL_ID_NOTIFICATION_LOGIN, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
     }
 
     public void onConnectionFailed(ConnectionResult connectionResult) {

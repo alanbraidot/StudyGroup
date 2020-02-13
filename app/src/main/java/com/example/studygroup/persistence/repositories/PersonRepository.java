@@ -37,4 +37,6 @@ public class PersonRepository {
     public Person findById(Integer id){
         return personDao.findById(id);
     }
+
+    public Person findByEmail(String email){ return personDao.findByEmail(email);}
 }

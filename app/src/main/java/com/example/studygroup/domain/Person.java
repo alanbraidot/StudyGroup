@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.Ignore;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
@@ -15,7 +16,7 @@ import com.example.studygroup.utils.Converters;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(tableName = "people")
+@Entity(tableName = "people", indices = {@Index(value = "email", unique = true)})
 public class Person {
     @PrimaryKey(autoGenerate = true)
     @NonNull
@@ -29,25 +30,24 @@ public class Person {
     private String email;
     @ColumnInfo(name = "isTeacher")
     private Boolean isTeacher =false;
-    //TODO Convertir para almacenar
-    @Ignore
+    @ColumnInfo(name = "career")
+    private Career.CareerEnum careerEnum;
+    @ColumnInfo(name = "faculty")
+    private Faculty.FacultyEnum facultyEnum;
+    @ColumnInfo(name = "university")
+    private University.UniversityEnum universityEnum;
+    @ColumnInfo(name = "photo_location")
     private Bitmap photo;
     @ColumnInfo(name = "id_address")
-    //TODO Convertir para almacenar
-    @Ignore
     private Address address;
     //TODO Convertir para almacenar
     @Ignore
     private List<Group> groups;
-    @ColumnInfo(name = "id_career")
-    //TODO Convertir para almacenar
-    @Ignore
-    private Career.CareerEnum careerEnum;
     //TODO Convertir para almacenar
     @Ignore
     private List<Subject> materiasHabilitadas;
 
-    public Person(String nombre, String apellido, String email, Boolean isTeacher, Bitmap photo, Address address, Career.CareerEnum careerEnum, List<Subject> materiasHabilitadas) {
+    public Person(String nombre, String apellido, String email, Boolean isTeacher, Bitmap photo, Address address, University.UniversityEnum universityEnum, Faculty.FacultyEnum facultyEnum, Career.CareerEnum careerEnum, List<Subject> materiasHabilitadas) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -56,10 +56,14 @@ public class Person {
         this.address = address;
         if(isTeacher){
             this.materiasHabilitadas = materiasHabilitadas;
+            this.universityEnum=null;
+            this.facultyEnum=null;
             this.careerEnum=null;
         }
         else {
             this.materiasHabilitadas =null;
+            this.universityEnum=universityEnum;
+            this.facultyEnum=facultyEnum;
             this.careerEnum = careerEnum;
         }
         this.groups = new ArrayList<>();
@@ -133,5 +137,25 @@ public class Person {
 
     public List<Subject> getMateriasHabilitadas() {
         return materiasHabilitadas;
+    }
+
+    public Faculty.FacultyEnum getFacultyEnum() {
+        return facultyEnum;
+    }
+
+    public University.UniversityEnum getUniversityEnum() {
+        return universityEnum;
+    }
+
+    public void setCareerEnum(Career.CareerEnum careerEnum) {
+        this.careerEnum = careerEnum;
+    }
+
+    public void setFacultyEnum(Faculty.FacultyEnum facultyEnum) {
+        this.facultyEnum = facultyEnum;
+    }
+
+    public void setUniversityEnum(University.UniversityEnum universityEnum) {
+        this.universityEnum = universityEnum;
     }
 }

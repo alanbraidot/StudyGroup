@@ -59,4 +59,8 @@
     <string name="tv_lugar_encuentro_grupo">Lugar de encuentro</string>
     <string name="tv_integrantes_grupo">Integrantes</string>
     <string name="tv_tutor_grupo">Tutor</string>
+    <string name="welcome_text_notification">, bienvenido a StudyGroup.</string>
+    <string name="welcome_title_notification">Bienvenido</string>
+    <string name="channel_notification_login">Inicio de sesión</string>
+    <string name="channel_notification_login_description">Recibe el mensaje de bienvenida a la aplicación</string>
 </resources>

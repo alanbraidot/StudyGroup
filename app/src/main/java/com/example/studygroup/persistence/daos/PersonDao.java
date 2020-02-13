@@ -20,6 +20,8 @@ public interface PersonDao {
     void delete(Person p);
     @Query("SELECT * FROM people WHERE id_person=:id")
     Person findById(Integer id);
+    @Query("SELECT * FROM people WHERE email=:email")
+    Person findByEmail(String email);
     @Query("SELECT * FROM people")
     List<Person> findAll();
 }
