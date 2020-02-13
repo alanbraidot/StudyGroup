@@ -62,10 +62,16 @@ public class AccountFragment extends Fragment {
         nombre.setText(MainActivity.usuarioActivo.getNombre());
         pais.setText(MainActivity.usuarioActivo.getAddress().getCountryEnum().toString());
         ciudadProvincia.setText(MainActivity.usuarioActivo.getAddress().getCityEnum().toString()+", "+MainActivity.usuarioActivo.getAddress().getProvinceEnum().toString());
-        //TODO Volver a cargar los campos inferiores segun es tutor o estudiante.
-        /*universidad.setText(MainActivity.usuarioActivo.getCareer().getFaculty().getUniversity().getUniversidadEnum().toString());
-        facultad.setText(MainActivity.usuarioActivo.getCareer().getFaculty().getFacultadEnum().toString());
-        carrera.setText(MainActivity.usuarioActivo.getCareer().getCarreraEnum().toString());*/
+        if(!MainActivity.usuarioActivo.isTeacher()){
+            facultad.setText(MainActivity.usuarioActivo.getFaculty().toString());
+            universidad.setText(MainActivity.usuarioActivo.getUniversity().toString());
+            carrera.setText(MainActivity.usuarioActivo.getCareerEnum().toString());
+        }
+        else{
+            facultad.setVisibility(View.GONE);
+            universidad.setVisibility(View.GONE);
+            carrera.setVisibility(View.GONE);
+        }
         email.setText(MainActivity.usuarioActivo.getEmail());
 
         btnMisGrupos.setOnClickListener(new View.OnClickListener() {
