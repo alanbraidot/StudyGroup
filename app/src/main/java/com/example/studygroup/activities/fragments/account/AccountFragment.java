@@ -58,10 +58,11 @@ public class AccountFragment extends Fragment {
         btnMisGrupos = (Button) root.findViewById(R.id.btn_misgrupos_perfil);
         btnCerrarSesion = (Button) root.findViewById(R.id.btn_cerrar_sesion_perfil);
 
-        fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getPhoto());
+        //TODO Descomentar carga de foto.
+        //fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getPhoto());
         nombre.setText(MainActivity.usuarioActivo.getNombre());
         pais.setText(MainActivity.usuarioActivo.getAddress().getCountryEnum().toString());
-        ciudadProvincia.setText(MainActivity.usuarioActivo.getAddress().getCityEnum().toString()+", "+MainActivity.usuarioActivo.getAddress().getProvinceEnum().toString());
+        ciudadProvincia.setText((MainActivity.usuarioActivo.getAddress().getCityEnum().toString()+", "+MainActivity.usuarioActivo.getAddress().getProvinceEnum().toString()));
         if(!MainActivity.usuarioActivo.isTeacher()){
             facultad.setText(MainActivity.usuarioActivo.getFacultyEnum().toString());
             universidad.setText(MainActivity.usuarioActivo.getUniversityEnum().toString());

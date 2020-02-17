@@ -5,15 +5,15 @@ import java.util.List;
 public class Faculty {
 
     public enum FacultyEnum {
-        FRSF("Faculty Regional Santa Fe"),
-        FICH("Faculty de Ingeniería y Ciencias Hídricas"),
-        FADU("Faculty de Arquitectura, Diseño y Urbanismo"),
-        FIQ("Faculty de Ingeniería Química"),
-        FCM("Faculty de Ciencias Médicas"),
-        FBCB("Faculty de Bioquímica y Ciencias Biológicas"),
-        FCE("Faculty de Ciencias Económicas"),
-        FCJS("Faculty de Ciencias Jurídicas y Sociales"),
-        FHUC("Faculty de Humanidades y Ciencias");
+        FRSF("Facultad Regional Santa Fe"),
+        FICH("Facultad de Ingeniería y Ciencias Hídricas"),
+        FADU("Facultad de Arquitectura, Diseño y Urbanismo"),
+        FIQ("Facultad de Ingeniería Química"),
+        FCM("Facultad de Ciencias Médicas"),
+        FBCB("Facultad de Bioquímica y Ciencias Biológicas"),
+        FCE("Facultad de Ciencias Económicas"),
+        FCJS("Facultad de Ciencias Jurídicas y Sociales"),
+        FHUC("Facultad de Humanidades y Ciencias");
 
         private String name;
 

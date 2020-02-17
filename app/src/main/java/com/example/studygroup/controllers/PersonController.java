@@ -22,7 +22,7 @@ public class PersonController {
         return _INSTANCE;
     }
 
-    public static Person findPeople(String email, Context context){
+    public static Person findPerson(String email, Context context){
         return PersonRepository.getInstance(context).findByEmail(email);
     }
 

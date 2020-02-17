@@ -50,7 +50,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_IMAGE_SAVE = 2;
-    private String pathFoto = "images/";
+    private String pathPhoto = "images/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +74,9 @@ public class RegisterActivity extends AppCompatActivity {
         layoutEstudiante = (ConstraintLayout) findViewById(R.id.layoutEstudiante);
         layoutTutor = (ConstraintLayout) findViewById(R.id.layoutTutor);
         btnGuardar = (Button) findViewById(R.id.btn_guardar_registro);
+
+        //TODO Cargar foto de la cuenta de Google pasada a traves del Intent.
+        //fotoPerfil.setImageBitmap(Uri.parse(getIntent().getExtras().getString("Photo")));
 
         btnAgregarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,8 +118,21 @@ public class RegisterActivity extends AppCompatActivity {
                 else{
                     //TODO Crear estudiante;
                 }
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                i.putExtra("Photo",pathPhoto);
+                i.putExtra("Is_teacher",switchEsTutor.isChecked());
+                i.putExtra("Country",spinnerPais.getSelectedItem().toString());
+                i.putExtra("Province",spinnerProvincia.getSelectedItem().toString());
+                i.putExtra("City",spinnerCiudad.getSelectedItem().toString());
+                if(switchEsTutor.isChecked()){
+                    i.putExtra("University",spinnerUniversidad.getSelectedItem().toString());
+                    i.putExtra("Faculty",spinnerFacultad.getSelectedItem().toString());
+                    i.putExtra("Career", spinnerCarrera.getSelectedItem().toString());
+                }
+                else {
+                    //TODO Agregar al intent las materias seleccionadas por el profesor.
+                }
+                setResult(RESULT_OK);
                 finish();
             }
         });
@@ -130,9 +146,7 @@ public class RegisterActivity extends AppCompatActivity {
                 photoFile = createImageFile();
             } catch (IOException ex) { }
             if (photoFile != null) {
-                Uri photoURI = FileProvider.getUriForFile(this,
-                        "com.example.android.fileprovider",
-                        photoFile);
+                Uri photoURI = FileProvider.getUriForFile(this,"com.example.android.fileprovider", photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_SAVE);
             }
@@ -144,7 +158,7 @@ public class RegisterActivity extends AppCompatActivity {
         String imageFileName = "JPEG_" + timeStamp + "_";
         File dir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(imageFileName, /* prefix */".jpg", /* suffix */dir /* directory */);
-        pathFoto = image.getAbsolutePath();
+        pathPhoto = image.getAbsolutePath();
         return image;
     }
 
@@ -153,7 +167,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_IMAGE_SAVE && resultCode == RESULT_OK) {
-            File file = new File(pathFoto);
+            File file = new File(pathPhoto);
             Bitmap imageBitmap = null;
             try {
                 imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), Uri.fromFile(file));

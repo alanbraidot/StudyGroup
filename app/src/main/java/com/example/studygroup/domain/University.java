@@ -5,8 +5,8 @@ import java.util.List;
 public abstract class University {
 
     public enum UniversityEnum {
-        UTN ("University Tecnológica Nacional"),
-        UNL ("University Nacional del Litoral");
+        UTN ("Universidad Tecnológica Nacional"),
+        UNL ("Universidad Nacional del Litoral");
 
         private final String name;
 

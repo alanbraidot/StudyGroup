@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.studygroup.R;
 import com.example.studygroup.controllers.PersonController;
+import com.example.studygroup.domain.Person;
 import com.example.studygroup.receivers.MyReceiver;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -55,7 +56,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
-        btnLogin.setVisibility(View.VISIBLE);
+        btnLogin.setVisibility(View.INVISIBLE);
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         apiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
@@ -75,16 +76,15 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     private void actualizarUI(GoogleSignInAccount account){
         if(account !=null){
+            btnLogin.setVisibility(View.INVISIBLE);
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            MainActivity.usuarioActivo= PersonController.findPeople(account.getEmail(), getApplicationContext());
+            MainActivity.usuarioActivo = PersonController.findPerson(account.getEmail(), getApplicationContext());
             startActivity(i);
             welcomeNotification();
             finish();
         }
         else {
-            //TODO Configurar boton de login.
-
-
+            btnLogin.setVisibility(View.VISIBLE);
         }
     }
 
@@ -101,6 +101,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             handleSignInResult(task);
         }
         if(requestCode==REQUEST_COMPLETAR_REGISTRO && resultCode==RESULT_OK){
+            MainActivity.usuarioActivo = new Person();
+            MainActivity.usuarioActivo.setNombre(account.getDisplayName());
+            MainActivity.usuarioActivo.setApellido(account.getFamilyName());
+            MainActivity.usuarioActivo.setEmail(account.getEmail());
+            //TODO Terminar de cargar los datos del usuario que se registro.
             actualizarUI(account);
         }
     }
@@ -117,6 +122,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     private void completarRegistro(){
         Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
+        i.putExtra("Photo", account.getPhotoUrl().toString());
         startActivityForResult(i, REQUEST_COMPLETAR_REGISTRO);
     }
 
