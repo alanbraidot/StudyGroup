@@ -3,7 +3,9 @@ package com.example.studygroup.activities.fragments.create;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -13,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +23,9 @@ import android.widget.Spinner;
 
 import com.example.studygroup.R;
 import com.example.studygroup.activities.GroupMapsActivity;
+import com.example.studygroup.controllers.PersonController;
+import com.example.studygroup.domain.Career;
+import com.example.studygroup.domain.Faculty;
 import com.example.studygroup.domain.Person;
 import com.example.studygroup.domain.University;
 import com.google.android.gms.maps.model.LatLng;
@@ -76,8 +82,8 @@ public class CreateFragment extends Fragment {
         btnCrear = root.findViewById(R.id.btn_crearGrupo_crear);
 
         spinnerUniversidad.setAdapter(new ArrayAdapter<University.UniversityEnum>(context, R.layout.support_simple_spinner_dropdown_item, University.UniversityEnum.values()));
-        //TODO Cargar Spinners restantes con las opciones filtradas.
-
+        spinnerFacultad.setEnabled(false);
+        spinnerCarrera.setEnabled(false);
         btnLugarEncuentro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +96,9 @@ public class CreateFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //TODO Cargar MultiOption dialog con estudiantes de la misma carrera y facultad.
+                ArrayList<Person> personas= new ArrayList<>();
+                personas= PersonController.getInstance().findMembers((Career.CareerEnum)spinnerCarrera.getSelectedItem(),(Faculty.FacultyEnum)spinnerFacultad.getSelectedItem(),context);
+
             }
         });
 
@@ -107,6 +116,27 @@ public class CreateFragment extends Fragment {
             }
         });
 
+        spinnerUniversidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                spinnerFacultad.setAdapter(new ArrayAdapter<Faculty>(context, R.layout.support_simple_spinner_dropdown_item, University.getFaculties((University.UniversityEnum)spinnerUniversidad.getSelectedItem())));
+                spinnerFacultad.setEnabled(true);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        spinnerFacultad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                spinnerCarrera.setAdapter(new ArrayAdapter<Career>(context, R.layout.support_simple_spinner_dropdown_item, Faculty.getCareers((Faculty.FacultyEnum)spinnerFacultad.getSelectedItem())));
+                spinnerCarrera.setEnabled(true);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
         return root;
     }
 

@@ -76,13 +76,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     private void actualizarUI(GoogleSignInAccount account){
         if(account !=null){
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            MainActivity.usuarioActivo= PersonController.findPeople(account.getEmail());
+            MainActivity.usuarioActivo= PersonController.findPeople(account.getEmail(), getApplicationContext());
             startActivity(i);
             welcomeNotification();
             finish();
         }
         else {
             //TODO Configurar boton de login.
+
 
         }
     }

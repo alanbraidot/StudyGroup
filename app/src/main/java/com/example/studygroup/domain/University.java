@@ -23,7 +23,7 @@ public abstract class University {
         }
     }
 
-    public static List<Faculty> getFacultades(UniversityEnum universityEnum) {
+    public static List<Faculty> getFaculties(UniversityEnum universityEnum) {
         //TODO Buscar facultades para una universidad;
         return null;
     }
