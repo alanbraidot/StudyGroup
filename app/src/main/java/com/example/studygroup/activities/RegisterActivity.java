@@ -2,10 +2,12 @@ package com.example.studygroup.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -23,12 +25,17 @@ import com.example.studygroup.R;
 import com.example.studygroup.domain.Career;
 import com.example.studygroup.domain.Address;
 import com.example.studygroup.domain.Faculty;
+import com.example.studygroup.domain.Subject;
 import com.example.studygroup.domain.University;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -43,21 +50,22 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner spinnerUniversidad;
     private Spinner spinnerFacultad;
     private Spinner spinnerCarrera;
-    private Spinner spinnerMaterias;
+    private Button btnSeleccionarMaterias;
     private ConstraintLayout layoutEstudiante;
     private ConstraintLayout layoutTutor;
     private Button btnGuardar;
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_IMAGE_SAVE = 2;
-    private String pathPhoto = "images/";
+    private String pathPhoto = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_registro);
+        setContentView(R.layout.activity_register);
         ActionBar actionBar= getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        pathPhoto=null;
 
         actionBar.setTitle("Completar registro");
 
@@ -70,13 +78,10 @@ public class RegisterActivity extends AppCompatActivity {
         spinnerUniversidad = (Spinner) findViewById(R.id.spinner_universidad_registro);
         spinnerFacultad = (Spinner) findViewById(R.id.spinner_facultad_registro);
         spinnerCarrera = (Spinner) findViewById(R.id.spinner_carrera_registro);
-        spinnerMaterias = (Spinner) findViewById(R.id.spinner_materias);
+        btnSeleccionarMaterias = (Button) findViewById(R.id.btn_select_subjects);
         layoutEstudiante = (ConstraintLayout) findViewById(R.id.layoutEstudiante);
         layoutTutor = (ConstraintLayout) findViewById(R.id.layoutTutor);
         btnGuardar = (Button) findViewById(R.id.btn_guardar_registro);
-
-        //TODO Cargar foto de la cuenta de Google pasada a traves del Intent.
-        //fotoPerfil.setImageBitmap(Uri.parse(getIntent().getExtras().getString("Photo")));
 
         btnAgregarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,24 +112,61 @@ public class RegisterActivity extends AppCompatActivity {
         spinnerUniversidad.setAdapter(new ArrayAdapter<University.UniversityEnum>(this, R.layout.support_simple_spinner_dropdown_item, University.UniversityEnum.values()));
         spinnerFacultad.setAdapter(new ArrayAdapter<Faculty.FacultyEnum>(this, R.layout.support_simple_spinner_dropdown_item, Faculty.FacultyEnum.values()));
         spinnerCarrera.setAdapter(new ArrayAdapter<Career.CareerEnum>(this, R.layout.support_simple_spinner_dropdown_item, Career.CareerEnum.values()));
-        //TODO Crear spinner multi-select para materias;
+
+        final Subject.SubjectEnum[] subjectEnums = Subject.SubjectEnum.values();
+        final String[] subjectsList = new String[subjectEnums.length];
+        for (int i=0; i<subjectEnums.length; i++){
+            subjectsList[i]=subjectEnums[i].toString();
+        }
+        final boolean[] checkedSubjects = new boolean[subjectsList.length];
+        final ArrayList<Integer> mUserSubjects = new ArrayList<>();
+
+        btnSeleccionarMaterias.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getApplicationContext())
+                        .setMultiChoiceItems(subjectsList, checkedSubjects, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int position, boolean isChecked) {
+                                if(isChecked){
+                                    if(!mUserSubjects.contains(position))
+                                        mUserSubjects.add(position);
+                                    else
+                                        mUserSubjects.remove(position);
+                                }
+
+                            }
+                        });
+                mBuilder.setCancelable(false);
+                mBuilder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //TODO Completar EditText con materias seleccionadas.
+                    }
+                });
+                mBuilder.setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mUserSubjects.clear();
+                    }
+                });
+
+                AlertDialog  mDialog = mBuilder.create();
+                mDialog.show();
+            }
+        });
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(switchEsTutor.isChecked()){
-                    //TODO Crear tutor;
-                }
-                else{
-                    //TODO Crear estudiante;
-                }
                 Intent i = new Intent(getApplicationContext(), LoginActivity.class);
-                i.putExtra("Photo",pathPhoto);
+                if(pathPhoto!=null)
+                    i.putExtra("Photo",pathPhoto);
                 i.putExtra("Is_teacher",switchEsTutor.isChecked());
                 i.putExtra("Country",spinnerPais.getSelectedItem().toString());
                 i.putExtra("Province",spinnerProvincia.getSelectedItem().toString());
                 i.putExtra("City",spinnerCiudad.getSelectedItem().toString());
-                if(switchEsTutor.isChecked()){
+                if(!switchEsTutor.isChecked()){
                     i.putExtra("University",spinnerUniversidad.getSelectedItem().toString());
                     i.putExtra("Faculty",spinnerFacultad.getSelectedItem().toString());
                     i.putExtra("Career", spinnerCarrera.getSelectedItem().toString());

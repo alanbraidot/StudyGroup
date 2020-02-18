@@ -45,6 +45,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        initializeDomain();
+
         btnLogin = (GoogleSignInButton) findViewById(R.id.btn_login_google);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +67,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
         createNotificationChannel();
 
+    }
+
+    private void initializeDomain() {
+        //TODO Crear universidades, facultades y carreras.
     }
 
     @Override
@@ -108,6 +114,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             //TODO Terminar de cargar los datos del usuario que se registro.
             actualizarUI(account);
         }
+        if(requestCode==REQUEST_COMPLETAR_REGISTRO && resultCode!=RESULT_OK)
+            account=null;
     }
 
     private void handleSignInResult(Task<GoogleSignInAccount> task) {
@@ -122,7 +130,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     private void completarRegistro(){
         Intent i = new Intent(getApplicationContext(), RegisterActivity.class);
-        i.putExtra("Photo", account.getPhotoUrl().toString());
         startActivityForResult(i, REQUEST_COMPLETAR_REGISTRO);
     }
 

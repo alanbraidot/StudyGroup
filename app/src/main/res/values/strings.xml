@@ -21,14 +21,14 @@
     <string name="crear_grupo">Crear Grupo</string>
     <string name="tv_completar_datos_registro">Completar registro</string>
     <string name="tv_titulo_mis_grupos">Mis groups</string>
-    <string name="es_tutor_registro">Es teacher</string>
+    <string name="es_tutor_registro">Es profesor</string>
     <string name="tv_pais_registro">País:</string>
     <string name="tv_provincia_registro">Provincia:</string>
     <string name="tv_ciudad_registro">Ciudad:</string>
     <string name="tv_universidad_registro">Universidad:</string>
     <string name="tv_facultad_registro">Facultad:</string>
     <string name="tv_carrera_registro">Carrera:</string>
-    <string name="tv_materias_registro">Materias:</string>
+    <string name="tv_materias_registro">Materias aptas:</string>
     <string name="btn_login_google">LOGIN WITH GOOGLE</string>
     <string name="content_description_logo_login">Logo</string>
     <string name="btn_cerrar_sesion">Cerrar Sesión</string>
@@ -63,4 +63,8 @@
     <string name="welcome_title_notification">Bienvenido</string>
     <string name="channel_notification_login">Inicio de sesión</string>
     <string name="channel_notification_login_description">Recibe el mensaje de bienvenida a la aplicación</string>
+    <string name="ok_button">ACEPTAR</string>
+    <string name="cancel_button">CANCELAR</string>
+    <string name="et_subject_register">Ninguna</string>
+    <string name="btn_select_subjects">SELECCIONAR MATERIAS</string>
 </resources>
