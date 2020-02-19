@@ -1,19 +1,16 @@
 package com.example.studygroup.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Faculty {
 
+    private FacultyEnum facultyEnum;
+    private List<Career.CareerEnum> careerEnumList;
+
     public enum FacultyEnum {
         FRSF("Facultad Regional Santa Fe"),
-        FICH("Facultad de Ingeniería y Ciencias Hídricas"),
-        FADU("Facultad de Arquitectura, Diseño y Urbanismo"),
-        FIQ("Facultad de Ingeniería Química"),
-        FCM("Facultad de Ciencias Médicas"),
-        FBCB("Facultad de Bioquímica y Ciencias Biológicas"),
-        FCE("Facultad de Ciencias Económicas"),
-        FCJS("Facultad de Ciencias Jurídicas y Sociales"),
-        FHUC("Facultad de Humanidades y Ciencias");
+        FICH("Facultad de Ingeniería y Ciencias Hídricas");
 
         private String name;
 
@@ -28,6 +25,19 @@ public class Faculty {
         @Override public String toString() {
             return this.name;
         }
+    }
+
+    public Faculty(FacultyEnum facultyEnum) {
+        this.facultyEnum = facultyEnum;
+        this.careerEnumList = new ArrayList<>();
+    }
+
+    public FacultyEnum getFacultyEnum() {
+        return facultyEnum;
+    }
+
+    public List<Career.CareerEnum> getCareerEnumList() {
+        return careerEnumList;
     }
 
     public static List<Career> getCareers(FacultyEnum facultyEnum) {

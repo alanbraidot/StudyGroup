@@ -1,8 +1,12 @@
 package com.example.studygroup.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public abstract class University {
+public class University {
+
+    private List<Faculty.FacultyEnum> facultyEnumList;
+    private UniversityEnum universityEnum;
 
     public enum UniversityEnum {
         UTN ("Universidad Tecnológica Nacional"),
@@ -21,6 +25,19 @@ public abstract class University {
         @Override public String toString() {
             return this.name;
         }
+    }
+
+    public University(UniversityEnum universityEnum) {
+        this.facultyEnumList = new ArrayList<>();
+        this.universityEnum = universityEnum;
+    }
+
+    public List<Faculty.FacultyEnum> getFacultyEnumList() {
+        return facultyEnumList;
+    }
+
+    public UniversityEnum getUniversityEnum() {
+        return universityEnum;
     }
 
     public static List<Faculty> getFaculties(UniversityEnum universityEnum) {

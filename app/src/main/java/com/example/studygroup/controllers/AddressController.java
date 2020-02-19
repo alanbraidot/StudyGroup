@@ -11,7 +11,6 @@ public class AddressController {
     private List<Address> addressList = new ArrayList<>();
 
     public AddressController() {
-        _INSTANCE = new AddressController();
         addressList = new ArrayList<>();
     }
 

@@ -4,8 +4,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.studygroup.R;
+import com.example.studygroup.controllers.GeneralController;
 import com.example.studygroup.controllers.PersonController;
+import com.example.studygroup.domain.Career;
+import com.example.studygroup.domain.Faculty;
 import com.example.studygroup.domain.Person;
+import com.example.studygroup.domain.Subject;
+import com.example.studygroup.domain.University;
 import com.example.studygroup.receivers.MyReceiver;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -70,7 +75,46 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void initializeDomain() {
-        //TODO Crear universidades, facultades y carreras.
+        University utn = new University(University.UniversityEnum.UTN);
+        utn.getFacultyEnumList().add(Faculty.FacultyEnum.FRSF);
+
+        University unl = new University(University.UniversityEnum.UNL);
+        unl.getFacultyEnumList().add(Faculty.FacultyEnum.FICH);
+
+        GeneralController.getInstance().getUniversityList().add(utn);
+        GeneralController.getInstance().getUniversityList().add(unl);
+
+        Faculty utn_frsf = new Faculty(Faculty.FacultyEnum.FRSF);
+        utn_frsf.getCareerEnumList().add(Career.CareerEnum.IMUTN);
+        utn_frsf.getCareerEnumList().add(Career.CareerEnum.ISIUTN);
+
+        Faculty unl_fich = new Faculty(Faculty.FacultyEnum.FICH);
+        unl_fich.getCareerEnumList().add(Career.CareerEnum.IINFUNL);
+        unl_fich.getCareerEnumList().add(Career.CareerEnum.IQUNL);
+
+        GeneralController.getInstance().getFacultyList().add(utn_frsf);
+        GeneralController.getInstance().getFacultyList().add(unl_fich);
+
+        Career isi_frsf = new Career(Career.CareerEnum.ISIUTN);
+        isi_frsf.getSubjectEnumList().add(Subject.SubjectEnum.AMI);
+        isi_frsf.getSubjectEnumList().add(Subject.SubjectEnum.FISI);
+
+        Career im_frsf = new Career(Career.CareerEnum.IMUTN);
+        im_frsf.getSubjectEnumList().add(Subject.SubjectEnum.AMI);
+        im_frsf.getSubjectEnumList().add(Subject.SubjectEnum.FISI);
+
+        Career ii_fich = new Career(Career.CareerEnum.IINFUNL);
+        ii_fich.getSubjectEnumList().add(Subject.SubjectEnum.AMI);
+        ii_fich.getSubjectEnumList().add(Subject.SubjectEnum.FISI);
+
+        Career iq_fich = new Career(Career.CareerEnum.IQUNL);
+        iq_fich.getSubjectEnumList().add(Subject.SubjectEnum.AMI);
+        iq_fich.getSubjectEnumList().add(Subject.SubjectEnum.FISI);
+
+        GeneralController.getInstance().getCareerList().add(isi_frsf);
+        GeneralController.getInstance().getCareerList().add(im_frsf);
+        GeneralController.getInstance().getCareerList().add(ii_fich);
+        GeneralController.getInstance().getCareerList().add(iq_fich);
     }
 
     @Override
@@ -85,8 +129,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             btnLogin.setVisibility(View.INVISIBLE);
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             MainActivity.usuarioActivo = PersonController.findPerson(account.getEmail(), getApplicationContext());
-            startActivity(i);
             welcomeNotification();
+            startActivity(i);
             finish();
         }
         else {
@@ -134,7 +178,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void welcomeNotification(){
-        //TODO Lanzar notificacion de bienvenida.
+        Runnable myRunnable = new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent();
+                i.putExtra("Name",account.getDisplayName());
+                i.setAction(MyReceiver.LOGIN_SUCCESSFULLY);
+                sendBroadcast(i);
+            }
+        };
+        Thread hilo = new Thread(myRunnable);
+        hilo.start();
     }
 
     private void createNotificationChannel(){

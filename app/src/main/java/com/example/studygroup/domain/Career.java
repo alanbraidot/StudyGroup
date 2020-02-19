@@ -1,34 +1,17 @@
 package com.example.studygroup.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Career {
 
+    private CareerEnum careerEnum;
+    private List<Subject.SubjectEnum> subjectEnumList;
+
     public enum CareerEnum {
         ISIUTN("Ingeniería en Sistemas de Información"),
-        ICUTN("Ingeniería Civíl"),
         IMUTN("Ingeniería Mecánica"),
-        IEUTN("Ingeniería Eléctrica"),
-        IIUTN("Ingeniería Industrial"),
-        ARQ("Arquitectura y Urbanismo"),
-        LDI("Licenciatura en Diseño Industrial"),
-        LDCV("Licenciatura en Diseño de la Comunicación Visual"),
-        BQ("Bioquímica"),
-        LN("Licenciatura en Nutrición"),
-        CPN("Contador Público Nacional"),
-        LA("Licenciatura en Administración"),
-        LE("Licenciatura en Economía"),
-        AB("Abogacía"),
-        MED("Medicina"),
-        BIO("Profesorado en Biología"),
-        FIL("Profesorado en Filosofía"),
-        GEO("Profesorado en Geografía"),
-        HIS("Profesorado en Historia"),
-        MAT("Profesorado en Matemática"),
-        IAUNL("Ingeniería Ambiental"),
-        IALUNL("Ingeniería en Alimentos"),
-        IMUNL("Ingeniería en Materiales"),
-        IIUNL("Ingeniería Industrial"),
+
         IQUNL("Ingeniería Química"),
         IINFUNL("Ingeniería en Informática");
 
@@ -45,6 +28,19 @@ public class Career {
         @Override public String toString() {
             return this.name;
         }
+    }
+
+    public Career(CareerEnum careerEnum) {
+        this.careerEnum = careerEnum;
+        this.subjectEnumList = new ArrayList<>();
+    }
+
+    public CareerEnum getCareerEnum() {
+        return careerEnum;
+    }
+
+    public List<Subject.SubjectEnum> getSubjectEnumList() {
+        return subjectEnumList;
     }
 
     public static List<Subject> getSubjects(Career career) {

@@ -4,10 +4,7 @@ public class Subject {
 
     public enum SubjectEnum {
         AMI("Análisis Matemático I"),
-        AGA("Álgebra y Geometría Analítica"),
-        AMII("Análisis Matemático II"),
-        FISI("Física I"),
-        FISII("Física II");
+        FISI("Física I");
 
         private final String name;
 

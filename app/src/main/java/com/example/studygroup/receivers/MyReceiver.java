@@ -20,7 +20,7 @@ public class MyReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String name = intent.getExtras().getString("name");
+        String name = intent.getExtras().getString("Name");
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_ID_NOTIFICATION_LOGIN)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("Bienvenido")
