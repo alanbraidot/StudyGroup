@@ -23,10 +23,12 @@ import android.widget.Spinner;
 
 import com.example.studygroup.R;
 import com.example.studygroup.activities.GroupMapsActivity;
+import com.example.studygroup.controllers.GeneralController;
 import com.example.studygroup.controllers.PersonController;
 import com.example.studygroup.domain.Career;
 import com.example.studygroup.domain.Faculty;
 import com.example.studygroup.domain.Person;
+import com.example.studygroup.domain.Subject;
 import com.example.studygroup.domain.University;
 import com.google.android.gms.maps.model.LatLng;
 
@@ -80,10 +82,7 @@ public class CreateFragment extends Fragment {
         btnIntegrantes = root.findViewById(R.id.btn_agregar_integrantes_crear);
         btnTutor = root.findViewById(R.id.btn_agregar_tutor_crear);
         btnCrear = root.findViewById(R.id.btn_crearGrupo_crear);
-
         spinnerUniversidad.setAdapter(new ArrayAdapter<University.UniversityEnum>(context, R.layout.support_simple_spinner_dropdown_item, University.UniversityEnum.values()));
-        spinnerFacultad.setEnabled(false);
-        spinnerCarrera.setEnabled(false);
         btnLugarEncuentro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,7 +118,7 @@ public class CreateFragment extends Fragment {
         spinnerUniversidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                spinnerFacultad.setAdapter(new ArrayAdapter<Faculty>(context, R.layout.support_simple_spinner_dropdown_item, University.getFaculties((University.UniversityEnum)spinnerUniversidad.getSelectedItem())));
+                spinnerFacultad.setAdapter(new ArrayAdapter<Faculty.FacultyEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getUniversity((University.UniversityEnum)spinnerUniversidad.getSelectedItem()).getFacultyEnumList()));
                 spinnerFacultad.setEnabled(true);
             }
             @Override
@@ -130,8 +129,19 @@ public class CreateFragment extends Fragment {
         spinnerFacultad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                spinnerCarrera.setAdapter(new ArrayAdapter<Career>(context, R.layout.support_simple_spinner_dropdown_item, Faculty.getCareers((Faculty.FacultyEnum)spinnerFacultad.getSelectedItem())));
+                spinnerCarrera.setAdapter(new ArrayAdapter<Career.CareerEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getFaculty((Faculty.FacultyEnum)spinnerFacultad.getSelectedItem()).getCareerEnumList()));
                 spinnerCarrera.setEnabled(true);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        spinnerCarrera.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                spinnerMateria.setAdapter(new ArrayAdapter<Subject.SubjectEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getCareer((Career.CareerEnum)spinnerCarrera.getSelectedItem()).getSubjectEnumList()));
+                spinnerMateria.setEnabled(true);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

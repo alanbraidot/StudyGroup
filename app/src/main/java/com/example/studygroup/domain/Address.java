@@ -71,14 +71,11 @@ public class Address {
     @NonNull
     @ColumnInfo(name="id_address")
     private Integer id;
-    //TODO Convertir para almacenar
-    @Ignore
+    @ColumnInfo(name = "city")
     private CityEnum cityEnum;
-    //TODO Convertir para almacenar
-    @Ignore
+    @ColumnInfo(name = "province")
     private ProvinceEnum provinceEnum;
-    //TODO Convertir para almacenar
-    @Ignore
+    @ColumnInfo(name = "country")
     private CountryEnum countryEnum;
 
     public Address(){}
@@ -109,7 +106,43 @@ public class Address {
         return AddressRepository.getInstance(context).findById(id);
     }
 
+    public static CityEnum getCityEnumKey(String city){
+        for(CityEnum c : CityEnum.values()){
+            if(c.toString().equals(city))
+                return c;
+        }
+        return null;
+    }
+
+    public static ProvinceEnum getProvinceEnumKey(String province){
+        for(ProvinceEnum p : ProvinceEnum.values()){
+            if(p.toString().equals(province))
+                return p;
+        }
+        return null;
+    }
+
+    public static CountryEnum getCountryEnumKey(String country){
+        for(CountryEnum c : CountryEnum.values()){
+            if(c.toString().equals(country))
+                return c;
+        }
+        return null;
+    }
+
     public void setId(@NonNull Integer id) {
         this.id = id;
+    }
+
+    public void setCityEnum(CityEnum cityEnum) {
+        this.cityEnum = cityEnum;
+    }
+
+    public void setProvinceEnum(ProvinceEnum provinceEnum) {
+        this.provinceEnum = provinceEnum;
+    }
+
+    public void setCountryEnum(CountryEnum countryEnum) {
+        this.countryEnum = countryEnum;
     }
 }

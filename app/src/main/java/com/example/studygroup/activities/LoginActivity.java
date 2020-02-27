@@ -4,8 +4,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.studygroup.R;
+import com.example.studygroup.controllers.AddressController;
 import com.example.studygroup.controllers.GeneralController;
 import com.example.studygroup.controllers.PersonController;
+import com.example.studygroup.domain.Address;
 import com.example.studygroup.domain.Career;
 import com.example.studygroup.domain.Faculty;
 import com.example.studygroup.domain.Person;
@@ -50,6 +52,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        MainActivity.usuarioActivo=null;
         initializeDomain();
 
         btnLogin = (GoogleSignInButton) findViewById(R.id.btn_login_google);
@@ -69,9 +72,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
-
         createNotificationChannel();
-
     }
 
     private void initializeDomain() {
@@ -125,11 +126,13 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void actualizarUI(GoogleSignInAccount account){
-        if(account !=null){
+        if(account!=null){
             btnLogin.setVisibility(View.INVISIBLE);
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
-            MainActivity.usuarioActivo = PersonController.findPerson(account.getEmail(), getApplicationContext());
-            welcomeNotification();
+            if(MainActivity.usuarioActivo==null) {
+                MainActivity.usuarioActivo = PersonController.findPerson(account.getEmail(), this);
+            }
+            welcomeNotification(account.getGivenName());
             startActivity(i);
             finish();
         }
@@ -152,14 +155,28 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
         if(requestCode==REQUEST_COMPLETAR_REGISTRO && resultCode==RESULT_OK){
             MainActivity.usuarioActivo = new Person();
-            MainActivity.usuarioActivo.setNombre(account.getDisplayName());
+            //TODO Cargar foto desde el intent data
+            //MainActivity.usuarioActivo.setPhoto(/*cargar_foto*/);
+            MainActivity.usuarioActivo.setNombre(account.getGivenName());
             MainActivity.usuarioActivo.setApellido(account.getFamilyName());
             MainActivity.usuarioActivo.setEmail(account.getEmail());
-            //TODO Terminar de cargar los datos del usuario que se registro.
+            MainActivity.usuarioActivo.setAddress(new Address(
+                    Address.getCityEnumKey(data.getExtras().getString("City")),
+                    Address.getProvinceEnumKey(data.getExtras().getString("Province")),
+                    Address.getCountryEnumKey(data.getExtras().getString("Country"))
+            ));
+            MainActivity.usuarioActivo.setIsTeacher(data.getExtras().getBoolean("Is_teacher"));
+            if(MainActivity.usuarioActivo.isTeacher()){
+                //TODO Cargar materias
+            }
+            else{
+                MainActivity.usuarioActivo.setUniversityEnum(University.getEnumKey(data.getExtras().getString("University")));
+                MainActivity.usuarioActivo.setFacultyEnum(Faculty.getEnumKey(data.getExtras().getString("Faculty")));
+                MainActivity.usuarioActivo.setCareerEnum(Career.getEnumKey(data.getExtras().getString("Career")));
+            }
+            PersonController.save(MainActivity.usuarioActivo,this);
             actualizarUI(account);
         }
-        if(requestCode==REQUEST_COMPLETAR_REGISTRO && resultCode!=RESULT_OK)
-            account=null;
     }
 
     private void handleSignInResult(Task<GoogleSignInAccount> task) {
@@ -177,18 +194,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         startActivityForResult(i, REQUEST_COMPLETAR_REGISTRO);
     }
 
-    private void welcomeNotification(){
+    private void welcomeNotification(final String name){
         Runnable myRunnable = new Runnable() {
             @Override
             public void run() {
                 Intent i = new Intent();
-                i.putExtra("Name",account.getDisplayName());
+                i.putExtra("Name",name);
                 i.setAction(MyReceiver.LOGIN_SUCCESSFULLY);
                 sendBroadcast(i);
             }
         };
-        Thread hilo = new Thread(myRunnable);
-        hilo.start();
+        Thread thread = new Thread(myRunnable);
+        thread.start();
     }
 
     private void createNotificationChannel(){

@@ -40,8 +40,11 @@ public class Faculty {
         return careerEnumList;
     }
 
-    public static List<Career> getCareers(FacultyEnum facultyEnum) {
-        //TODO Buscar carreras para una facultad;
+    public static FacultyEnum getEnumKey(String faculty){
+        for(FacultyEnum f : FacultyEnum.values()){
+            if(f.toString().equals(faculty))
+                return f;
+        }
         return null;
     }
 }

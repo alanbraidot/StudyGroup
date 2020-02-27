@@ -1,5 +1,7 @@
 package com.example.studygroup.controllers;
 
+import android.content.Context;
+
 import com.example.studygroup.domain.Address;
 import com.example.studygroup.persistence.repositories.AddressRepository;
 
@@ -22,8 +24,7 @@ public class AddressController {
         return addressList;
     }
 
-    public Address findById(Integer id){
-        return AddressRepository.getInstance(null).findById(id);
+    public Address findById(Integer id, Context context){
+        return AddressRepository.getInstance(context).findById(id);
     }
-
 }

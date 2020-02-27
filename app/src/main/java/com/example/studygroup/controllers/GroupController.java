@@ -10,7 +10,6 @@ public class GroupController {
     private List<Group> groupList = new ArrayList<>();
 
     public GroupController() {
-        _INSTANCE = new GroupController();
         groupList = new ArrayList<>();
     }
 

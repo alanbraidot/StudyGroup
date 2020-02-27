@@ -20,13 +20,12 @@ public class MyIntentService extends IntentService {
         super.onCreate();
         BroadcastReceiver br = new MyReceiver();
         //TODO Configurar IntentService
-        /*IntentFilter filter = new IntentFilter();
-        filter.addAction();
-        this.registerReceiver(br, filter);*/
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(MyReceiver.LOGIN_SUCCESSFULLY);
+        getApplication().getApplicationContext().registerReceiver(br,filter);
     }
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-
     }
 }

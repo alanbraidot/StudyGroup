@@ -17,27 +17,25 @@ public class Group {
     @NonNull
     @ColumnInfo(name = "id_group")
     private Integer id;
-    @Ignore
-    private List<Person> integrantes;
     //TODO Convertir para almacenar
     @Ignore
+    private List<Person> integrantes;
+    @ColumnInfo(name = "id_teacher")
     private Person teacher;
     @ColumnInfo(name = "name")
     private String nombre;
-    //TODO Convertir para almacenar
-    @Ignore
-    private Career career;
-    //TODO Convertir para almacenar
-    @Ignore
-    private Subject subject;
-    //TODO Convertir para almacenar
-    @Ignore
-    private Faculty faculty;
+    @ColumnInfo(name = "career")
+    private Career.CareerEnum career;
+    @ColumnInfo(name = "subject")
+    private Subject.SubjectEnum subject;
+    @ColumnInfo(name = "faculty")
+    private Faculty.FacultyEnum faculty;
     //TODO Convertir para almacenar
     @Ignore
     private LatLng lugarEncuentro;
 
-    public Group(List<Person> integrantes, Person teacher, String nombre, Career career, Subject subject, Faculty faculty, LatLng lugarEncuentro) {
+
+    public Group(List<Person> integrantes, Person teacher, String nombre, Career.CareerEnum careerEnum, Subject.SubjectEnum subjectEnum, Faculty.FacultyEnum facultyEnum, LatLng lugarEncuentro) {
         this.integrantes = integrantes;
         this.teacher = teacher;
         this.nombre = nombre;
@@ -65,18 +63,6 @@ public class Group {
         return nombre;
     }
 
-    public Career getCareer() {
-        return career;
-    }
-
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public Faculty getFaculty() {
-        return faculty;
-    }
-
     public LatLng getLugarEncuentro() {
         return lugarEncuentro;
     }
@@ -87,5 +73,33 @@ public class Group {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public void setTeacher(Person teacher) {
+        this.teacher = teacher;
+    }
+
+    public Career.CareerEnum getCareer() {
+        return career;
+    }
+
+    public Subject.SubjectEnum getSubject() {
+        return subject;
+    }
+
+    public Faculty.FacultyEnum getFaculty() {
+        return faculty;
+    }
+
+    public void setCareer(Career.CareerEnum career) {
+        this.career = career;
+    }
+
+    public void setSubject(Subject.SubjectEnum subject) {
+        this.subject = subject;
+    }
+
+    public void setFaculty(Faculty.FacultyEnum faculty) {
+        this.faculty = faculty;
     }
 }

@@ -20,4 +20,12 @@ public class Subject {
             return this.name;
         }
     }
+
+    public static SubjectEnum getEnumKey(String subject){
+        for(SubjectEnum s : SubjectEnum.values()){
+            if(s.toString().equals(subject))
+                return s;
+        }
+        return null;
+    }
 }

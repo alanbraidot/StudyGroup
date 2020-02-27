@@ -43,9 +43,11 @@ public class Career {
         return subjectEnumList;
     }
 
-    public static List<Subject> getSubjects(Career career) {
-        //TODO Buscar materias para una carrera;
+    public static CareerEnum getEnumKey(String career){
+        for(CareerEnum c : CareerEnum.values()){
+            if(c.toString().equals(career))
+                return c;
+        }
         return null;
     }
-
 }
