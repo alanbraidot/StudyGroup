@@ -67,4 +67,5 @@
     <string name="cancel_button">CANCELAR</string>
     <string name="et_subject_register">Ninguna</string>
     <string name="btn_select_subjects">SELECCIONAR MATERIAS</string>
+    <string name="se_creo_exitoso">se creó de forma exitosa</string>
 </resources>

@@ -15,11 +15,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.studygroup.R;
 import com.example.studygroup.domain.Career;
@@ -54,7 +57,8 @@ public class RegisterActivity extends AppCompatActivity {
     private ConstraintLayout layoutEstudiante;
     private ConstraintLayout layoutTutor;
     private Button btnGuardar;
-
+    private EditText materiasSeleccionadas;
+    private ArrayList<Integer> mUserSubjects = new ArrayList<>();
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_IMAGE_SAVE = 2;
     private String pathPhoto = null;
@@ -82,6 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
         layoutEstudiante = (ConstraintLayout) findViewById(R.id.layoutEstudiante);
         layoutTutor = (ConstraintLayout) findViewById(R.id.layoutTutor);
         btnGuardar = (Button) findViewById(R.id.btn_guardar_registro);
+        materiasSeleccionadas = (EditText) findViewById(R.id.et_subjects_register);
 
         btnAgregarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,12 +124,11 @@ public class RegisterActivity extends AppCompatActivity {
             subjectsList[i]=subjectEnums[i].toString();
         }
         final boolean[] checkedSubjects = new boolean[subjectsList.length];
-        final ArrayList<Integer> mUserSubjects = new ArrayList<>();
 
         btnSeleccionarMaterias.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder mBuilder = new AlertDialog.Builder(getApplicationContext())
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(RegisterActivity.this)
                         .setMultiChoiceItems(subjectsList, checkedSubjects, new DialogInterface.OnMultiChoiceClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int position, boolean isChecked) {
@@ -142,6 +146,14 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //TODO Completar EditText con materias seleccionadas.
+                        String item = "";
+                        for(int i=0; i< mUserSubjects.size(); i++){
+                            item = item + subjectsList[mUserSubjects.get(i)];
+                            if(i != mUserSubjects.size() -1){
+                                item = item + ", ";
+                            }
+                        }
+                        materiasSeleccionadas.setText(item);
                     }
                 });
                 mBuilder.setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
@@ -155,6 +167,18 @@ public class RegisterActivity extends AppCompatActivity {
                 mDialog.show();
             }
         });
+
+        spinnerPais.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
 
         btnGuardar.setOnClickListener(new View.OnClickListener() {
             @Override

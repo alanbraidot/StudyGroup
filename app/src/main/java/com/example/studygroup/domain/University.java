@@ -40,8 +40,4 @@ public class University {
         return universityEnum;
     }
 
-    public static List<Faculty> getFaculties(UniversityEnum universityEnum) {
-        //TODO Buscar facultades para una universidad;
-        return null;
-    }
 }

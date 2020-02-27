@@ -26,18 +26,22 @@ public class Group {
     private String nombre;
     //TODO Convertir para almacenar
     @Ignore
-    private Career career;
+    private Career.CareerEnum career;
     //TODO Convertir para almacenar
     @Ignore
-    private Subject subject;
+    private Subject.SubjectEnum subject;
     //TODO Convertir para almacenar
     @Ignore
-    private Faculty faculty;
+    private Faculty.FacultyEnum faculty;
     //TODO Convertir para almacenar
+    @Ignore
+    private University.UniversityEnum university;
     @Ignore
     private LatLng lugarEncuentro;
 
-    public Group(List<Person> integrantes, Person teacher, String nombre, Career career, Subject subject, Faculty faculty, LatLng lugarEncuentro) {
+
+
+    public Group(String nombre, University.UniversityEnum university, Faculty.FacultyEnum faculty, Career.CareerEnum career, Subject.SubjectEnum subject,LatLng lugarEncuentro, List<Person> integrantes, Person teacher  ) {
         this.integrantes = integrantes;
         this.teacher = teacher;
         this.nombre = nombre;
@@ -45,6 +49,7 @@ public class Group {
         this.subject = subject;
         this.faculty = faculty;
         this.lugarEncuentro = lugarEncuentro;
+        this.university= university;
     }
 
     public Group(){}
@@ -65,15 +70,15 @@ public class Group {
         return nombre;
     }
 
-    public Career getCareer() {
+    public Career.CareerEnum getCareer() {
         return career;
     }
 
-    public Subject getSubject() {
+    public Subject.SubjectEnum getSubject() {
         return subject;
     }
 
-    public Faculty getFaculty() {
+    public Faculty.FacultyEnum getFaculty() {
         return faculty;
     }
 
