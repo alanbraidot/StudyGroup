@@ -32,10 +32,12 @@ public class Group {
     private Faculty.FacultyEnum faculty;
     //TODO Convertir para almacenar
     @Ignore
+    private University.UniversityEnum university;
+    @Ignore
     private LatLng lugarEncuentro;
 
 
-    public Group(List<Person> integrantes, Person teacher, String nombre, Career.CareerEnum careerEnum, Subject.SubjectEnum subjectEnum, Faculty.FacultyEnum facultyEnum, LatLng lugarEncuentro) {
+    public Group(String nombre, University.UniversityEnum university, Faculty.FacultyEnum faculty, Career.CareerEnum career, Subject.SubjectEnum subject,LatLng lugarEncuentro, List<Person> integrantes, Person teacher  ) {
         this.integrantes = integrantes;
         this.teacher = teacher;
         this.nombre = nombre;
@@ -43,6 +45,7 @@ public class Group {
         this.subject = subject;
         this.faculty = faculty;
         this.lugarEncuentro = lugarEncuentro;
+        this.university= university;
     }
 
     public Group(){}

@@ -78,6 +78,7 @@ public class Address {
     @ColumnInfo(name = "country")
     private CountryEnum countryEnum;
 
+    @Ignore
     public Address(){}
 
     public Address(CityEnum cityEnum, ProvinceEnum provinceEnum, CountryEnum countryEnum) {

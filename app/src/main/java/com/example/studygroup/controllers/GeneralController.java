@@ -2,6 +2,7 @@ package com.example.studygroup.controllers;
 
 import com.example.studygroup.domain.Career;
 import com.example.studygroup.domain.Faculty;
+import com.example.studygroup.domain.Subject;
 import com.example.studygroup.domain.University;
 
 import java.util.ArrayList;

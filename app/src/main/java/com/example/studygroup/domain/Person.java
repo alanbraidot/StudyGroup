@@ -38,7 +38,8 @@ public class Person {
     private University.UniversityEnum universityEnum;
     @ColumnInfo(name = "photo_location")
     private Bitmap photo;
-    @ColumnInfo(name = "id_address")
+    //TODO Convertir para almacenar
+    @Ignore
     private Address address;
     //TODO Convertir para almacenar
     @Ignore

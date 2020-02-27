@@ -20,13 +20,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.studygroup.R;
 import com.example.studygroup.activities.GroupMapsActivity;
+import com.example.studygroup.activities.MainActivity;
 import com.example.studygroup.controllers.GeneralController;
 import com.example.studygroup.controllers.PersonController;
 import com.example.studygroup.domain.Career;
 import com.example.studygroup.domain.Faculty;
+import com.example.studygroup.domain.Group;
 import com.example.studygroup.domain.Person;
 import com.example.studygroup.domain.Subject;
 import com.example.studygroup.domain.University;
@@ -53,8 +56,14 @@ public class CreateFragment extends Fragment {
     private Button btnCrear;
 
     private LatLng ubicacion=null;
-    private List<Person> integrantes=new ArrayList<>();
+    private List<Person> students=new ArrayList<>();
     private Person teacher =null;
+    private University.UniversityEnum university = null;
+    private Faculty.FacultyEnum faculty= null;
+    private Career.CareerEnum career = null;
+    private Subject.SubjectEnum subject = null;
+    private ArrayList<Person> teachers;
+
 
     private CreateViewModel mViewModel;
     private Context context;
@@ -64,7 +73,7 @@ public class CreateFragment extends Fragment {
     private final int REQUEST_SELECCIONAR_TUTOR=3;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+                             final ViewGroup container, Bundle savedInstanceState) {
         mViewModel = ViewModelProviders.of(this).get(CreateViewModel.class);
         View root = inflater.inflate(R.layout.fragment_create, container, false);
         context = root.getContext();
@@ -111,14 +120,31 @@ public class CreateFragment extends Fragment {
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Verificar campos y crear grupo.
+                //TODO Guardar el grupo en BD.
+                if (MainActivity.usuarioActivo.isTeacher()) {
+                    if (MainActivity.usuarioActivo.equals(teacher)) {
+                        if (!etNombre.getText().toString().isEmpty() && ubicacion != null && !students.isEmpty() && teacher != null) {
+                            Group newGroup = new Group(etNombre.getText().toString(), university, faculty, career, subject, ubicacion, students, teacher);
+                            Toast.makeText(context, "El grupo " + R.string.se_creo_exitoso, Toast.LENGTH_LONG).show();
+                        } else
+                            Toast.makeText(context, "Faltan completar datos", Toast.LENGTH_LONG).show();
+                    } else
+                        Toast.makeText(context, "El tutor debe ser el usuario activo", Toast.LENGTH_LONG).show();
+                } else {
+                    if (!etNombre.getText().toString().isEmpty() && ubicacion != null && !students.isEmpty() && teacher != null) {
+                        Group newGroup = new Group(etNombre.getText().toString(), university, faculty, career, subject, ubicacion, students, teacher);
+                        Toast.makeText(context, "El grupo " + R.string.se_creo_exitoso, Toast.LENGTH_LONG).show();
+                    } else
+                        Toast.makeText(context, "Faltan completar datos", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         spinnerUniversidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                spinnerFacultad.setAdapter(new ArrayAdapter<Faculty.FacultyEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getUniversity((University.UniversityEnum)spinnerUniversidad.getSelectedItem()).getFacultyEnumList()));
+                University.UniversityEnum university = (University.UniversityEnum)spinnerUniversidad.getSelectedItem();
+                spinnerFacultad.setAdapter(new ArrayAdapter<Faculty.FacultyEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getUniversity(university).getFacultyEnumList()));
                 spinnerFacultad.setEnabled(true);
             }
             @Override
@@ -129,7 +155,8 @@ public class CreateFragment extends Fragment {
         spinnerFacultad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                spinnerCarrera.setAdapter(new ArrayAdapter<Career.CareerEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getFaculty((Faculty.FacultyEnum)spinnerFacultad.getSelectedItem()).getCareerEnumList()));
+                Faculty.FacultyEnum faculty= (Faculty.FacultyEnum)spinnerFacultad.getSelectedItem();
+                spinnerCarrera.setAdapter(new ArrayAdapter<Career.CareerEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getFaculty(faculty).getCareerEnumList()));
                 spinnerCarrera.setEnabled(true);
             }
             @Override
@@ -140,11 +167,24 @@ public class CreateFragment extends Fragment {
         spinnerCarrera.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                spinnerMateria.setAdapter(new ArrayAdapter<Subject.SubjectEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getCareer((Career.CareerEnum)spinnerCarrera.getSelectedItem()).getSubjectEnumList()));
+                Career.CareerEnum career = (Career.CareerEnum)spinnerCarrera.getSelectedItem();
+                spinnerMateria.setAdapter(new ArrayAdapter<Subject.SubjectEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getCareer(career).getSubjectEnumList()));
                 spinnerMateria.setEnabled(true);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+        spinnerMateria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Subject.SubjectEnum subject = (Subject.SubjectEnum) spinnerMateria.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
         return root;
