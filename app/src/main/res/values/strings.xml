@@ -68,4 +68,6 @@
     <string name="et_subject_register">Ninguna</string>
     <string name="btn_select_subjects">SELECCIONAR MATERIAS</string>
     <string name="se_creo_exitoso">se creó de forma exitosa</string>
+    <string name="incomplete_fields">Faltan completar datos</string>
+    <string name="title_teacher_dialog_create_group">Seleccione un tutor</string>
 </resources>

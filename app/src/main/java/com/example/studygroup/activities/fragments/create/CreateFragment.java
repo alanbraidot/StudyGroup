@@ -1,9 +1,9 @@
 package com.example.studygroup.activities.fragments.create;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +26,7 @@ import com.example.studygroup.R;
 import com.example.studygroup.activities.GroupMapsActivity;
 import com.example.studygroup.activities.MainActivity;
 import com.example.studygroup.controllers.GeneralController;
+import com.example.studygroup.controllers.GroupController;
 import com.example.studygroup.controllers.PersonController;
 import com.example.studygroup.domain.Career;
 import com.example.studygroup.domain.Faculty;
@@ -33,9 +34,11 @@ import com.example.studygroup.domain.Group;
 import com.example.studygroup.domain.Person;
 import com.example.studygroup.domain.Subject;
 import com.example.studygroup.domain.University;
+import com.example.studygroup.persistence.repositories.GroupRepository;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -51,26 +54,26 @@ public class CreateFragment extends Fragment {
     private Button btnLugarEncuentro;
     private EditText etIntegrantes;
     private Button btnIntegrantes;
-    private EditText etTutor;
-    private Button btnTutor;
+    private Spinner spinnerTutor;
     private Button btnCrear;
 
     private LatLng ubicacion=null;
-    private List<Person> students=new ArrayList<>();
-    private Person teacher =null;
+    private List<Person> studentsSelected = new ArrayList<>();
+    private Person teacher=null;
     private University.UniversityEnum university = null;
     private Faculty.FacultyEnum faculty= null;
     private Career.CareerEnum career = null;
     private Subject.SubjectEnum subject = null;
-    private ArrayList<Person> teachers;
-
 
     private CreateViewModel mViewModel;
     private Context context;
 
+    private ArrayList<Integer> mUserStudents = new ArrayList<>();
+    private boolean[] checkedStudents;
+    private Person[] students;
+    private String[] studentsList;
+
     private final int REQUEST_SELECCIONAR_UBICACION=1;
-    private final int REQUEST_SELECCIONAR_INTEGRANTES=2;
-    private final int REQUEST_SELECCIONAR_TUTOR=3;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              final ViewGroup container, Bundle savedInstanceState) {
@@ -86,12 +89,12 @@ public class CreateFragment extends Fragment {
         etLugarEncuentro = root.findViewById(R.id.et_ubicacion_crear_grupo);
         etLugarEncuentro.setEnabled(false);
         etIntegrantes = root.findViewById(R.id.et_lista_integrantes_crear_grupo);
-        etTutor = root.findViewById(R.id.et_tutor_crear_grupo);
         btnLugarEncuentro = root.findViewById(R.id.btn_seleccionar_ubicacion_crear);
         btnIntegrantes = root.findViewById(R.id.btn_agregar_integrantes_crear);
-        btnTutor = root.findViewById(R.id.btn_agregar_tutor_crear);
+        spinnerTutor = root.findViewById(R.id.spinner_tutor_crear_grupo);
         btnCrear = root.findViewById(R.id.btn_crearGrupo_crear);
         spinnerUniversidad.setAdapter(new ArrayAdapter<University.UniversityEnum>(context, R.layout.support_simple_spinner_dropdown_item, University.UniversityEnum.values()));
+
         btnLugarEncuentro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,38 +107,34 @@ public class CreateFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //TODO Cargar MultiOption dialog con estudiantes de la misma carrera y facultad.
-                ArrayList<Person> personas= new ArrayList<>();
-                personas= PersonController.getInstance().findMembers((Career.CareerEnum)spinnerCarrera.getSelectedItem(),(Faculty.FacultyEnum)spinnerFacultad.getSelectedItem(),context);
-
-            }
-        });
-
-        btnTutor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO Cargar SingleOption dialog con tutores apto para la materia seleccionada.
+                students = (Person[])PersonController.getInstance().findMembers((Career.CareerEnum)spinnerCarrera.getSelectedItem(),(Faculty.FacultyEnum)spinnerFacultad.getSelectedItem(),context).toArray();
+                studentsList = new String[students.length];
+                checkedStudents = new boolean[studentsList.length];
             }
         });
 
         btnCrear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Guardar el grupo en BD.
                 if (MainActivity.usuarioActivo.isTeacher()) {
                     if (MainActivity.usuarioActivo.equals(teacher)) {
-                        if (!etNombre.getText().toString().isEmpty() && ubicacion != null && !students.isEmpty() && teacher != null) {
-                            Group newGroup = new Group(etNombre.getText().toString(), university, faculty, career, subject, ubicacion, students, teacher);
+                        if (!etNombre.getText().toString().isEmpty() && ubicacion != null && !studentsSelected.isEmpty() && teacher != null) {
+                            Group newGroup = new Group(etNombre.getText().toString(), university, faculty, career, subject, ubicacion, studentsSelected, teacher);
                             Toast.makeText(context, "El grupo " + R.string.se_creo_exitoso, Toast.LENGTH_LONG).show();
+                            MainActivity.usuarioActivo.getGroups().add(newGroup);
+                            GroupController.save(newGroup,context);
                         } else
-                            Toast.makeText(context, "Faltan completar datos", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, R.string.incomplete_fields, Toast.LENGTH_LONG).show();
                     } else
                         Toast.makeText(context, "El tutor debe ser el usuario activo", Toast.LENGTH_LONG).show();
                 } else {
-                    if (!etNombre.getText().toString().isEmpty() && ubicacion != null && !students.isEmpty() && teacher != null) {
-                        Group newGroup = new Group(etNombre.getText().toString(), university, faculty, career, subject, ubicacion, students, teacher);
+                    if (!etNombre.getText().toString().isEmpty() && ubicacion != null && !studentsSelected.isEmpty() && teacher != null) {
+                        Group newGroup = new Group(etNombre.getText().toString(), university, faculty, career, subject, ubicacion, studentsSelected, teacher);
                         Toast.makeText(context, "El grupo " + R.string.se_creo_exitoso, Toast.LENGTH_LONG).show();
+                        MainActivity.usuarioActivo.getGroups().add(newGroup);
+                        GroupController.save(newGroup,context);
                     } else
-                        Toast.makeText(context, "Faltan completar datos", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, R.string.incomplete_fields, Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -143,9 +142,8 @@ public class CreateFragment extends Fragment {
         spinnerUniversidad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                University.UniversityEnum university = (University.UniversityEnum)spinnerUniversidad.getSelectedItem();
+                university = (University.UniversityEnum)spinnerUniversidad.getSelectedItem();
                 spinnerFacultad.setAdapter(new ArrayAdapter<Faculty.FacultyEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getUniversity(university).getFacultyEnumList()));
-                spinnerFacultad.setEnabled(true);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -155,9 +153,8 @@ public class CreateFragment extends Fragment {
         spinnerFacultad.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Faculty.FacultyEnum faculty= (Faculty.FacultyEnum)spinnerFacultad.getSelectedItem();
+                faculty= (Faculty.FacultyEnum)spinnerFacultad.getSelectedItem();
                 spinnerCarrera.setAdapter(new ArrayAdapter<Career.CareerEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getFaculty(faculty).getCareerEnumList()));
-                spinnerCarrera.setEnabled(true);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -167,9 +164,8 @@ public class CreateFragment extends Fragment {
         spinnerCarrera.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Career.CareerEnum career = (Career.CareerEnum)spinnerCarrera.getSelectedItem();
+                career = (Career.CareerEnum)spinnerCarrera.getSelectedItem();
                 spinnerMateria.setAdapter(new ArrayAdapter<Subject.SubjectEnum>(context, R.layout.support_simple_spinner_dropdown_item, GeneralController.getInstance().getCareer(career).getSubjectEnumList()));
-                spinnerMateria.setEnabled(true);
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -179,12 +175,23 @@ public class CreateFragment extends Fragment {
         spinnerMateria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Subject.SubjectEnum subject = (Subject.SubjectEnum) spinnerMateria.getSelectedItem();
+                subject = (Subject.SubjectEnum) spinnerMateria.getSelectedItem();
+                spinnerTutor.setAdapter(new ArrayAdapter<Person>(context, R.layout.support_simple_spinner_dropdown_item, PersonController.findTeachersBySubject(subject,context)));
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
 
+        spinnerTutor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                teacher = (Person) spinnerTutor.getSelectedItem();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
         return root;
