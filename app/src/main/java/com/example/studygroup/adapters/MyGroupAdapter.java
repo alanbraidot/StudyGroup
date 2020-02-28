@@ -15,16 +15,18 @@ import com.example.studygroup.activities.GroupActivity;
 import com.example.studygroup.domain.Group;
 import com.example.studygroup.holders.MyGroupHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 
 public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupHolder>  {
-    private List<Group> mDataset;
+    private List<Group> mDataset = new ArrayList<>();
     private Context context;
 
     public MyGroupAdapter(List<Group> myDataset, Context context) {
-        mDataset = myDataset;
+        if(myDataset != null)
+            mDataset = myDataset;
         this.context = context;
     }
 

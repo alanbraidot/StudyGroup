@@ -16,11 +16,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.studygroup.R;
 import com.example.studygroup.activities.LoginActivity;
 import com.example.studygroup.activities.MainActivity;
 import com.example.studygroup.activities.MyGroupsActivity;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -91,7 +95,7 @@ public class AccountFragment extends Fragment {
                         .setPositiveButton(R.string.positive_button, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                MainActivity.usuarioActivo=null;
+                                MainActivity.usuarioActivo = null;
                                 Intent i = new Intent(context, LoginActivity.class);
                                 startActivity(i);
                             }

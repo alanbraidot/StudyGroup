@@ -15,12 +15,13 @@ import com.example.studygroup.activities.GroupActivity;
 import com.example.studygroup.domain.Group;
 import com.example.studygroup.holders.SearchFragmentHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentHolder> {
 
-    private List<Group> mDataset;
+    private List<Group> mDataset = new ArrayList<>();
     private Context context;
 
     public SearchFragmentAdapter(List<Group> myDataset, Context context) {

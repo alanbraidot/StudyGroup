@@ -15,12 +15,12 @@
     <string name="assigned_teacher_true">Con profesor asignado</string>
     <string name="assigned_teacher_false">Sin profesor asignado</string>
     <string name="more_info_recycler_view">+Información</string>
-    <string name="title_activity_crear_grupo">CrearGrupo</string>
+    <string name="title_activity_crear_grupo">Crear Grupo</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="crear_grupo">Crear Grupo</string>
     <string name="tv_completar_datos_registro">Completar registro</string>
-    <string name="tv_titulo_mis_grupos">Mis groups</string>
+    <string name="tv_titulo_mis_grupos">Mis grupos</string>
     <string name="es_tutor_registro">Es profesor</string>
     <string name="tv_pais_registro">País:</string>
     <string name="tv_provincia_registro">Provincia:</string>

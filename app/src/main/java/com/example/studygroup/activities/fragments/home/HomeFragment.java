@@ -47,30 +47,9 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        //TODO Estos metodos reemplazan el fragment original, hay que cambiarlo por otro que nos mueva a ese fragment en vez de intercambiar.
-        cardViewGroups.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SearchFragment searchFragment = new SearchFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.nav_host_fragment, searchFragment)
-                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-        cardViewPeople.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               SearchFragment searchFragment = new SearchFragment();
-               getActivity().getSupportFragmentManager().beginTransaction()
-                       .replace(R.id.nav_host_fragment, searchFragment)
-                       .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                       .addToBackStack(null)
-                       .commit();
-           }
-        });
+        cardViewGroups.setEnabled(false);
+        cardViewPeople.setEnabled(false);
+        cardViewInstitutes.setEnabled(false);
 
         return root;
     }

@@ -22,6 +22,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.tasks.Task;
 import com.shobhitpuri.custombuttons.GoogleSignInButton;
@@ -36,6 +38,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import static com.example.studygroup.receivers.MyReceiver.CHANNEL_ID_NOTIFICATION_LOGIN;
+import static com.example.studygroup.receivers.MyReceiver.LOGIN_SUCCESSFULLY;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -121,6 +124,17 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         GeneralController.getInstance().getCareerList().add(iq_fich);
     }
 
+    public void logout(){
+        Auth.GoogleSignInApi.signOut(apiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                        apiClient.disconnect();
+                        Toast.makeText(getApplicationContext(),"Sesión cerrada correctamente",Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
     @Override
     protected void onStart(){
         super.onStart();
@@ -138,7 +152,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             createNotificationChannel();
             welcomeNotification(account.getGivenName());
             startActivity(i);
-            finish();
         }
         else {
             btnLogin.setVisibility(View.VISIBLE);
@@ -211,7 +224,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = getResources().getString(R.string.channel_notification_login);
             String description = getResources().getString(R.string.channel_notification_login_description);
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            int importance = NotificationManager.IMPORTANCE_LOW;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID_NOTIFICATION_LOGIN, name, importance);
             channel.setDescription(description);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);

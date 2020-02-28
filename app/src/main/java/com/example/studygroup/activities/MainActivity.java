@@ -34,4 +34,9 @@ public class MainActivity extends AppCompatActivity {
         actionBar.hide();
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
+
 }
