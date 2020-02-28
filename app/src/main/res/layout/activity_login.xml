@@ -15,7 +15,7 @@
         android:background="#d2e0fa"
         android:contentDescription="@string/content_description_logo_login"
         android:scaleType="fitEnd"
-        android:src="@mipmap/log2"
+        android:src="@mipmap/background_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

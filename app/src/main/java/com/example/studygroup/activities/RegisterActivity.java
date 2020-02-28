@@ -91,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
         layoutTutor = (ConstraintLayout) findViewById(R.id.layoutTutor);
         btnGuardar = (Button) findViewById(R.id.btn_guardar_registro);
         materiasSeleccionadas = (EditText) findViewById(R.id.et_subjects_register);
+        materiasSeleccionadas.setKeyListener(null);
 
         btnAgregarFoto.setOnClickListener(new View.OnClickListener() {
             @Override

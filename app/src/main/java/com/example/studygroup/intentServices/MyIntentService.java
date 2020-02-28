@@ -18,8 +18,7 @@ public class MyIntentService extends IntentService {
     @Override
     public void onCreate() {
         super.onCreate();
-        BroadcastReceiver br = new MyReceiver();
-        //TODO Configurar IntentService
+        BroadcastReceiver br = MyReceiver.getInstance();
         IntentFilter filter = new IntentFilter();
         filter.addAction(MyReceiver.LOGIN_SUCCESSFULLY);
         getApplication().getApplicationContext().registerReceiver(br,filter);

@@ -30,8 +30,7 @@ public class Group {
     private Subject.SubjectEnum subject;
     @ColumnInfo(name = "faculty")
     private Faculty.FacultyEnum faculty;
-    //TODO Convertir para almacenar
-    @Ignore
+    @ColumnInfo(name = "university")
     private University.UniversityEnum university;
     @Ignore
     private LatLng lugarEncuentro;

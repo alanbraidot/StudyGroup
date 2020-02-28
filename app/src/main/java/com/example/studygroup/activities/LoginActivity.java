@@ -3,6 +3,9 @@ package com.example.studygroup.activities;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+
 import com.example.studygroup.R;
 import com.example.studygroup.controllers.AddressController;
 import com.example.studygroup.controllers.GeneralController;
@@ -33,6 +36,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
+
+import static com.example.studygroup.receivers.MyReceiver.CHANNEL_ID_NOTIFICATION_LOGIN;
+import static com.example.studygroup.receivers.MyReceiver.ID_NOTIFICATION_LOGIN;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -132,6 +138,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             if(MainActivity.usuarioActivo==null) {
                 MainActivity.usuarioActivo = PersonController.findPerson(account.getEmail(), this);
             }
+            createNotificationChannel();
             welcomeNotification(account.getGivenName());
             startActivity(i);
             finish();
@@ -195,25 +202,18 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void welcomeNotification(final String name){
-        Runnable myRunnable = new Runnable() {
-            @Override
-            public void run() {
-                Intent i = new Intent();
+        Intent i = new Intent();
                 i.putExtra("Name",name);
                 i.setAction(MyReceiver.LOGIN_SUCCESSFULLY);
-                sendBroadcast(i);
-            }
-        };
-        Thread thread = new Thread(myRunnable);
-        thread.start();
+                MyReceiver.getInstance().onReceive(getApplicationContext(),i);
     }
 
     private void createNotificationChannel(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = String.valueOf(R.string.channel_notification_login);
-            String description = String.valueOf(R.string.channel_notification_login_description);
+            CharSequence name = getResources().getString(R.string.channel_notification_login);
+            String description = getResources().getString(R.string.channel_notification_login_description);
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(MyReceiver.CHANNEL_ID_NOTIFICATION_LOGIN, name, importance);
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID_NOTIFICATION_LOGIN, name, importance);
             channel.setDescription(description);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);

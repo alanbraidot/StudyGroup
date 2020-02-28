@@ -14,21 +14,28 @@ import com.example.studygroup.R;
 
 public class MyReceiver extends BroadcastReceiver {
 
+    private static MyReceiver _INSTANCE = new MyReceiver();
+
     public static final String LOGIN_SUCCESSFULLY = "android.intent.action.LOGIN_SUCCESSFULLY";
     public static final Integer ID_NOTIFICATION_LOGIN = 999;
     public static final String CHANNEL_ID_NOTIFICATION_LOGIN = "1";
+
+    public MyReceiver(){}
 
     @Override
     public void onReceive(Context context, Intent intent) {
         String name = intent.getExtras().getString("Name");
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, CHANNEL_ID_NOTIFICATION_LOGIN)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_mood_black_24dp)
                 .setContentTitle("Bienvenido")
-                .setContentText(name + R.string.welcome_text_notification)
+                .setContentText("Hola " + name + context.getResources().getString(R.string.welcome_text_notification))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(null)
-                .setAutoCancel(true);
+                .setContentIntent(null);
         NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(context);
         notificationManagerCompat.notify(ID_NOTIFICATION_LOGIN, mBuilder.build());
+    }
+
+    public static MyReceiver getInstance() {
+        return _INSTANCE;
     }
 }
