@@ -31,8 +31,4 @@ public class AddressController {
     public Address findById(Integer id, Context context){
         return AddressRepository.getInstance(context).findById(id);
     }
-
-    public Address findById(Integer id){
-        return AddressRepository.getInstance().findById(id);
-    }
 }

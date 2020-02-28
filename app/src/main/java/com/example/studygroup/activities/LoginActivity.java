@@ -38,7 +38,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import static com.example.studygroup.receivers.MyReceiver.CHANNEL_ID_NOTIFICATION_LOGIN;
-import static com.example.studygroup.receivers.MyReceiver.ID_NOTIFICATION_LOGIN;
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -174,7 +174,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             ));
             MainActivity.usuarioActivo.setIsTeacher(data.getExtras().getBoolean("Is_teacher"));
             if(MainActivity.usuarioActivo.isTeacher()){
-                //TODO Cargar materias
+                String[] nombreMaterias= data.getExtras().getStringArray("Subjects");
+                for(int i=0; i<nombreMaterias.length;i++){
+                    MainActivity.usuarioActivo.getMateriasHabilitadas().add(Subject.getEnumKey(nombreMaterias[i]));
+                }
+
             }
             else{
                 MainActivity.usuarioActivo.setUniversityEnum(University.getEnumKey(data.getExtras().getString("University")));

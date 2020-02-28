@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.example.studygroup.R;
 import com.example.studygroup.adapters.SearchFragmentAdapter;
+import com.example.studygroup.domain.Group;
+
+import java.util.List;
 
 public class MyGroupsActivity extends AppCompatActivity {
 

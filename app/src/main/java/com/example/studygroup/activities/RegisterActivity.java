@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ConstraintLayout layoutEstudiante;
     private ConstraintLayout layoutTutor;
     private Button btnGuardar;
-    private EditText materiasSeleccionadas;
+    private EditText etmateriasSeleccionadas;
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int REQUEST_IMAGE_SAVE = 2;
     private String pathPhoto = null;
@@ -66,6 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean[] checkedSubjects;
     private Subject.SubjectEnum[] subjectEnums;
     private String[] subjectsList;
+    private ArrayList<String> materiasSeleccionadas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,8 +91,8 @@ public class RegisterActivity extends AppCompatActivity {
         layoutEstudiante = (ConstraintLayout) findViewById(R.id.layoutEstudiante);
         layoutTutor = (ConstraintLayout) findViewById(R.id.layoutTutor);
         btnGuardar = (Button) findViewById(R.id.btn_guardar_registro);
-        materiasSeleccionadas = (EditText) findViewById(R.id.et_subjects_register);
-        materiasSeleccionadas.setKeyListener(null);
+        etmateriasSeleccionadas = (EditText) findViewById(R.id.et_subjects_register);
+        etmateriasSeleccionadas.setKeyListener(null);
 
         btnAgregarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,15 +153,16 @@ public class RegisterActivity extends AppCompatActivity {
                 mBuilder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        //TODO Completar EditText con materias seleccionadas.
                         String item = "";
+                        materiasSeleccionadas= new ArrayList<>();
                         for(int i=0; i< mUserSubjects.size(); i++){
                             item = item + subjectsList[mUserSubjects.get(i)];
+                            materiasSeleccionadas.add(subjectsList[mUserSubjects.get(i)]);
                             if(i != mUserSubjects.size() -1){
                                 item = item + ", ";
                             }
                         }
-                        materiasSeleccionadas.setText(item);
+                        etmateriasSeleccionadas.setText(item);
                     }
                 });
                 mBuilder.setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
@@ -202,7 +204,7 @@ public class RegisterActivity extends AppCompatActivity {
                     i.putExtra("Career", spinnerCarrera.getSelectedItem().toString());
                 }
                 else {
-                    //TODO Agregar al intent las materias seleccionadas por el profesor.
+                    i.putExtra("Subjects",materiasSeleccionadas);
                 }
                 setResult(RESULT_OK,i);
                 finish();
