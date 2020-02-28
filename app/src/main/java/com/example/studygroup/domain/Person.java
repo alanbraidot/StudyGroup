@@ -34,8 +34,11 @@ public class Person {
     private University.UniversityEnum universityEnum;
     @ColumnInfo(name = "photo_location")
     private Bitmap photo;
+    @ColumnInfo(name = "country")
     private Address.CountryEnum countryEnum;
+    @ColumnInfo(name = "province")
     private Address.ProvinceEnum provinceEnum;
+    @ColumnInfo(name = "city")
     private Address.CityEnum cityEnum;
     //TODO Convertir para almacenar
     @Ignore
