@@ -3,11 +3,8 @@ package com.example.studygroup.activities;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
 
 import com.example.studygroup.R;
-import com.example.studygroup.controllers.AddressController;
 import com.example.studygroup.controllers.GeneralController;
 import com.example.studygroup.controllers.PersonController;
 import com.example.studygroup.domain.Address;
@@ -25,6 +22,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.tasks.Task;
 import com.shobhitpuri.custombuttons.GoogleSignInButton;
 
@@ -38,7 +36,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import static com.example.studygroup.receivers.MyReceiver.CHANNEL_ID_NOTIFICATION_LOGIN;
-import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
@@ -167,11 +164,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             MainActivity.usuarioActivo.setNombre(account.getGivenName());
             MainActivity.usuarioActivo.setApellido(account.getFamilyName());
             MainActivity.usuarioActivo.setEmail(account.getEmail());
-            MainActivity.usuarioActivo.setAddress(new Address(
-                    Address.getCityEnumKey(data.getExtras().getString("City")),
-                    Address.getProvinceEnumKey(data.getExtras().getString("Province")),
-                    Address.getCountryEnumKey(data.getExtras().getString("Country"))
-            ));
+            MainActivity.usuarioActivo.setCityEnum(Address.getCityEnumKey(data.getExtras().getString("City")));
+            MainActivity.usuarioActivo.setProvinceEnum(Address.getProvinceEnumKey(data.getExtras().getString("Province")));
+            MainActivity.usuarioActivo.setCountryEnum(Address.getCountryEnumKey(data.getExtras().getString("Country")));
             MainActivity.usuarioActivo.setIsTeacher(data.getExtras().getBoolean("Is_teacher"));
             if(MainActivity.usuarioActivo.isTeacher()){
                 String[] nombreMaterias= data.getExtras().getStringArray("Subjects");

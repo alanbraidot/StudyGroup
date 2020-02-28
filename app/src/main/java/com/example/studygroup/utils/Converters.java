@@ -4,9 +4,6 @@ import android.graphics.Bitmap;
 
 import androidx.room.TypeConverter;
 
-import com.example.studygroup.activities.LoginActivity;
-import com.example.studygroup.controllers.AddressController;
-import com.example.studygroup.controllers.GeneralController;
 import com.example.studygroup.controllers.PersonController;
 import com.example.studygroup.domain.Address;
 import com.example.studygroup.domain.Career;
@@ -14,20 +11,8 @@ import com.example.studygroup.domain.Faculty;
 import com.example.studygroup.domain.Person;
 import com.example.studygroup.domain.Subject;
 import com.example.studygroup.domain.University;
-import com.example.studygroup.persistence.repositories.PersonRepository;
 
 public class Converters {
-
-    @TypeConverter
-    public static Integer addressToInteger(Address address){
-        return address.getId();
-    }
-
-    //TODO Corregir este metodo(no se puede pasar null).
-    /*@TypeConverter
-    public static Address integerToAddress(Integer id){
-        return AddressController.getInstance().findById(id);
-    }*/
 
     @TypeConverter
     public static String subjectToString(Subject.SubjectEnum subjectEnum){

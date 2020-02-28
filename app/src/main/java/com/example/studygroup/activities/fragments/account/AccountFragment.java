@@ -61,8 +61,8 @@ public class AccountFragment extends Fragment {
         //TODO Descomentar carga de foto.
         //fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getPhoto());
         nombre.setText(MainActivity.usuarioActivo.getNombre());
-        pais.setText(MainActivity.usuarioActivo.getAddress().getCountryEnum().toString());
-        ciudadProvincia.setText((MainActivity.usuarioActivo.getAddress().getCityEnum().toString()+", "+MainActivity.usuarioActivo.getAddress().getProvinceEnum().toString()));
+        pais.setText(MainActivity.usuarioActivo.getCountryEnum().toString());
+        ciudadProvincia.setText((MainActivity.usuarioActivo.getCityEnum().toString()+", "+MainActivity.usuarioActivo.getProvinceEnum().toString()));
         if(!MainActivity.usuarioActivo.isTeacher()){
             facultad.setText(MainActivity.usuarioActivo.getFacultyEnum().toString());
             universidad.setText(MainActivity.usuarioActivo.getUniversityEnum().toString());

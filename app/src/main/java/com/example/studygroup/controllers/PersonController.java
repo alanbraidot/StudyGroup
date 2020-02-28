@@ -1,17 +1,13 @@
 package com.example.studygroup.controllers;
 import android.content.Context;
 
-import com.example.studygroup.domain.Address;
 import com.example.studygroup.domain.Career;
 import com.example.studygroup.domain.Faculty;
 import com.example.studygroup.domain.Person;
 import com.example.studygroup.domain.Subject;
-import com.example.studygroup.persistence.DBClient;
-import com.example.studygroup.persistence.repositories.AddressRepository;
 import com.example.studygroup.persistence.repositories.PersonRepository;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class PersonController {
@@ -46,7 +42,6 @@ public class PersonController {
 
     public static void save(Person person, Context context){
         PersonRepository.getInstance(context).create(person);
-        AddressRepository.getInstance(context).create(person.getAddress());
     }
 
     public static List<Person> findTeachers(Context context){

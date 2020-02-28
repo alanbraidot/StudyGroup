@@ -8,10 +8,6 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
-import androidx.room.TypeConverters;
-
-import com.example.studygroup.utils.Converters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,9 +34,9 @@ public class Person {
     private University.UniversityEnum universityEnum;
     @ColumnInfo(name = "photo_location")
     private Bitmap photo;
-    //TODO Convertir para almacenar
-    @Ignore
-    private Address address;
+    private Address.CountryEnum countryEnum;
+    private Address.ProvinceEnum provinceEnum;
+    private Address.CityEnum cityEnum;
     //TODO Convertir para almacenar
     @Ignore
     private List<Group> groups;
@@ -48,13 +44,15 @@ public class Person {
     @Ignore
     private List<Subject.SubjectEnum> materiasHabilitadas;
 
-    public Person(String nombre, String apellido, String email, Boolean isTeacher, Bitmap photo, Address address, University.UniversityEnum universityEnum, Faculty.FacultyEnum facultyEnum, Career.CareerEnum careerEnum, List<Subject.SubjectEnum> materiasHabilitadas) {
+    public Person(String nombre, String apellido, String email, Boolean isTeacher, Bitmap photo, Address.CountryEnum countryEnum, Address.ProvinceEnum provinceEnum, Address.CityEnum cityEnum, University.UniversityEnum universityEnum, Faculty.FacultyEnum facultyEnum, Career.CareerEnum careerEnum, List<Subject.SubjectEnum> materiasHabilitadas) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.isTeacher = isTeacher;
         this.photo = photo;
-        this.address = address;
+        this.countryEnum = countryEnum;
+        this.provinceEnum = provinceEnum;
+        this.cityEnum=cityEnum;
         if(isTeacher){
             this.materiasHabilitadas = materiasHabilitadas;
             this.universityEnum=null;
@@ -72,6 +70,30 @@ public class Person {
 
     public Person(){}
 
+    public Address.CountryEnum getCountryEnum() {
+        return countryEnum;
+    }
+
+    public void setCountryEnum(Address.CountryEnum countryEnum) {
+        this.countryEnum = countryEnum;
+    }
+
+    public Address.ProvinceEnum getProvinceEnum() {
+        return provinceEnum;
+    }
+
+    public void setProvinceEnum(Address.ProvinceEnum provinceEnum) {
+        this.provinceEnum = provinceEnum;
+    }
+
+    public Address.CityEnum getCityEnum() {
+        return cityEnum;
+    }
+
+    public void setCityEnum(Address.CityEnum cityEnum) {
+        this.cityEnum = cityEnum;
+    }
+
     public Integer getId() { return id; }
 
     public String getNombre() {
@@ -84,10 +106,6 @@ public class Person {
 
     public String getEmail() {
         return email;
-    }
-
-    public Address getAddress() {
-        return address;
     }
 
     public Bitmap getPhoto() {
@@ -114,10 +132,6 @@ public class Person {
 
     public void setPhoto(Bitmap photo) {
         this.photo = photo;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 
     public void setGroups(List<Group> groups) {
