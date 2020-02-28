@@ -15,7 +15,6 @@ public class GroupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_group);
         ActionBar actionBar= getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
         actionBar.setTitle("");
     }
 }

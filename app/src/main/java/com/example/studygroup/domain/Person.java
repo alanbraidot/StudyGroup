@@ -46,9 +46,9 @@ public class Person {
     private List<Group> groups;
     //TODO Convertir para almacenar
     @Ignore
-    private List<Subject> materiasHabilitadas;
+    private List<Subject.SubjectEnum> materiasHabilitadas;
 
-    public Person(String nombre, String apellido, String email, Boolean isTeacher, Bitmap photo, Address address, University.UniversityEnum universityEnum, Faculty.FacultyEnum facultyEnum, Career.CareerEnum careerEnum, List<Subject> materiasHabilitadas) {
+    public Person(String nombre, String apellido, String email, Boolean isTeacher, Bitmap photo, Address address, University.UniversityEnum universityEnum, Faculty.FacultyEnum facultyEnum, Career.CareerEnum careerEnum, List<Subject.SubjectEnum> materiasHabilitadas) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
@@ -136,7 +136,7 @@ public class Person {
         return careerEnum;
     }
 
-    public List<Subject> getMateriasHabilitadas() {
+    public List<Subject.SubjectEnum> getMateriasHabilitadas() {
         return materiasHabilitadas;
     }
 

@@ -34,6 +34,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleSignInButton btnLogin;
@@ -167,7 +169,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             ));
             MainActivity.usuarioActivo.setIsTeacher(data.getExtras().getBoolean("Is_teacher"));
             if(MainActivity.usuarioActivo.isTeacher()){
-                //TODO Cargar materias
+                String[] nombreMaterias= data.getExtras().getStringArray("Subjects");
+                for(int i=0; i<nombreMaterias.length;i++){
+                    MainActivity.usuarioActivo.getMateriasHabilitadas().add(Subject.getEnumKey(nombreMaterias[i]));
+                }
+
             }
             else{
                 MainActivity.usuarioActivo.setUniversityEnum(University.getEnumKey(data.getExtras().getString("University")));
