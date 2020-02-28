@@ -9,7 +9,7 @@
         android:layout_height="match_parent">
 
         <EditText
-            android:id="@+id/et_nombregrupo_crear"
+            android:id="@+id/tv_nombregrupo_crear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
@@ -32,7 +32,7 @@
             android:textColor="@color/colorPrimaryText"
             android:textSize="@dimen/activity_normal"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_nombregrupo_crear" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_nombregrupo_crear" />
 
         <Spinner
             android:id="@+id/spinner_universidad_crear_grupo"

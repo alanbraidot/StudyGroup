@@ -24,10 +24,10 @@ public class Converters {
     }
 
     //TODO Corregir este metodo(no se puede pasar null).
-    /*@TypeConverter
+    @TypeConverter
     public static Address integerToAddress(Integer id){
         return AddressController.getInstance().findById(id);
-    }*/
+    }
 
     @TypeConverter
     public static String subjectToString(Subject.SubjectEnum subjectEnum){

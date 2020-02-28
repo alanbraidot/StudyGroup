@@ -142,8 +142,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 if(isChecked){
                                     if(!mUserSubjects.contains(position))
                                         mUserSubjects.add(position);
-                                    else
-                                        mUserSubjects.remove(position);
+                                }
+                                else {
+                                    if(mUserSubjects.contains(position)) mUserSubjects.remove(position);
                                 }
                             }
                         });

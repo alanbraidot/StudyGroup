@@ -29,4 +29,8 @@ public class GroupController {
     public List<Group> getGroupList() {
         return groupList;
     }
+
+    public static Group findById(Integer id, Context context){
+        return GroupRepository.getInstance(context).findById(id);
+    }
 }

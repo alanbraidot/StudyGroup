@@ -104,4 +104,12 @@ public class Group {
     public void setFaculty(Faculty.FacultyEnum faculty) {
         this.faculty = faculty;
     }
+
+    public University.UniversityEnum getUniversity() {
+        return university;
+    }
+
+    public void setUniversity(University.UniversityEnum university) {
+        this.university = university;
+    }
 }

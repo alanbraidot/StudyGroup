@@ -11,65 +11,66 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tv_facultad_grupo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginVertical="@dimen/activity_vertical_margin"
-            android:text="@string/tv_facultad_grupo"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/activity_normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_universidadgrupo" />
+                <TextView
+                    android:id="@+id/tv_facultad_group_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_facultad_grupo"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_universidad_group_activity" />
+
+                <TextView
+                    android:id="@+id/tv_integrantes_group_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_integrantes_grupo"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_materia_group_activity" />
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView_ubicacion_group_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_lugar_encuentro_group_activity" />
+
+                <TextView
+                    android:id="@+id/tv_lugar_encuentro_group_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_lugar_encuentro_grupo"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_tutor_group_activity" />
+
+                <TextView
+                    android:id="@+id/tv_materia_group_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_materia_grupo"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_carrera_group_activity" />
 
         <TextView
-            android:id="@+id/tv_integrantes_grupo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginVertical="@dimen/activity_vertical_margin"
-            android:text="@string/tv_integrantes_grupo"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/activity_normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_materia_grupo" />
-
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView_ubicacion_grupo"
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginVertical="@dimen/activity_vertical_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_lugar_encuentro" />
-
-        <TextView
-            android:id="@+id/tv_lugar_encuentro"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginVertical="@dimen/activity_vertical_margin"
-            android:text="@string/tv_lugar_encuentro_grupo"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/activity_normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_tutor_grupo" />
-
-        <TextView
-            android:id="@+id/tv_materia_grupo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginVertical="@dimen/activity_vertical_margin"
-            android:text="@string/tv_materia_grupo"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/activity_normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_carrera_grupo" />
-
-        <TextView
-            android:id="@+id/et_nombregrupo_crear"
+            android:id="@+id/tv_nombregrupo_group_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
@@ -83,51 +84,51 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_carrera_grupo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginVertical="@dimen/activity_vertical_margin"
-            android:text="@string/tv_carrera_grupo"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/activity_normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_facultad_grupo" />
+                <TextView
+                    android:id="@+id/tv_carrera_group_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_carrera_grupo"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_facultad_group_activity" />
 
-        <TextView
-            android:id="@+id/tv_tutor_grupo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginVertical="@dimen/activity_vertical_margin"
-            android:text="@string/tv_tutor_grupo"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/activity_normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rv_integrantes_grupo" />
+                <TextView
+                    android:id="@+id/tv_tutor_group_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_tutor_grupo"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lv_integrantes_group_activity" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_integrantes_grupo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginVertical="@dimen/activity_vertical_margin"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_integrantes_grupo" />
+                <ListView
+                    android:id="@+id/lv_integrantes_group_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_integrantes_group_activity" />
 
-        <TextView
-            android:id="@+id/tv_universidadgrupo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
-            android:layout_marginVertical="@dimen/activity_vertical_margin"
-            android:text="@string/tv_universidad_grupo"
-            android:textColor="@color/colorPrimaryText"
-            android:textSize="@dimen/activity_normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/et_nombregrupo_crear" />
+                <TextView
+                    android:id="@+id/tv_universidad_group_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginVertical="@dimen/activity_vertical_margin"
+                    android:text="@string/tv_universidad_grupo"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/activity_normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_nombregrupo_group_activity" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

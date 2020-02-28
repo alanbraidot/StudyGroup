@@ -1,5 +1,6 @@
 package com.example.studygroup.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,11 @@ import java.util.List;
 
 public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupHolder>  {
     private List<Group> mDataset;
+    private Context context;
 
-    public MyGroupAdapter(List<Group> myDataset) {
+    public MyGroupAdapter(List<Group> myDataset, Context context) {
         mDataset = myDataset;
+        this.context = context;
     }
 
     @NonNull

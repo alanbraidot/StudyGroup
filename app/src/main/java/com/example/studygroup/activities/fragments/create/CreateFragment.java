@@ -1,11 +1,9 @@
 package com.example.studygroup.activities.fragments.create;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -23,7 +21,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.studygroup.R;
-import com.example.studygroup.activities.GroupMapsActivity;
+import com.example.studygroup.activities.CreateGroupMapsActivity;
 import com.example.studygroup.activities.MainActivity;
 import com.example.studygroup.controllers.GeneralController;
 import com.example.studygroup.controllers.GroupController;
@@ -34,11 +32,9 @@ import com.example.studygroup.domain.Group;
 import com.example.studygroup.domain.Person;
 import com.example.studygroup.domain.Subject;
 import com.example.studygroup.domain.University;
-import com.example.studygroup.persistence.repositories.GroupRepository;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -81,7 +77,7 @@ public class CreateFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_create, container, false);
         context = root.getContext();
 
-        etNombre = root.findViewById(R.id.et_nombregrupo_crear);
+        etNombre = root.findViewById(R.id.tv_nombregrupo_crear);
         spinnerUniversidad = root.findViewById(R.id.spinner_universidad_crear_grupo);
         spinnerFacultad = root.findViewById(R.id.spinner_facultad_crear_grupo);
         spinnerCarrera = root.findViewById(R.id.spinner_carrera_crear_grupo);
@@ -98,7 +94,7 @@ public class CreateFragment extends Fragment {
         btnLugarEncuentro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(context, GroupMapsActivity.class);
+                Intent i = new Intent(context, CreateGroupMapsActivity.class);
                 startActivityForResult(i,REQUEST_SELECCIONAR_UBICACION);
             }
         });

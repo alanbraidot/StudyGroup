@@ -3,7 +3,7 @@
     <string name="title_activity_search">Search</string>
     <string name="title_home">Inicio</string>
     <string name="title_search">Buscar</string>
-    <string name="title_create">Crear group</string>
+    <string name="title_create">Crear grupo</string>
     <string name="title_chat">Chats</string>
     <string name="title_account">Perfil</string>
     <string name="textView_filter_search_fragment">Filtrar por</string>
@@ -70,4 +70,5 @@
     <string name="se_creo_exitoso">se creó de forma exitosa</string>
     <string name="incomplete_fields">Faltan completar datos</string>
     <string name="title_teacher_dialog_create_group">Seleccione un tutor</string>
+    <string name="tv_soon">Proximamente</string>
 </resources>

@@ -37,7 +37,7 @@ public class MyGroupsActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new SearchFragmentAdapter(MainActivity.usuarioActivo.getGroups());
+        mAdapter = new SearchFragmentAdapter(MainActivity.usuarioActivo.getGroups(), MyGroupsActivity.this);
         mRecyclerView.setAdapter(mAdapter);
     }
 }
