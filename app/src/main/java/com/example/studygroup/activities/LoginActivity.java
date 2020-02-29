@@ -37,6 +37,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import static com.example.studygroup.receivers.MyReceiver.CHANNEL_ID_NOTIFICATION_LOGIN;
 import static com.example.studygroup.receivers.MyReceiver.LOGIN_SUCCESSFULLY;
 
@@ -129,6 +131,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
+                        //TODO Finalizar funcionalidad de cerrar sesion.
                         apiClient.disconnect();
                         Toast.makeText(getApplicationContext(),"Sesión cerrada correctamente",Toast.LENGTH_SHORT).show();
                     }
@@ -182,9 +185,10 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             MainActivity.usuarioActivo.setCountryEnum(Address.getCountryEnumKey(data.getExtras().getString("Country")));
             MainActivity.usuarioActivo.setIsTeacher(data.getExtras().getBoolean("Is_teacher"));
             if(MainActivity.usuarioActivo.isTeacher()){
-                String[] nombreMaterias= data.getExtras().getStringArray("Subjects");
-                for(int i=0; i<nombreMaterias.length;i++){
-                    MainActivity.usuarioActivo.getMateriasHabilitadas().add(Subject.getEnumKey(nombreMaterias[i]));
+                //TODO nombreMaterias recibe null
+                ArrayList<String> nombreMaterias = data.getExtras().getStringArrayList("Subjects");
+                for(String s : nombreMaterias){
+                    MainActivity.usuarioActivo.getMateriasHabilitadas().add(Subject.getEnumKey(s));
                 }
 
             }
@@ -224,7 +228,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = getResources().getString(R.string.channel_notification_login);
             String description = getResources().getString(R.string.channel_notification_login_description);
-            int importance = NotificationManager.IMPORTANCE_LOW;
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
             NotificationChannel channel = new NotificationChannel(CHANNEL_ID_NOTIFICATION_LOGIN, name, importance);
             channel.setDescription(description);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);

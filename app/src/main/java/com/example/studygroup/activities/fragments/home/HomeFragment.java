@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -37,7 +38,6 @@ public class HomeFragment extends Fragment {
         cardViewGroups = root.findViewById(R.id.cv_grupos_home);
         cardViewPeople = root.findViewById(R.id.cv_buscarpersonas_home);
         cardViewInstitutes = root.findViewById(R.id.cv_instituciones_home);
-        cardViewInstitutes.setEnabled(false);
 
         cardViewMyGroups.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +47,24 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        cardViewGroups.setEnabled(false);
-        cardViewPeople.setEnabled(false);
-        cardViewInstitutes.setEnabled(false);
+        cardViewGroups.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), getResources().getString(R.string.tv_soon),Toast.LENGTH_SHORT).show();
+            }
+        });
+        cardViewPeople.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), getResources().getString(R.string.tv_soon),Toast.LENGTH_SHORT).show();
+            }
+        });
+        cardViewInstitutes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), getResources().getString(R.string.tv_soon),Toast.LENGTH_SHORT).show();
+            }
+        });
 
         return root;
     }

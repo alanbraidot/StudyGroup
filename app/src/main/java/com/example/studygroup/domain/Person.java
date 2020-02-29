@@ -71,7 +71,10 @@ public class Person {
         this.groups = new ArrayList<>();
     }
 
-    public Person(){}
+    public Person(){
+        this.groups=new ArrayList<>();
+        this.materiasHabilitadas = new ArrayList<>();
+    }
 
     public Address.CountryEnum getCountryEnum() {
         return countryEnum;

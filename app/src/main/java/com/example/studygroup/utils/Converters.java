@@ -12,6 +12,9 @@ import com.example.studygroup.domain.Person;
 import com.example.studygroup.domain.Subject;
 import com.example.studygroup.domain.University;
 
+import java.lang.reflect.Type;
+import java.util.Collections;
+
 public class Converters {
 
     @TypeConverter
