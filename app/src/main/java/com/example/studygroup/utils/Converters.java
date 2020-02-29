@@ -1,6 +1,7 @@
 package com.example.studygroup.utils;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import androidx.room.TypeConverter;
 
@@ -12,6 +13,7 @@ import com.example.studygroup.domain.Person;
 import com.example.studygroup.domain.Subject;
 import com.example.studygroup.domain.University;
 
+import java.io.File;
 import java.lang.reflect.Type;
 import java.util.Collections;
 
@@ -19,42 +21,66 @@ public class Converters {
 
     @TypeConverter
     public static String subjectToString(Subject.SubjectEnum subjectEnum){
-        return subjectEnum.toString();
+        if(subjectEnum==null)
+            return null;
+        else
+            return subjectEnum.toString();
     }
 
     @TypeConverter
     public static Subject.SubjectEnum stringToSubjectEnum(String subject){
-        return Subject.getEnumKey(subject);
+        if(subject==null)
+            return null;
+        else
+            return Subject.getEnumKey(subject);
     }
 
     @TypeConverter
     public static String careerEnumToString(Career.CareerEnum careerEnum){
-        return careerEnum.toString();
+        if(careerEnum==null)
+            return null;
+        else
+            return careerEnum.toString();
     }
 
     @TypeConverter
     public static Career.CareerEnum stringToCareerEnum(String career){
-        return Career.getEnumKey(career);
+        if(career==null)
+            return null;
+        else
+            return Career.getEnumKey(career);
     }
 
     @TypeConverter
     public static String facultyEnumToString(Faculty.FacultyEnum facultyEnum){
-        return facultyEnum.toString();
+        if(facultyEnum==null)
+            return null;
+        else
+            return facultyEnum.toString();
     }
 
     @TypeConverter
     public static Faculty.FacultyEnum stringToFacultyEnum(String faculty){
-        return Faculty.getEnumKey(faculty);
+        if(faculty==null)
+            return null;
+        else
+            return Faculty.getEnumKey(faculty);
     }
 
     @TypeConverter
     public static String universityEnumToString(University.UniversityEnum universityEnum){
-        return universityEnum.toString();
+        if(universityEnum==null)
+            return null;
+        else
+            return universityEnum.toString();
     }
 
     @TypeConverter
     public static University.UniversityEnum stringToUniversityEnum(String university){
-        return University.getEnumKey(university);
+        if(university==null)
+            return null;
+        else
+            return University.getEnumKey(university);
     }
 
     @TypeConverter
@@ -85,18 +111,6 @@ public class Converters {
     @TypeConverter
     public static Address.CityEnum stringToCityEnum(String city){
         return Address.getCityEnumKey(city);
-    }
-
-    @TypeConverter
-    public static String photoToString(Bitmap photo){
-        //TODO Convertir foto a un formato almacenable.
-        return null;
-    }
-
-    @TypeConverter
-    public static Bitmap stringToPhoto(String location){
-        //TODO Convertir direccion a Bitmap
-        return null;
     }
 
     @TypeConverter

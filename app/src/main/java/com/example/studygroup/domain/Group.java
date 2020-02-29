@@ -20,8 +20,10 @@ public class Group {
     //TODO Convertir para almacenar
     @Ignore
     private List<Person> integrantes;
-    @ColumnInfo(name = "id_teacher")
+    @Ignore
     private Person teacher;
+    @ColumnInfo(name = "id_teacher")
+    private int idTeacher;
     @ColumnInfo(name = "name")
     private String nombre;
     @ColumnInfo(name = "career")
@@ -32,6 +34,7 @@ public class Group {
     private Faculty.FacultyEnum faculty;
     @ColumnInfo(name = "university")
     private University.UniversityEnum university;
+    //TODO Convertir para almacenar
     @Ignore
     private LatLng lugarEncuentro;
 
@@ -39,6 +42,7 @@ public class Group {
     public Group(String nombre, University.UniversityEnum university, Faculty.FacultyEnum faculty, Career.CareerEnum career, Subject.SubjectEnum subject,LatLng lugarEncuentro, List<Person> integrantes, Person teacher  ) {
         this.integrantes = integrantes;
         this.teacher = teacher;
+        this.idTeacher=teacher.getId();
         this.nombre = nombre;
         this.career = career;
         this.subject = subject;

@@ -30,14 +30,18 @@ public class PersonController {
     public ArrayList<Person> findMembers(Career.CareerEnum career, Faculty.FacultyEnum faculty, Context context){
         ArrayList<Person> p = (ArrayList<Person>) PersonRepository.getInstance(context).findAll();
         int i=0;
-        while(i<p.size()){
-            if(!p.get(i).getCareerEnum().equals(career) && !p.get(i).getFacultyEnum().equals(faculty)){
-                p.remove(i);
-                i++;
+        if(p!=null) {
+            while (i < p.size()) {
+                if (!p.get(i).getCareerEnum().equals(career) && !p.get(i).getFacultyEnum().equals(faculty)) {
+                    p.remove(i);
+                    i++;
+                } else i++;
             }
-            else i++;
+            return p;
         }
-        return p;
+        else
+            return new ArrayList<>();
+
     }
 
     public static void save(Person person, Context context){

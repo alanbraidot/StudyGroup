@@ -3,7 +3,9 @@ package com.example.studygroup.activities.fragments.create;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -102,10 +104,49 @@ public class CreateFragment extends Fragment {
         btnIntegrantes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Cargar MultiOption dialog con estudiantes de la misma carrera y facultad.
+                //TODO Si no hay estudiantes crashea por null.
                 students = (Person[])PersonController.getInstance().findMembers((Career.CareerEnum)spinnerCarrera.getSelectedItem(),(Faculty.FacultyEnum)spinnerFacultad.getSelectedItem(),context).toArray();
                 studentsList = new String[students.length];
                 checkedStudents = new boolean[studentsList.length];
+                for(int i=0; i<students.length;i++){
+                    studentsList[i]=(students[i].getNombre()+" "+students[i].getApellido());
+                }
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(context)
+                        .setMultiChoiceItems(studentsList, checkedStudents, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int position, boolean isChecked) {
+                                if(isChecked) {
+                                    if(!mUserStudents.contains(position))
+                                        mUserStudents.add(position);
+                                }
+                                else
+                                    if(mUserStudents.contains(position))
+                                        mUserStudents.remove(position);
+                            }
+                        });
+                mBuilder.setCancelable(false);
+                mBuilder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String item = "";
+                        studentsSelected = new ArrayList<>();
+                        for (int i = 0; i < mUserStudents.size(); i++) {
+                            item = item + studentsList[mUserStudents.get(i)];
+                            studentsSelected.add(students[mUserStudents.get(i)]);
+                            if (i != mUserStudents.size() - 1)
+                                item = item + ", ";
+                        }
+                        etIntegrantes.setText(item);
+                    }
+                });
+                mBuilder.setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        mUserStudents.clear();
+                    }
+                });
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
             }
         });
 

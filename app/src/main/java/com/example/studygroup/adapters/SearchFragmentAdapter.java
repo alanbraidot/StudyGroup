@@ -47,7 +47,6 @@ public class SearchFragmentAdapter extends RecyclerView.Adapter<SearchFragmentHo
         holder.btnMasInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Mostrar pantalla informativa de group.
                 Intent i = new Intent(context, GroupActivity.class);
                 i.putExtra("Id_group", group.getId());
                 ((Activity)context).startActivity(i);

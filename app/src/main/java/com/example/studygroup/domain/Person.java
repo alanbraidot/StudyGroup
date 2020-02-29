@@ -25,15 +25,17 @@ public class Person {
     @ColumnInfo(name = "email")
     private String email;
     @ColumnInfo(name = "isTeacher")
-    private Boolean isTeacher =false;
+    private Boolean isTeacher;
     @ColumnInfo(name = "career")
     private Career.CareerEnum careerEnum;
     @ColumnInfo(name = "faculty")
     private Faculty.FacultyEnum facultyEnum;
     @ColumnInfo(name = "university")
     private University.UniversityEnum universityEnum;
-    @ColumnInfo(name = "photo_location")
+    @Ignore
     private Bitmap photo;
+    @ColumnInfo(name = "photo_location")
+    private String pathPhoto;
     @ColumnInfo(name = "country")
     private Address.CountryEnum countryEnum;
     @ColumnInfo(name = "province")
@@ -178,5 +180,13 @@ public class Person {
 
     public void setUniversityEnum(University.UniversityEnum universityEnum) {
         this.universityEnum = universityEnum;
+    }
+
+    public String getPathPhoto() {
+        return pathPhoto;
+    }
+
+    public void setPathPhoto(String pathPhoto) {
+        this.pathPhoto = pathPhoto;
     }
 }

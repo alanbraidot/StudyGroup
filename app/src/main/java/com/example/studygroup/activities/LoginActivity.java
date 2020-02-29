@@ -31,12 +31,16 @@ import com.shobhitpuri.custombuttons.GoogleSignInButton;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import static com.example.studygroup.receivers.MyReceiver.CHANNEL_ID_NOTIFICATION_LOGIN;
@@ -151,6 +155,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             if(MainActivity.usuarioActivo==null) {
                 MainActivity.usuarioActivo = PersonController.findPerson(account.getEmail(), this);
+                MainActivity.usuarioActivo.setPhoto(loadPhoto(MainActivity.usuarioActivo.getPathPhoto()));
             }
             createNotificationChannel();
             welcomeNotification(account.getGivenName());
@@ -159,6 +164,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         else {
             btnLogin.setVisibility(View.VISIBLE);
         }
+    }
+
+    private Bitmap loadPhoto(String path) {
+        File image = new File(path);
+        BitmapFactory.Options bmOptions = new BitmapFactory.Options();
+        return BitmapFactory.decodeFile(image.getAbsolutePath(),bmOptions);
     }
 
     private void signIn() {
@@ -176,7 +187,9 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         if(requestCode==REQUEST_COMPLETAR_REGISTRO && resultCode==RESULT_OK){
             MainActivity.usuarioActivo = new Person();
             //TODO Cargar foto desde el intent data
-            //MainActivity.usuarioActivo.setPhoto(/*cargar_foto*/);
+            String path_photo = data.getExtras().getString("Photo");
+            MainActivity.usuarioActivo.setPathPhoto(path_photo);
+            MainActivity.usuarioActivo.setPhoto(loadPhoto(path_photo));
             MainActivity.usuarioActivo.setNombre(account.getGivenName());
             MainActivity.usuarioActivo.setApellido(account.getFamilyName());
             MainActivity.usuarioActivo.setEmail(account.getEmail());
@@ -185,7 +198,6 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             MainActivity.usuarioActivo.setCountryEnum(Address.getCountryEnumKey(data.getExtras().getString("Country")));
             MainActivity.usuarioActivo.setIsTeacher(data.getExtras().getBoolean("Is_teacher"));
             if(MainActivity.usuarioActivo.isTeacher()){
-                //TODO nombreMaterias recibe null
                 ArrayList<String> nombreMaterias = data.getExtras().getStringArrayList("Subjects");
                 for(String s : nombreMaterias){
                     MainActivity.usuarioActivo.getMateriasHabilitadas().add(Subject.getEnumKey(s));

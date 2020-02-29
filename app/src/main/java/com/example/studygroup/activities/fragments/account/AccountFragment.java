@@ -63,7 +63,7 @@ public class AccountFragment extends Fragment {
         btnCerrarSesion = (Button) root.findViewById(R.id.btn_cerrar_sesion_perfil);
 
         //TODO Descomentar carga de foto.
-        //fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getPhoto());
+        fotoPerfil.setImageBitmap(MainActivity.usuarioActivo.getPhoto());
         nombre.setText(MainActivity.usuarioActivo.getNombre());
         pais.setText(MainActivity.usuarioActivo.getCountryEnum().toString());
         ciudadProvincia.setText((MainActivity.usuarioActivo.getCityEnum().toString()+", "+MainActivity.usuarioActivo.getProvinceEnum().toString()));
