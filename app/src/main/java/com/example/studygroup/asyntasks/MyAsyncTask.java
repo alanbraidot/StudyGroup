@@ -11,9 +11,6 @@ public class MyAsyncTask extends AsyncTask<URL, Integer, Long> {
 
     @Override
     protected Long doInBackground(URL... urls) {
-        //TODO Completar
-        /*if(urls[0].getClass().equals(Person.class))
-            PersonController.save(urls[0],urls[1]);*/
         return Long.valueOf(0);
     }
 }

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.studygroup.R;
 import com.example.studygroup.activities.GroupActivity;
+import com.example.studygroup.controllers.GroupController;
 import com.example.studygroup.domain.Group;
 import com.example.studygroup.holders.MyGroupHolder;
 
@@ -33,7 +34,7 @@ public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupHolder>  {
     @NonNull
     @Override
     public MyGroupHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = (View) LayoutInflater.from(parent.getContext()).inflate(R.layout.fila_groups, parent, false);
+        View v = (View) LayoutInflater.from(context).inflate(R.layout.fila_groups, parent, false);
         MyGroupHolder holder = new MyGroupHolder(v);
         return holder;
     }

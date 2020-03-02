@@ -28,6 +28,7 @@ import com.example.studygroup.activities.MainActivity;
 import com.example.studygroup.controllers.GeneralController;
 import com.example.studygroup.controllers.GroupController;
 import com.example.studygroup.controllers.PersonController;
+import com.example.studygroup.domain.Address;
 import com.example.studygroup.domain.Career;
 import com.example.studygroup.domain.Faculty;
 import com.example.studygroup.domain.Group;
@@ -52,7 +53,8 @@ public class CreateFragment extends Fragment {
     private Button btnLugarEncuentro;
     private EditText etIntegrantes;
     private Button btnIntegrantes;
-    private Spinner spinnerTutor;
+    private EditText etTutor;
+    private Button btnTutor;
     private Button btnCrear;
 
     private LatLng ubicacion=null;
@@ -68,8 +70,10 @@ public class CreateFragment extends Fragment {
 
     private ArrayList<Integer> mUserStudents = new ArrayList<>();
     private boolean[] checkedStudents;
-    private Person[] students;
+    private Object[] students;
     private String[] studentsList;
+    private Object[] teachers;
+    private String[] teachersList;
 
     private final int REQUEST_SELECCIONAR_UBICACION=1;
 
@@ -85,11 +89,14 @@ public class CreateFragment extends Fragment {
         spinnerCarrera = root.findViewById(R.id.spinner_carrera_crear_grupo);
         spinnerMateria = root.findViewById(R.id.spinner_materia_crear_grupo);
         etLugarEncuentro = root.findViewById(R.id.et_ubicacion_crear_grupo);
-        etLugarEncuentro.setEnabled(false);
+        etLugarEncuentro.setKeyListener(null);
         etIntegrantes = root.findViewById(R.id.et_lista_integrantes_crear_grupo);
+        etIntegrantes.setKeyListener(null);
         btnLugarEncuentro = root.findViewById(R.id.btn_seleccionar_ubicacion_crear);
         btnIntegrantes = root.findViewById(R.id.btn_agregar_integrantes_crear);
-        spinnerTutor = root.findViewById(R.id.spinner_tutor_crear_grupo);
+        btnTutor = root.findViewById(R.id.btn_agregar_tutor_crear);
+        etTutor = root.findViewById(R.id.et_tutor_crear_grupo);
+        etTutor.setKeyListener(null);
         btnCrear = root.findViewById(R.id.btn_crearGrupo_crear);
         spinnerUniversidad.setAdapter(new ArrayAdapter<University.UniversityEnum>(context, R.layout.support_simple_spinner_dropdown_item, University.UniversityEnum.values()));
 
@@ -104,12 +111,11 @@ public class CreateFragment extends Fragment {
         btnIntegrantes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO Si no hay estudiantes crashea por null.
-                students = (Person[])PersonController.getInstance().findMembers((Career.CareerEnum)spinnerCarrera.getSelectedItem(),(Faculty.FacultyEnum)spinnerFacultad.getSelectedItem(),context).toArray();
+                students = PersonController.getInstance().findMembers((Career.CareerEnum)spinnerCarrera.getSelectedItem(),(Faculty.FacultyEnum)spinnerFacultad.getSelectedItem(),context).toArray();
                 studentsList = new String[students.length];
                 checkedStudents = new boolean[studentsList.length];
                 for(int i=0; i<students.length;i++){
-                    studentsList[i]=(students[i].getNombre()+" "+students[i].getApellido());
+                    studentsList[i]=(((Person)students[i]).getNombre()+" "+((Person)students[i]).getApellido());
                 }
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(context)
                         .setMultiChoiceItems(studentsList, checkedStudents, new DialogInterface.OnMultiChoiceClickListener() {
@@ -132,7 +138,7 @@ public class CreateFragment extends Fragment {
                         studentsSelected = new ArrayList<>();
                         for (int i = 0; i < mUserStudents.size(); i++) {
                             item = item + studentsList[mUserStudents.get(i)];
-                            studentsSelected.add(students[mUserStudents.get(i)]);
+                            studentsSelected.add((Person)students[mUserStudents.get(i)]);
                             if (i != mUserStudents.size() - 1)
                                 item = item + ", ";
                         }
@@ -157,21 +163,23 @@ public class CreateFragment extends Fragment {
                     if (MainActivity.usuarioActivo.equals(teacher)) {
                         if (!etNombre.getText().toString().isEmpty() && ubicacion != null && !studentsSelected.isEmpty() && teacher != null) {
                             Group newGroup = new Group(etNombre.getText().toString(), university, faculty, career, subject, ubicacion, studentsSelected, teacher);
-                            Toast.makeText(context, "El grupo " + R.string.se_creo_exitoso, Toast.LENGTH_LONG).show();
-                            MainActivity.usuarioActivo.getGroups().add(newGroup);
                             GroupController.save(newGroup,context);
+                            MainActivity.usuarioActivo.getGroups().add(newGroup);
+                            PersonController.update(MainActivity.usuarioActivo,context);
+                            Toast.makeText(context, "El grupo " + getResources().getString(R.string.se_creo_exitoso), Toast.LENGTH_LONG).show();
                         } else
-                            Toast.makeText(context, R.string.incomplete_fields, Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, getResources().getString(R.string.incomplete_fields), Toast.LENGTH_LONG).show();
                     } else
                         Toast.makeText(context, "El tutor debe ser el usuario activo", Toast.LENGTH_LONG).show();
                 } else {
                     if (!etNombre.getText().toString().isEmpty() && ubicacion != null && !studentsSelected.isEmpty() && teacher != null) {
                         Group newGroup = new Group(etNombre.getText().toString(), university, faculty, career, subject, ubicacion, studentsSelected, teacher);
-                        Toast.makeText(context, "El grupo " + R.string.se_creo_exitoso, Toast.LENGTH_LONG).show();
-                        MainActivity.usuarioActivo.getGroups().add(newGroup);
                         GroupController.save(newGroup,context);
+                        MainActivity.usuarioActivo.getGroups().add(newGroup);
+                        PersonController.update(MainActivity.usuarioActivo,context);
+                        Toast.makeText(context, "El grupo " + getResources().getString(R.string.se_creo_exitoso), Toast.LENGTH_LONG).show();
                     } else
-                        Toast.makeText(context, R.string.incomplete_fields, Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, getResources().getString(R.string.incomplete_fields), Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -213,7 +221,6 @@ public class CreateFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 subject = (Subject.SubjectEnum) spinnerMateria.getSelectedItem();
-                spinnerTutor.setAdapter(new ArrayAdapter<Person>(context, R.layout.support_simple_spinner_dropdown_item, PersonController.findTeachersBySubject(subject,context)));
             }
 
             @Override
@@ -221,14 +228,37 @@ public class CreateFragment extends Fragment {
             }
         });
 
-        spinnerTutor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        btnTutor.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                teacher = (Person) spinnerTutor.getSelectedItem();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void onClick(View v) {
+                teachers = PersonController.findTeachersBySubject(subject, context).toArray();
+                teachersList = new String[teachers.length];
+                for (int t = 0; t < teachers.length; t++) {
+                    teachersList[t] = (((Person) teachers[t]).getNombre() + " " + ((Person) teachers[t]).getApellido());
+                }
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(context)
+                        .setSingleChoiceItems(teachersList, 0, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                teacher = (Person) teachers[which];
+                            }
+                        });
+                mBuilder.setCancelable(false);
+                mBuilder.setPositiveButton(R.string.ok_button, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(teacher!=null)
+                            etTutor.setText((teacher.getNombre() + " " + teacher.getApellido()));
+                    }
+                });
+                mBuilder.setNegativeButton(R.string.cancel_button, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        teacher = null;
+                    }
+                });
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
             }
         });
         return root;
@@ -239,7 +269,7 @@ public class CreateFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==REQUEST_SELECCIONAR_UBICACION && resultCode==RESULT_OK){
             ubicacion=new LatLng(data.getExtras().getDouble("Lat"), data.getExtras().getDouble("Lng"));
-            etLugarEncuentro.setText("Lat: "+ubicacion.latitude+", Lng: "+ubicacion.longitude);
+            etLugarEncuentro.setText(Address.getCompleteAddressString(ubicacion,context));
         }
     }
 }

@@ -26,8 +26,8 @@ public interface PersonDao {
     Person findByEmail(String email);
     @Query("SELECT * FROM people")
     List<Person> findAll();
-    @Query("SELECT * FROM people WHERE isTeacher=1")
-    List<Person> findByTeachers();
-    @Query("SELECT * FROM people WHERE isTeacher=0")
-    List<Person> findByStudents();
+    @Query("SELECT * FROM people WHERE isTeacher=:isTeacher")
+    List<Person> findByTeachers(Boolean isTeacher);
+    @Query("SELECT * FROM people WHERE isTeacher=:isTeacher")
+    List<Person> findByStudents(Boolean isTeacher);
 }

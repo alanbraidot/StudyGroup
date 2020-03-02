@@ -1,8 +1,15 @@
 package com.example.studygroup.domain;
 
 import android.content.Context;
+import android.location.Geocoder;
+import android.util.Log;
 
 import androidx.room.Entity;
+
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.List;
+import java.util.Locale;
 
 @Entity(tableName = "addresses")
 public class Address {
@@ -83,5 +90,29 @@ public class Address {
                 return c;
         }
         return null;
+    }
+
+    public static String getCompleteAddressString(LatLng latLng, Context context){
+        String strAdd = "";
+        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+        try {
+            List<android.location.Address> addresses = geocoder.getFromLocation(latLng.latitude, latLng.longitude, 1);
+            if (addresses != null) {
+                android.location.Address returnedAddress = addresses.get(0);
+                StringBuilder strReturnedAddress = new StringBuilder("");
+
+                for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
+                }
+                strAdd = strReturnedAddress.toString();
+                Log.w("My Current loction address", strReturnedAddress.toString());
+            } else {
+                Log.w("My Current loction address", "No Address returned!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Log.w("My Current loction address", "Canont get Address!");
+        }
+        return strAdd;
     }
 }

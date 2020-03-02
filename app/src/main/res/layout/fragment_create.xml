@@ -2,7 +2,8 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
             android:ems="10"
             android:hint="Nombre del Grupo"
             android:inputType="textPersonName"
-            android:textSize="@dimen/activity_titulo"
+            android:textSize="@dimen/activity_normal"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -149,10 +150,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:layout_marginVertical="@dimen/activity_vertical_margin"
-            android:editable="false"
             android:ems="10"
             android:hint="@string/et_ubicacion_crear_grupo"
-            android:inputType="text"
+            android:inputType="none"
             android:maxLines="1"
             android:scrollHorizontally="true"
             android:singleLine="true"
@@ -197,7 +197,10 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:layout_marginVertical="@dimen/activity_vertical_margin"
-            android:editable="false"
+            android:inputType="none"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
             android:hint="@string/et_lista_integrantes_crear_grupo"
             android:textColor="@color/colorPrimaryText"
             android:textSize="@dimen/activity_normal"
@@ -233,20 +236,36 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_agregar_integrantes_crear" />
 
-        <Spinner
-            android:id="@+id/spinner_tutor_crear_grupo"
+        <EditText
+            android:id="@+id/et_tutor_crear_grupo"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
             android:layout_marginVertical="@dimen/activity_vertical_margin"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:spinnerMode="dialog"
+            android:inputType="none"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
+            android:singleLine="true"
             app:layout_constraintBottom_toBottomOf="@+id/tv_tutor_grupo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/tv_tutor_grupo"
             app:layout_constraintTop_toTopOf="@+id/tv_tutor_grupo" />
+
+        <Button
+            android:id="@+id/btn_agregar_tutor_crear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:background="@drawable/botonblanco"
+            android:text="@string/btn_seleccionar_tutor"
+            android:textColor="@color/colorNegro"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tutor_grupo" />
 
         <Button
             android:id="@+id/btn_crearGrupo_crear"
@@ -261,7 +280,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_tutor_grupo" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_agregar_tutor_crear" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

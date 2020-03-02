@@ -42,11 +42,9 @@ public class Person {
     private Address.ProvinceEnum provinceEnum;
     @ColumnInfo(name = "city")
     private Address.CityEnum cityEnum;
-    //TODO Convertir para almacenar
-    @Ignore
+    @ColumnInfo(name = "groups_list")
     private List<Group> groups;
-    //TODO Convertir para almacenar
-    @Ignore
+    @ColumnInfo(name = "subjects_list")
     private List<Subject.SubjectEnum> materiasHabilitadas;
 
     public Person(String nombre, String apellido, String email, Boolean isTeacher, Bitmap photo, Address.CountryEnum countryEnum, Address.ProvinceEnum provinceEnum, Address.CityEnum cityEnum, University.UniversityEnum universityEnum, Faculty.FacultyEnum facultyEnum, Career.CareerEnum careerEnum, List<Subject.SubjectEnum> materiasHabilitadas) {
@@ -92,6 +90,10 @@ public class Person {
 
     public void setProvinceEnum(Address.ProvinceEnum provinceEnum) {
         this.provinceEnum = provinceEnum;
+    }
+
+    public void setMateriasHabilitadas(List<Subject.SubjectEnum> materiasHabilitadas) {
+        this.materiasHabilitadas = materiasHabilitadas;
     }
 
     public Address.CityEnum getCityEnum() {

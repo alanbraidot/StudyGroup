@@ -16,9 +16,11 @@ import com.example.studygroup.domain.Group;
 
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MyGroupsActivity extends AppCompatActivity {
 
-    private ImageView fotoPerfil;
+    private CircleImageView fotoPerfil;
     private TextView tvNombre;
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
@@ -31,7 +33,7 @@ public class MyGroupsActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        fotoPerfil = (ImageView) findViewById(R.id.image_foto_perfil_grupos);
+        fotoPerfil = (CircleImageView) findViewById(R.id.image_foto_perfil_grupos);
         tvNombre = (TextView) findViewById(R.id.tv_nombre_perfil_grupos);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view_my_groups);
 

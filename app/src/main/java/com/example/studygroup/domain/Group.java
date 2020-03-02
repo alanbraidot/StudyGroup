@@ -17,13 +17,10 @@ public class Group {
     @NonNull
     @ColumnInfo(name = "id_group")
     private Integer id;
-    //TODO Convertir para almacenar
-    @Ignore
+    @ColumnInfo(name = "members_list")
     private List<Person> integrantes;
-    @Ignore
+    @ColumnInfo(name = "teacher")
     private Person teacher;
-    @ColumnInfo(name = "id_teacher")
-    private int idTeacher;
     @ColumnInfo(name = "name")
     private String nombre;
     @ColumnInfo(name = "career")
@@ -34,24 +31,30 @@ public class Group {
     private Faculty.FacultyEnum faculty;
     @ColumnInfo(name = "university")
     private University.UniversityEnum university;
-    //TODO Convertir para almacenar
-    @Ignore
-    private LatLng lugarEncuentro;
+    @ColumnInfo(name = "location")
+    private LatLng location;
 
-
-    public Group(String nombre, University.UniversityEnum university, Faculty.FacultyEnum faculty, Career.CareerEnum career, Subject.SubjectEnum subject,LatLng lugarEncuentro, List<Person> integrantes, Person teacher  ) {
+    public Group(String nombre, University.UniversityEnum university, Faculty.FacultyEnum faculty, Career.CareerEnum career, Subject.SubjectEnum subject, LatLng location, List<Person> integrantes, Person teacher  ) {
         this.integrantes = integrantes;
         this.teacher = teacher;
-        this.idTeacher=teacher.getId();
         this.nombre = nombre;
         this.career = career;
         this.subject = subject;
         this.faculty = faculty;
-        this.lugarEncuentro = lugarEncuentro;
+        this.location = location;
         this.university= university;
     }
 
+    @Ignore
     public Group(){}
+
+    public void setIntegrantes(List<Person> integrantes) {
+        this.integrantes = integrantes;
+    }
+
+    public void setLocation(LatLng location) {
+        this.location = location;
+    }
 
     public Integer getId() {
         return id;
@@ -69,8 +72,8 @@ public class Group {
         return nombre;
     }
 
-    public LatLng getLugarEncuentro() {
-        return lugarEncuentro;
+    public LatLng getLocation() {
+        return location;
     }
 
     public void setId(@NonNull Integer id) {

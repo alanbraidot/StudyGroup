@@ -27,10 +27,14 @@ public class PersonController {
         return PersonRepository.getInstance(context).findById(id);
     }
 
+    public static void update(Person person, Context context) {
+        PersonRepository.getInstance(context).update(person);
+    }
+
     public ArrayList<Person> findMembers(Career.CareerEnum career, Faculty.FacultyEnum faculty, Context context){
-        ArrayList<Person> p = (ArrayList<Person>) PersonRepository.getInstance(context).findAll();
+        ArrayList<Person> p = (ArrayList<Person>) PersonRepository.getInstance(context).findByStudents();
         int i=0;
-        if(p!=null) {
+        if(p.size()>0) {
             while (i < p.size()) {
                 if (!p.get(i).getCareerEnum().equals(career) && !p.get(i).getFacultyEnum().equals(faculty)) {
                     p.remove(i);
@@ -56,9 +60,9 @@ public class PersonController {
         return PersonRepository.getInstance(context).findByStudents();
     }
 
-    public static List<Person> findTeachersBySubject(Subject.SubjectEnum subjectEnum, Context context){
-        List<Person> teachers = PersonRepository.getInstance(context).findByTeachers();
-        List<Person> qualifiedTeachers = new ArrayList<>();
+    public static ArrayList<Person> findTeachersBySubject(Subject.SubjectEnum subjectEnum, Context context){
+        ArrayList<Person> teachers = (ArrayList<Person>)PersonRepository.getInstance(context).findByTeachers();
+        ArrayList<Person> qualifiedTeachers = new ArrayList<>();
         for (Person p : teachers){
             if(p.getMateriasHabilitadas().contains(subjectEnum))
                 qualifiedTeachers.add(p);

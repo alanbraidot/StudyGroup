@@ -42,6 +42,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import static com.example.studygroup.receivers.MyReceiver.CHANNEL_ID_NOTIFICATION_LOGIN;
 import static com.example.studygroup.receivers.MyReceiver.LOGIN_SUCCESSFULLY;
@@ -128,6 +129,38 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         GeneralController.getInstance().getCareerList().add(im_frsf);
         GeneralController.getInstance().getCareerList().add(ii_fich);
         GeneralController.getInstance().getCareerList().add(iq_fich);
+
+        //Inicializamos algunos usuarios para probar la app.
+        /*Person person = new Person(
+                "Dino", "Filippa", "dinofilippa99@hotmail.com", false, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
+                University.UniversityEnum.UTN, Faculty.FacultyEnum.FRSF, Career.CareerEnum.ISIUTN, null);
+        PersonController.save(person,this);
+
+        person = new Person(
+                "Juan", "Perez", "juanperez@hotmail.com", false, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
+                University.UniversityEnum.UTN, Faculty.FacultyEnum.FRSF, Career.CareerEnum.ISIUTN, null);
+        PersonController.save(person,this);
+
+        person = new Person(
+                "Juana", "Lopez", "juanalopez@hotmail.com", false, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
+                University.UniversityEnum.UTN, Faculty.FacultyEnum.FRSF, Career.CareerEnum.ISIUTN, null);
+        PersonController.save(person,this);
+
+        List<Subject.SubjectEnum> subjects = new ArrayList<>();
+        subjects.add(Subject.SubjectEnum.AMI);
+
+        person = new Person(
+                "Martin", "Dominguez", "martindominguez@hotmail.com", true, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
+                null, null, null, subjects);
+        PersonController.save(person,this);
+
+        subjects = new ArrayList<>();
+        subjects.add(Subject.SubjectEnum.FISI);
+
+        person = new Person(
+                "Pedro", "Gomez", "pedrogomez@hotmail.com", true, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
+                null, null, null, subjects);
+        PersonController.save(person,this);*/
     }
 
     public void logout(){
@@ -155,7 +188,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
             Intent i = new Intent(getApplicationContext(), MainActivity.class);
             if(MainActivity.usuarioActivo==null) {
                 MainActivity.usuarioActivo = PersonController.findPerson(account.getEmail(), this);
-                MainActivity.usuarioActivo.setPhoto(loadPhoto(MainActivity.usuarioActivo.getPathPhoto()));
+                if(MainActivity.usuarioActivo.getPathPhoto()!=null)
+                    MainActivity.usuarioActivo.setPhoto(loadPhoto(MainActivity.usuarioActivo.getPathPhoto()));
             }
             createNotificationChannel();
             welcomeNotification(account.getGivenName());
@@ -186,10 +220,11 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         }
         if(requestCode==REQUEST_COMPLETAR_REGISTRO && resultCode==RESULT_OK){
             MainActivity.usuarioActivo = new Person();
-            //TODO Cargar foto desde el intent data
             String path_photo = data.getExtras().getString("Photo");
-            MainActivity.usuarioActivo.setPathPhoto(path_photo);
-            MainActivity.usuarioActivo.setPhoto(loadPhoto(path_photo));
+            if(path_photo!=null) {
+                MainActivity.usuarioActivo.setPathPhoto(path_photo);
+                MainActivity.usuarioActivo.setPhoto(loadPhoto(path_photo));
+            }
             MainActivity.usuarioActivo.setNombre(account.getGivenName());
             MainActivity.usuarioActivo.setApellido(account.getFamilyName());
             MainActivity.usuarioActivo.setEmail(account.getEmail());

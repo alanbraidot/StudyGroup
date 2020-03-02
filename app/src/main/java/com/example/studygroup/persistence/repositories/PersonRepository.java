@@ -41,10 +41,10 @@ public class PersonRepository {
     public Person findByEmail(String email){ return personDao.findByEmail(email);}
 
     public List<Person> findByTeachers() {
-        return personDao.findByTeachers();
+        return personDao.findByTeachers(true);
     }
 
     public List<Person> findByStudents() {
-        return personDao.findByStudents();
+        return personDao.findByStudents(false);
     }
 }
