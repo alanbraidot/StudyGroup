@@ -15,6 +15,8 @@ import com.example.studygroup.activities.GroupActivity;
 import com.example.studygroup.controllers.GroupController;
 import com.example.studygroup.domain.Group;
 import com.example.studygroup.holders.MyGroupHolder;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +52,8 @@ public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupHolder>  {
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(context, GroupActivity.class);
-                i.putExtra("id_group",group.getId());
+                Gson gson = new Gson();
+                i.putExtra("Group",gson.toJson(group));
                 ((Activity)context).startActivity(i);
             }
         });

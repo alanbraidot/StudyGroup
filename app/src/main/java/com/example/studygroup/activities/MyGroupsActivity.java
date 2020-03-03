@@ -12,7 +12,9 @@ import android.widget.TextView;
 import com.example.studygroup.R;
 import com.example.studygroup.adapters.MyGroupAdapter;
 import com.example.studygroup.adapters.SearchFragmentAdapter;
+import com.example.studygroup.controllers.GroupController;
 import com.example.studygroup.domain.Group;
+import com.example.studygroup.persistence.repositories.GroupRepository;
 
 import java.util.List;
 

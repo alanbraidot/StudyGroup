@@ -47,6 +47,12 @@ public class Converters {
     }
 
     @TypeConverter
+    public static Group stringToGroup(String group){
+        Type listType = new TypeToken<Group>() {}.getType();
+        return new Gson().fromJson(group, listType);
+    }
+
+    @TypeConverter
     public static String personListToString(List<Person> list){
         return gson.toJson(list);
     }

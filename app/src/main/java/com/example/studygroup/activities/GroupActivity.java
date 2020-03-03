@@ -3,6 +3,7 @@ package com.example.studygroup.activities;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -12,7 +13,9 @@ import com.example.studygroup.R;
 import com.example.studygroup.controllers.GroupController;
 import com.example.studygroup.domain.Group;
 import com.example.studygroup.domain.Person;
+import com.example.studygroup.utils.Converters;
 import com.google.android.gms.maps.MapView;
+import com.google.gson.reflect.TypeToken;
 
 public class GroupActivity extends AppCompatActivity {
 
@@ -42,19 +45,19 @@ public class GroupActivity extends AppCompatActivity {
         textViewTeacher = findViewById(R.id.tv_tutor_group_activity);
         mapViewLocation = findViewById(R.id.mapView_ubicacion_group_activity);
 
-        Group group = GroupController.findById(savedInstanceState.getInt("Id_group"), getApplicationContext());
+        Group group = Converters.stringToGroup(getIntent().getExtras().getString("Group"));
 
         textViewName.setText(group.getNombre());
         textViewUniversity.setText(group.getUniversity().toString());
         textViewFaculty.setText(group.getFaculty().toString());
         textViewCareer.setText(group.getCareer().toString());
-        Person[] students = (Person[]) group.getIntegrantes().toArray();
+        Object[] students = group.getIntegrantes().toArray();
         String[] studentsNames = new String[group.getIntegrantes().size()];
         for(int i=0; i<students.length;i++){
-            studentsNames[i] = (students[i].getNombre() + " " + students[i].getApellido());
+            studentsNames[i] = (((Person)students[i]).getNombre() + " " + ((Person)students[i]).getApellido());
         }
-        listViewStudents.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item, studentsNames));
-        textViewTeacher.setText("Profesor: " + group.getTeacher().getNombre() + " " + group.getTeacher().getApellido());
+        listViewStudents.setAdapter(new ArrayAdapter<String>(this, R.layout.simple_list_item, R.id.tv_simple_list_item, studentsNames));
+        textViewTeacher.setText(("Profesor: " + group.getTeacher().getNombre() + " " + group.getTeacher().getApellido()));
         //TODO Configurar map fragment para que muestre la ubicacion del grupo.
 
     }
