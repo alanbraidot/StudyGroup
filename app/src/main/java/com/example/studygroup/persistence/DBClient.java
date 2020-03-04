@@ -11,7 +11,6 @@ public class DBClient {
     private MyDatabase myDatabase;
 
     public DBClient(Context context){
-        //TODO Acceder a la base de datos de manera asincronica
         myDatabase = Room.databaseBuilder(context, MyDatabase.class, "study_group_db").allowMainThreadQueries().fallbackToDestructiveMigration().build();
     }
 

@@ -131,7 +131,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         GeneralController.getInstance().getCareerList().add(iq_fich);
 
         //Inicializamos algunos usuarios para probar la app.
-        /*Person person = new Person(
+        Person person = new Person(
                 "Dino", "Filippa", "dinofilippa99@hotmail.com", false, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
                 University.UniversityEnum.UTN, Faculty.FacultyEnum.FRSF, Career.CareerEnum.ISIUTN, null);
         PersonController.save(person,this);
@@ -144,6 +144,16 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         person = new Person(
                 "Juana", "Lopez", "juanalopez@hotmail.com", false, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
                 University.UniversityEnum.UTN, Faculty.FacultyEnum.FRSF, Career.CareerEnum.ISIUTN, null);
+        PersonController.save(person,this);
+
+        person = new Person(
+                "Alberto", "Viloutta", "albertoviloutta@hotmail.com", false, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
+                University.UniversityEnum.UNL, Faculty.FacultyEnum.FICH, Career.CareerEnum.IINFUNL, null);
+        PersonController.save(person,this);
+
+        person = new Person(
+                "Enrique", "Duarte", "enriduarte@hotmail.com", false, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
+                University.UniversityEnum.UNL, Faculty.FacultyEnum.FICH, Career.CareerEnum.IINFUNL, null);
         PersonController.save(person,this);
 
         List<Subject.SubjectEnum> subjects = new ArrayList<>();
@@ -160,7 +170,33 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         person = new Person(
                 "Pedro", "Gomez", "pedrogomez@hotmail.com", true, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
                 null, null, null, subjects);
-        PersonController.save(person,this);*/
+        PersonController.save(person,this);
+
+        subjects = new ArrayList<>();
+        subjects.add(Subject.SubjectEnum.FISI);
+        subjects.add(Subject.SubjectEnum.AMI);
+
+        person = new Person(
+                "Carlos", "Rodriguez", "carlosrodriguez@hotmail.com", true, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
+                null, null, null, subjects);
+        PersonController.save(person,this);
+
+        subjects = new ArrayList<>();
+        subjects.add(Subject.SubjectEnum.AMI);
+
+        person = new Person(
+                "Rodolfo", "Cortina", "rodocortina@hotmail.com", true, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
+                null, null, null, subjects);
+        PersonController.save(person,this);
+
+        subjects = new ArrayList<>();
+        subjects.add(Subject.SubjectEnum.FISI);
+
+        person = new Person(
+                "Patricio", "Silva", "patriciosilva@hotmail.com", true, null, Address.CountryEnum.ARG, Address.ProvinceEnum.SF, Address.CityEnum.CSF,
+                null, null, null, subjects);
+        PersonController.save(person,this);
+
     }
 
     public void logout(){
